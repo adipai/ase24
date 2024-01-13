@@ -72,7 +72,7 @@ class SYM:
     def div(self):
         e = 0
         for v in self.has.values():
-            e -= v / self.n * math.log(v / self.n, 2)
+            e -= (v / self.n) * math.log(v / self.n, 2)
         return e
 
     def small(self):
@@ -91,6 +91,12 @@ class COLS:
                     self.klass = col
                 (self.y if txt[-1] in "!+-" else self.x)[at] = col
 
+    def add(self, row):
+
+        for cols in [self.x, self.y]:
+            for col in cols:
+                col.add(row.cells[col.at])
+
 
 class ROW:
     def __init__(self, t):
@@ -101,13 +107,6 @@ class DATA:
     def __init__(self):
         self.rows = []
         self.cols = None
-
-    @classmethod
-    def new(cls, src, fun=None):
-        obj = cls()
-        return obj.adds(src, fun)
-
-    def adds(self, src, fun=None):
         if isinstance(src, str):
             with open(src, 'r') as file:
                 reader = csv.reader(file)
@@ -116,7 +115,6 @@ class DATA:
         else:
             for row in src or []:
                 self.add(row, fun)
-        return self
 
     def add(self, t, fun=None, row=None):
         row = t.cells if t.cells else ROW(t)
