@@ -15,6 +15,7 @@ class NUM:
 
     def add(self, x):
         if not x == "?":
+            x = float(x)
             self.n += 1
             d = x - self.mu
             self.mu += d / self.n
@@ -92,10 +93,16 @@ class COLS:
                 (self.y if txt[-1] in "!+-" else self.x)[at] = col
 
     def add(self, row):
+        # print(self.x, self.y)
+
+        # print("number of row cells: ", len(row.cells))
 
         for cols in [self.x, self.y]:
-            for col in cols:
-                col.add(row.cells[col.at])
+            # print(cols, type(cols))
+            for col in list(cols.values()):
+                # print(col, type(col))
+                # print(col.at)
+                col.add(row.cells[col.at-1])
 
 
 class ROW:
@@ -104,20 +111,26 @@ class ROW:
    
 
 class DATA:
-    def __init__(self):
+    def __init__(self, src="", fun=None):
         self.rows = []
         self.cols = None
         if isinstance(src, str):
             with open(src, 'r') as file:
                 reader = csv.reader(file)
+                flag = True
                 for row in reader:
+                    if(flag):
+                        print(row)
+                        flag = False
+                    # print(row)
                     self.add(row, fun)
+                    # print("DONE")
         else:
             for row in src or []:
                 self.add(row, fun)
 
-    def add(self, t, fun=None, row=None):
-        row = t.cells if t.cells else ROW(t)
+    def add(self, t=None, fun=None):
+        row = ROW(t) if type(t)==list else t
         if self.cols:
             if fun:
                 fun(self, row)
@@ -135,8 +148,13 @@ class DATA:
     
     def stats(self, cols=None, fun=None, ndivs=None):
         u = {".N": len(self.rows)}
-        for col in (self.cols[cols or "y"]):
-            u[col.txt] = round(getattr(col, fun or "mid")(), ndivs)
+        print(self.cols.all)
+        for col in self.cols.all:
+
+            if(isinstance(col, SYM)):
+                u[col.txt] = col.mid()
+            else:
+                u[col.txt] = round(col.mid())
         return u
 
     def small(self):
@@ -148,3 +166,8 @@ class DATA:
         for row in rows or []:
             new.add(row)
         return new
+
+src = "auto93.csv"
+cols = ['Clndrs', 'Volume', 'HpX', 'Model', 'origin', 'Lbs-', 'Acc+', 'Mpg+']
+data_new = DATA(src)
+print(data_new.stats(cols = cols))
