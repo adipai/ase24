@@ -39,7 +39,7 @@ class DATA:
             if(isinstance(col, SYM)):
                 u[col.txt] = col.mid()
             else:
-                u[col.txt] = round(col.mid())
+                u[col.txt] = col.mid()
         return u
 
     def small(self):

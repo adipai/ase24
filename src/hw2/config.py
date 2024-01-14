@@ -1,6 +1,4 @@
-
-
-l, the, help_str = [], [], """
+"""
 gate: guess, assess, try, expand
 (c) 2023, Tim Menzies, BSD-2
 Learn a little, guess a lot, try the strangest guess, learn a little more, repeat
@@ -17,3 +15,7 @@ OPTIONS:
   -s --seed     random number seed              = 31210
   -t --todo     start up action                 = help
 """
+
+help_str = __doc__
+
+the = {}

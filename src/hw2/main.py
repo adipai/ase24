@@ -1,5 +1,8 @@
 from data import DATA
+from utils import settings, cli
+from config import help_str
 
+# from config im
 """
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="gate: guess, assess, try, expand")
@@ -22,10 +25,12 @@ seed_value = args.seed
 startup_action = args.todo
 """
 
+if __name__ == '__main__':
+    t = cli(settings(help_str))
+    # t['file'] = '../../Data/auto93.csv'
+    
+    cols = ['Clndrs', 'Volume', 'HpX', 'Model', 'origin', 'Lbs-', 'Acc+', 'Mpg+']
 
-cols = ['Clndrs', 'Volume', 'HpX', 'Model', 'origin', 'Lbs-', 'Acc+', 'Mpg+']
-
-
-src = "../../Data/auto93.csv"
-data_new = DATA(src)
-print(data_new.stats(cols = cols))
+    # src = "../../Data/auto93.csv"
+    data_new = DATA(t['file'])
+    print(data_new.stats(cols = cols))
