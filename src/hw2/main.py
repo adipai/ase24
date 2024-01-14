@@ -2,7 +2,6 @@ from data import DATA
 from utils import settings, cli
 from config import help_str
 
-# from config im
 """
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="gate: guess, assess, try, expand")
@@ -27,10 +26,11 @@ startup_action = args.todo
 
 if __name__ == '__main__':
     t = cli(settings(help_str))
-    # t['file'] = '../../Data/auto93.csv'
-    
-    cols = ['Clndrs', 'Volume', 'HpX', 'Model', 'origin', 'Lbs-', 'Acc+', 'Mpg+']
+    if(t['help']=='True'):
+        print("You can use the following help: ")
+        print(help_str)
+    else:
 
-    # src = "../../Data/auto93.csv"
-    data_new = DATA(t['file'])
-    print(data_new.stats(cols = cols))
+        data_new = DATA(t['file'])
+        print("Data Stats are as follows: ")
+        print(data_new.stats())

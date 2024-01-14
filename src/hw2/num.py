@@ -1,3 +1,4 @@
+from utils import coerce
 class NUM:
     def __init__(self, s=None, n=None):
         self.txt = s or " "
@@ -11,7 +12,7 @@ class NUM:
 
     def add(self, x):
         if not x == "?":
-            x = float(x)
+            x = coerce(x)
             self.n += 1
             d = x - self.mu
             self.mu += d / self.n

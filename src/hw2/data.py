@@ -2,6 +2,7 @@ import csv
 from sym import SYM
 from row import ROW
 from cols import COLS
+from utils import round
 
 class DATA:
     def __init__(self, src="", fun=None):
@@ -33,21 +34,11 @@ class DATA:
         u = [col.div() for col in (cols or self.cols.all)]
         return ROW(u)
     
-    def stats(self, cols=None, fun=None, ndivs=None):
+    def stats(self, fun=None, ndivs=None):
         u = {".N": len(self.rows)}
         for col in self.cols.all:
             if(isinstance(col, SYM)):
                 u[col.txt] = col.mid()
             else:
-                u[col.txt] = col.mid()
+                u[col.txt] = round(col.mid())
         return u
-
-    def small(self):
-        u = [col.small() for col in self.cols.all]
-        return ROW(u)
-
-    def clone(self, rows=None):
-        new = DATA()
-        for row in rows or []:
-            new.add(row)
-        return new
