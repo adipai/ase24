@@ -7,14 +7,15 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
 
 # About
 The code for homeworks can be found in src/hwX/ and respective output at hw/wX where $X \in \{2,3,4,5,6,7,8,9\}$ <br/>
-HW2 - Create the NUM, SYM, DATA, ROW, COLS classes and print stats of Data/auto93.csv by converting the lua code to python. Also, add test cases for the functionalities!<br/>
-HW3 -<br/>
-HW4 -<br/>
-HW5 -<br/>
-HW6 -<br/> 
-HW7 -<br/> 
-HW8 -<br/>
-HW9 -<br/>
+
+* HW2 - Create the NUM, SYM, DATA, ROW, COLS classes and print stats of Data/auto93.csv by converting the lua code to python. Also, add test cases for the functionalities!<br/>
+* HW3 -<br/>
+* HW4 -<br/>
+* HW5 -<br/>
+* HW6 -<br/> 
+* HW7 -<br/> 
+* HW8 -<br/>
+* HW9 -<br/>
 
 # Step to run
 * Navigate to the repository src/hwX/ where $X \in \{2,3,4,5,6,7,8,9\}$ <br/>
