@@ -13,6 +13,6 @@ HW2 - Create the data object and print stats from gate.lua
 
 
 # Team members
-Rishi Singhal<br/>
-Deepak Rajendran<br/>
-Aditya Pai Brahmavar
+[Rishi Singhal](https://www.linkedin.com/in/rishi-singhal1101/)<br/>
+[Deepak Rajendran](https://www.linkedin.com/in/deepr41)<br/>
+[Aditya Pai Brahmavar](https://www.linkedin.com/in/adityapai16/)<br/>
