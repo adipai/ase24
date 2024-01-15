@@ -84,6 +84,8 @@ def cli(t):
             opt = opt[2:]
         elif opt.startswith('-'):
             opt = opt[1:]
+        else:
+            continue
         
         t[opt] = coerce(val)
 
