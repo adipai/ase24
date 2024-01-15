@@ -7,7 +7,7 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
 
 # About
 
-HW2 - Create the data object and print stats from gate.lua
+HW2 - Create the NUM, SYM, DATA, ROW, COLS classes and print stats of auto93.csv by converting the lua code to python. Also, add test cases for the functionalities!
 
 # Step to run
 
