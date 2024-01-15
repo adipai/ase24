@@ -13,7 +13,7 @@ OPTIONS:
   -k --k        low class frequency kludge      = 1
   -m --m        low attribute frequency kludge  = 2
   -s --seed     random number seed              = 31210
-  -t --todo     start up action                 = help
+  -t --run_tc   run test-cases                  = None
 """
 
 import math
@@ -25,7 +25,7 @@ def coerce(s1):
         if s2 == "nil":
             return None
         else:
-            return s2 == "true" or (s2 != "false" and s2)
+            return s2.lower() == "true" or (s2.lower() != "false" and s2)
     try:
         return float(s1)
     except:
@@ -73,6 +73,9 @@ def cells(s):
 def cli(t):
     options_dict = {}
     options = sys.argv[1:]
+    if("--help" in options or "-h" in options):
+        t["help"]=True
+        return t
     i=0
     while(i<len(options)):
         options_dict[options[i]] = options[i+1]
@@ -86,7 +89,7 @@ def cli(t):
             opt = opt[1:]
         else:
             continue
-        
+
         t[opt] = coerce(val)
 
     return t

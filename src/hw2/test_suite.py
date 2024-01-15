@@ -6,9 +6,7 @@ from sym import SYM
 from data import DATA
 from utils import coerce, settings, cells, csv, round, cli
 
-
-class UtilityTestSuite:
-
+class TestSuite:
     def test_coerce(self):
         assert coerce("42") == 42
         assert coerce("3.14") == 3.14
@@ -50,23 +48,7 @@ class UtilityTestSuite:
         assert result == {'cohen': 0.35, 'file': 'data.csv', '_help': '--cohen=0.35 --file=data.csv --help'}
     """
 
-    def _run_test(self, test_func, test_name):
-        try:
-            test_func()
-            print(f"Test {test_name} passed.")
-        except AssertionError as e:
-            print(f"Test {test_name} failed: {e}")
-
-    def run_tests(self):
-        print("Running tests in UtilityTestSuite")
-        test_functions = [func for func in dir(self) if func.startswith('test_') and callable(getattr(self, func))]
-        for test_func_name in test_functions:
-            test_func = getattr(self, test_func_name)
-            self._run_test(test_func, test_func_name)
-
-class NumTestSuite:
-
-    def test_add(self):
+    def test_add_num(self):
         num_obj = NUM()
         num_obj.add(5)
         assert num_obj.n == 1
@@ -82,36 +64,19 @@ class NumTestSuite:
         assert num_obj.lo == 5
         assert num_obj.hi == 10
 
-    def test_mid(self):
+    def test_mid_num(self):
         num_obj = NUM()
         num_obj.add(5)
         num_obj.add(10)
         assert num_obj.mid() == 7.5
 
-    def test_div(self):
+    def test_div_num(self):
         num_obj = NUM()
         num_obj.add(5)
         num_obj.add(10)
         assert num_obj.div() == (12.5 / 1)**0.5
 
-    def _run_test(self, test_func, test_name):
-        try:
-            test_func()
-            print(f"Test {test_name} passed.")
-        except AssertionError as e:
-            print(f"Test {test_name} failed: {e}")
-
-    def run_tests(self):
-        print("Running tests in NumTestSuite")
-        test_functions = [func for func in dir(self) if func.startswith('test_') and callable(getattr(self, func))]
-        for test_func_name in test_functions:
-            test_func = getattr(self, test_func_name)
-            self._run_test(test_func, test_func_name)
-
-
-class SymTestSuite:
-
-    def test_add(self):
+    def test_add_sym(self):
         sym_obj = SYM()
         sym_obj.add("a")
         assert sym_obj.n == 1
@@ -126,13 +91,13 @@ class SymTestSuite:
         assert sym_obj.mode == "a"
         assert sym_obj.most == 2
 
-    def test_mid(self):
+    def test_mid_sym(self):
         sym_obj = SYM()
         sym_obj.add("a")
         sym_obj.add("b")
         assert sym_obj.mid() == "a"
 
-    def test_div(self):
+    def test_div_sym(self):
         sym_obj = SYM()
         sym_obj.add("a")
         sym_obj.add("b")
@@ -140,9 +105,11 @@ class SymTestSuite:
         sym_obj.add("c")
         assert math.isclose(sym_obj.div(), 1.5)
 
-    def test_small(self):
+    def test_small_sym(self):
         sym_obj = SYM()
         assert sym_obj.small() == 0
+
+
 
     def _run_test(self, test_func, test_name):
         try:
@@ -152,19 +119,14 @@ class SymTestSuite:
             print(f"Test {test_name} failed: {e}")
 
     def run_tests(self):
-        print("Running tests in SymTestSuite")
+        print("Running tests in TestSuite")
         test_functions = [func for func in dir(self) if func.startswith('test_') and callable(getattr(self, func))]
         for test_func_name in test_functions:
             test_func = getattr(self, test_func_name)
             self._run_test(test_func, test_func_name)
 
 
+
 if __name__ == '__main__':
-    util_test_suite = UtilityTestSuite()
-    util_test_suite.run_tests()
-
-    num_test_suite = NumTestSuite()
-    num_test_suite.run_tests()
-
-    sym_test_suite = SymTestSuite()
-    sym_test_suite.run_tests()
+    test_suite = TestSuite()
+    test_suite.run_tests()
