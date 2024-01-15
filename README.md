@@ -1,4 +1,4 @@
-# automated_software_engineering_24_group1
+# Automated software engineering Spring 24 (Group1)
 [![Language](https://img.shields.io/badge/Language-Python-orange.svg?style=flat)](https://github.com/search?q=repo%3Aadipai%2Fase24++language%3APython&type=code)
 [![Collaborators](https://img.shields.io/badge/Collaborators-3-purple.svg?style=flat)](https://github.com/adipai/ase24/graphs/contributors)
 [![Test Suite](https://github.com/adipai/ase24/actions/workflows/run_test_suite.yml/badge.svg)](https://github.com/adipai/ase24/actions/workflows/run_test_suite.yml)
