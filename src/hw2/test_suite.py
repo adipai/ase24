@@ -18,7 +18,7 @@ class TestSuite:
         assert coerce("false") == False
         assert coerce("nil") == None
         assert coerce("  hello  ") == "hello"
-        assert coerce("  42  ") == 43
+        assert coerce("  42  ") == 42
 
     def test_settings(self):
         input_str = "-c --cohen = 0.35\n -f --file = data.csv\n -h --help = False"

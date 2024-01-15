@@ -20,13 +20,13 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 # Steps to run
 * Navigate to the repository src/hwX/ where $X \in \{2,3,4,5,6,7,8,9\}$ <br/>
 * For normal execution, run: <br/>
-  `$ python3 main.py --file ../../Data/auto93.csv` OR `$ python3 main.py -f ../../Data/auto93.csv`
+  `$ python3 main.py --file ../../Data/auto93.csv > ../../hw/w2/w2.out` OR `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w2/w2.out`
 * For normal execution and run all test cases : <br/>
-  `$ python3 main.py --file ../../Data/auto93.csv --run_tc all` OR `$ python3 main.py -f ../../Data/auto93.csv -t all`
+  `$ python3 main.py --file ../../Data/auto93.csv --run_tc all > ../../hw/w2/w2.out` OR `$ python3 main.py -f ../../Data/auto93.csv -t all > ../../hw/w2/w2.out`
 * For normal execution and run a particular test case: <br/>
-  `$ python3 main.py --file ../../Data/auto93.csv --run_tc <test_name>` OR `$ python3 main.py -f ../../Data/auto93.csv -t <test_name>`
+  `$ python3 main.py --file ../../Data/auto93.csv --run_tc <test_name> > ../../hw/w2/w2.out` OR `$ python3 main.py -f ../../Data/auto93.csv -t <test_name> > ../../hw/w2/w2.out`
 * For getting help: <br/>
-  `$ python3 main.py --help` OR `$ python3 main.py -h`
+  `$ python3 main.py --help > ../../hw/w2/w2.out` OR `$ python3 main.py -h > ../../hw/w2/w2.out`
 * For running test suite, run:<br/>
   `$ python3 -m coverage run test_suite.py`
 
