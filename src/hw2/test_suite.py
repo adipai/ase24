@@ -5,8 +5,12 @@ from num import NUM
 from sym import SYM
 from data import DATA
 from utils import coerce, settings, cells, csv, round, cli
-
+import os
+import platform
 class TestSuite:
+    # def __init__(self) -> None:
+    #     self.f_tests = {}
+
     def test_coerce(self):
         assert coerce("42") == 42
         assert coerce("3.14") == 3.14
@@ -14,25 +18,18 @@ class TestSuite:
         assert coerce("false") == False
         assert coerce("nil") == None
         assert coerce("  hello  ") == "hello"
-        assert coerce("  42  ") == 42
+        assert coerce("  42  ") == 43
 
     def test_settings(self):
-        input_str = "--cohen=0.35 --file=data.csv --help"
-        result = settings(input_str)
-        assert result == {'cohen': 0.35, 'file': 'data.csv', '_help': input_str}
+        input_str = "-c --cohen = 0.35\n -f --file = data.csv\n -h --help = False"
+        result, opt_dir = settings(input_str)
+
+        assert result == {'cohen': 0.35, 'file': 'data.csv', 'help': False}
 
     def test_cells(self):
         input_str = "1, 2, 3.14, true, false, nil, hello"
         result = cells(input_str)
         assert result == [1, 2, 3.14, True, False, None, "hello"]
-    """
-    def test_csv(self):
-        input_str = "1,2,3\n4,5,6\n"
-        read_line = csv(input_str)
-        assert read_line() == (1, [1, 2, 3])
-        assert read_line() == (2, [4, 5, 6])
-        assert read_line() == None
-    """
 
     def test_round(self):
         assert round(3.14159, 2) == 3.14
@@ -40,13 +37,6 @@ class TestSuite:
         assert round("hello") == "hello"
         assert round(True) == True
         assert round(False) == False
-
-    """
-    def test_cli(self):
-        sys.argv = ["test.py", "--cohen", "0.35", "--file", "data.csv", "--help"]
-        result = cli({})
-        assert result == {'cohen': 0.35, 'file': 'data.csv', '_help': '--cohen=0.35 --file=data.csv --help'}
-    """
 
     def test_add_num(self):
         num_obj = NUM()
@@ -116,6 +106,7 @@ class TestSuite:
             test_func()
             print(f"Test {test_name} passed.")
         except AssertionError as e:
+            # self.f_tests[test_name[5:]] = test_name[5:]  # append to failing test lists
             print(f"Test {test_name} failed: {e}")
 
     def run_tests(self):
@@ -123,9 +114,19 @@ class TestSuite:
         test_functions = [func for func in dir(self) if func.startswith('test_') and callable(getattr(self, func))]
         for test_func_name in test_functions:
             test_func = getattr(self, test_func_name)
-            self._run_test(test_func, test_func_name)
+            self._run_test(test_func, test_func_name)        
+        
+        # append to failing test lists
+        # if self.f_tests:
+        #     set_environment_variable('TEST_SUITE', ' '.join(self.f_tests.keys()))
+        #     self.f_tests.clear()
 
-
+def set_environment_variable(variable_name, value):
+    system_platform = platform.system()
+    if system_platform == "Windows":
+        os.system(f'setx {variable_name} "{value}"')
+    else:
+        os.system(f'export {variable_name}="{value}"')
 
 if __name__ == '__main__':
     test_suite = TestSuite()
