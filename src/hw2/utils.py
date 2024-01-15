@@ -73,11 +73,9 @@ def cells(s):
 def cli(t):
     options_dict = {}
     options = sys.argv[1:]
-    i=0
-    while(i<len(options)):
+
+    for i in range(0, len(options), 2):
         options_dict[options[i]] = options[i+1]
-        i = i+2
-        
 
     for opt,val in options_dict.items():
         if opt.startswith('--'):
@@ -90,4 +88,3 @@ def cli(t):
         t[opt] = coerce(val)
 
     return t
-
