@@ -64,9 +64,59 @@ class UtilityTestSuite:
             test_func = getattr(self, test_func_name)
             self._run_test(test_func, test_func_name)
 
+class SymTestSuite:
+
+    def test_add(self):
+        sym_obj = SYM()
+        sym_obj.add("a")
+        assert sym_obj.n == 1
+        assert sym_obj.has == {"a": 1}
+        assert sym_obj.mode == "a"
+        assert sym_obj.most == 1
+
+        sym_obj.add("b")
+        sym_obj.add("a")
+        assert sym_obj.n == 3
+        assert sym_obj.has == {"a": 2, "b": 1}
+        assert sym_obj.mode == "a"
+        assert sym_obj.most == 2
+
+    def test_mid(self):
+        sym_obj = SYM()
+        sym_obj.add("a")
+        sym_obj.add("b")
+        assert sym_obj.mid() == "a"
+
+    def test_div(self):
+        sym_obj = SYM()
+        sym_obj.add("a")
+        sym_obj.add("b")
+        sym_obj.add("a")
+        sym_obj.add("c")
+        assert math.isclose(sym_obj.div(), 1.5)
+
+    def test_small(self):
+        sym_obj = SYM()
+        assert sym_obj.small() == 0
+
+    def _run_test(self, test_func, test_name):
+        try:
+            test_func()
+            print(f"Test {test_name} passed.")
+        except AssertionError as e:
+            print(f"Test {test_name} failed: {e}")
+
+    def run_tests(self):
+        print("Running tests in SymTestSuite")
+        test_functions = [func for func in dir(self) if func.startswith('test_') and callable(getattr(self, func))]
+        for test_func_name in test_functions:
+            test_func = getattr(self, test_func_name)
+            self._run_test(test_func, test_func_name)
+
 
 if __name__ == '__main__':
     util_test_suite = UtilityTestSuite()
     util_test_suite.run_tests()
 
-    
+    sym_test_suite = SymTestSuite()
+    sym_test_suite.run_tests()
