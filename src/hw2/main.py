@@ -48,5 +48,4 @@ if __name__ == '__main__':
                 print(f"Test {t['run_tc']} failed: {e}")
 
         data_new = DATA(t['file'])
-        print("Data Stats are as follows: ")
         print(data_new.stats())
