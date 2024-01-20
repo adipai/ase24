@@ -2,6 +2,8 @@ from data import DATA
 from utils import settings, cli
 from config import help_str, egs
 from test_suite import TestSuite
+from globals import opt_dir, t
+
 
 """
 # Parse command-line arguments
@@ -26,8 +28,9 @@ run test-cases = args.run_tc
 """
 
 if __name__ == '__main__':
-    t, opt_dir = settings(help_str)
-    t = cli(t, opt_dir)
+    settings(help_str)
+    cli()
+    
     if(t['help']):
         print("You can use the following help: ")
         print(help_str)

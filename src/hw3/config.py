@@ -20,7 +20,6 @@ from test_suite import TestSuite
 
 help_str = __doc__
 
-the = {}
 test_suite = TestSuite()
 egs = {
     "coerce":test_suite.test_coerce,

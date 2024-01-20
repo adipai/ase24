@@ -1,6 +1,5 @@
 import math 
-# from config import *
-m = 2
+from globals import the
 class SYM:
     def __init__(self, s=None, n=None):
         self.txt = s or " "
@@ -30,5 +29,4 @@ class SYM:
         return 0
     
     def like(self, x, prior):
-        return ((self.has.get(x, 0) or 0) + m * prior) / (self.n + m)
-    
+        return ((self.has.get(x, 0) or 0) + the['m'] * prior) / (self.n + the['m'])

@@ -1,6 +1,7 @@
 import math
 from utils import coerce
-k = 1
+from globals import the
+
 class ROW:
 
     def __init__(self, t):
@@ -24,7 +25,7 @@ class ROW:
         return out, most
 
     def like(self, data, n, nHypotheses):
-        prior = (len(data.rows) + k) / (n + k * nHypotheses)
+        prior = (len(data.rows) + the['k']) / (n + the['k'] * nHypotheses)
         out = math.log(prior)
         print(data.cols.x.keys())
         for _, col in data.cols.x.items(): #(pairs(data.cols.x))
