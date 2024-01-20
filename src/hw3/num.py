@@ -13,6 +13,7 @@ class NUM:
         self.heaven = 0 if s and s.endswith("-") else 1
 
     def add(self, x):
+        x = coerce(x)
         if not x == "?":
             x = coerce(x)
             self.n += 1

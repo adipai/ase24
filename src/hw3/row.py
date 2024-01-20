@@ -17,7 +17,7 @@ class ROW:
 
         for k, data in datas.items(): #(pairs(datas))
             tmp = self.like(data, n, nHypotheses)
-            # print("MAP: ", tmp)
+            print("MAP: ", tmp)
             if most is None or tmp > most:
                 most, out = tmp, k
 
@@ -25,11 +25,12 @@ class ROW:
 
     def like(self, data, n, nHypotheses):
         prior = (len(data.rows) + the['k']) / (n + the['k'] * nHypotheses)
-        # print("Prior prob: ", prior)
+        print("Prior prob: ", prior)
         out = math.log(prior)
         for _, col in data.cols.x.items(): #(pairs(data.cols.x))
             # print(col.at)
             v = self.cells[col.at-1]
+            v = coerce(v)
             if v != "?":
                 v = coerce(v)
                 inc = col.like(v, prior)

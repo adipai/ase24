@@ -3,6 +3,7 @@ from utils import settings, cli
 from config import help_str, egs
 from test_suite import TestSuite
 from globals import opt_dir, the
+import csv
 
 
 """
@@ -58,19 +59,22 @@ if __name__ == '__main__':
     rows_obj = data_new.rows_obj
     rows_actual = data_new.rows_actual
     acc = 0
+    tries = 0
     for i in range(len(rows_obj)):
         row_obj = rows_obj[i]
         row_actual = rows_actual[i]
         n += 1
+        if(i>0):
+            print("Actual row: ", row_actual)
+            print("Row no: ", n)
         kl = row_obj.cells[data_new.cols.klass.at-1]
-        if(n>3):
+        if(n>10):
+            tries += 1
             predict_class, _ = row_obj.likes(datas)
             if(predict_class == kl):
                 acc += 1
-        # if(i>0):
-        #     print("Actual row: ", row_actual)
-        #     print("Row no: ", n)
-        #     print("------------------------")
+        if(i>0):
+            print("------------------------")      
         if(i > 0 and kl not in datas):
             datas[kl] = DATA()
             datas[kl].add(rows_actual[0])
@@ -78,10 +82,8 @@ if __name__ == '__main__':
         
         elif(i > 0 and kl in datas):
             datas[kl].add(row_actual)
-        
-
 
 
         
     print(data_new.stats())
-    print("Accuracy: ", (acc/len(rows_actual))*100)
+    print("Accuracy: ", (acc/tries)*100)
