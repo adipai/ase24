@@ -1,4 +1,5 @@
 import math 
+from config import *
 
 class SYM:
     def __init__(self, s=None, n=None):
@@ -27,4 +28,7 @@ class SYM:
 
     def small(self):
         return 0
+    
+    def like(self, x, prior):
+        return ((self.has.get(x, 0) or 0) + the.m * prior) / (self.n + the.m)
     

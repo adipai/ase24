@@ -1,4 +1,5 @@
 from utils import coerce
+
 class NUM:
     def __init__(self, s=None, n=None):
         self.txt = s or " "
@@ -25,3 +26,9 @@ class NUM:
 
     def div(self):
         return 0 if self.n < 2 else (self.m2 / (self.n - 1))**0.5
+    
+    def like(self, x):
+        mu, sd = self.mid(), (self.div() + 1E-30)
+        nom = 2.718**(-0.5 * (x - mu)**2 / (sd**2))
+        denom = (sd * 2.5 + 1E-30)
+        return nom / denom
