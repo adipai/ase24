@@ -34,7 +34,6 @@ def coerce(s1):
         return fun(re.match(r'^\s*(.*\S)', s1).group(1))
 
 def settings(s):
-    the = {}
     opt_dir = {}
     options = re.findall(r'-(\w+)\s+--(\w+)\s+.*=\s*(\S+)', s)
     for option in options:
@@ -77,7 +76,6 @@ def cells(s):
 def cli():
     options_dict = {}
     options = sys.argv[1:]
-
     if("--help" in options or "-h" in options):
         the["help"]=True
         return
@@ -90,3 +88,4 @@ def cli():
             the[opt[2:]] = coerce(val)
         elif opt.startswith('-'):
             the[opt_dir[opt[1:]]] = coerce(val)
+        

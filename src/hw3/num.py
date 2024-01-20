@@ -30,8 +30,6 @@ class NUM:
     
     def like(self, x, prior=None):
         mu, sd = self.mid(), (self.div() + 1E-30)
-        print(x, mu)
         nom = math.exp(-0.5 * (x - mu) ** 2 / (sd ** 2))
         denom = (sd * 2.5 + 1E-30)
-        print(nom, denom, nom/denom)
         return nom / denom
