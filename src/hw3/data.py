@@ -5,13 +5,18 @@ from cols import COLS
 from utils import round
 
 class DATA:
-    def __init__(self, src="", fun=None):
+    def __init__(self):
         self.rows = []
+        self.rows_obj = []
         self.cols = None
+        self.rows_actual = []
+
+    def full_data(self, src, fun=None):
         if isinstance(src, str):
             with open(src, 'r') as file:
                 reader = csv.reader(file)
                 for row in reader:
+                    self.rows_actual.append(row)
                     self.add(row, fun)
         else:
             for row in src or []:
@@ -25,6 +30,7 @@ class DATA:
             self.rows.append(self.cols.add(row))
         else:
             self.cols = COLS(row)
+        self.rows_obj.append(row)
 
     def mid(self, cols=None):
         u = [col.mid() for col in (cols or self.cols.all)]

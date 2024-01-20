@@ -47,5 +47,26 @@ if __name__ == '__main__':
             except AssertionError as e:
                 print(f"Test {t['run_tc']} failed: {e}")
 
-        data_new = DATA(t['file'])
+        data_new = DATA()
+        data_new.full_data(t['file'])
+        datas = {}
+        n = 0
+        print(data_new.cols.names)
+        print(data_new.cols.x)
+        rows_obj = data_new.rows_obj
+        rows_actual = data_new.rows_actual
+        acc = 0
+        for i in range(len(rows_obj)):
+            # print(data_new.cols.klass.at-1)
+            row_obj = rows_obj[i]
+            row_actual = rows_actual[i]
+            n += 1
+            kl = row_obj.cells[data_new.cols.klass.at-1]
+
+            if(n>10):
+                acc += 1 if kl == row_obj.likes(datas) else 0
+            datas[kl] = datas.get(kl, DATA())
+            datas[kl].add(row_actual)
+            
         print(data_new.stats())
+        print(acc)
