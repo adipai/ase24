@@ -29,4 +29,5 @@ class SYM:
         return 0
     
     def like(self, x, prior):
+        # print("Likelihood stuff: ",(x, self.has.get(x,0),self.n))
         return ((self.has.get(x, 0) or 0) + the['m'] * prior) / (self.n + the['m'])

@@ -27,7 +27,7 @@ def coerce(s1):
         if s2 == "nil":
             return None
         else:
-            return s2.lower() == "true" or (s2.lower() != "false" and s2)
+            return s2 == "true" or (s2 != "false" and s2)
     try:
         return float(s1)
     except:
