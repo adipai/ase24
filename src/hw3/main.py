@@ -56,7 +56,7 @@ if __name__ == '__main__':
         """
         data_new = DATA()
         data_new.full_data(the['file'])
-        print(data_new.stats())
+        # print(data_new.stats())
         return data_new
 
     def learn(data_new):
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     def bayes(data_new):
         learn(data_new)
-        print("Accuracy: ", (my['acc']/my['tries'])*100)
+        print("Accuracy for "+the['file'].split("/")[3] + ": ", (my['acc']/my['tries'])*100)
     
     data_new = print_stats()
     bayes(data_new)
