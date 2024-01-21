@@ -4,6 +4,12 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
 # About
 * HW3 - Create the like(), likes() functions for ROW, SYM, NUM classes. Complete Task1 for calculating class %ages of soybean and diabetes. Implemented learn() and bayes() functions for Task2 - compute accuracies for both datasets. As part of Task 3 varied k amd m to find optimal combination for soybean. Lastly, added new test cases for DATA class, like(), likes(), learn() and bayes().<br/>
 
+# Task 1 Result -
+
+# Task 2 Result -
+
+# Task 3 Result -
+
 # Steps to run
 * Navigate to the repository src/hw3/ <br/>
 * Here <filename.csv> can be "diabetes.csv" or "soybean.csv" - according to the user inputs <br/>
