@@ -19,8 +19,8 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 * HW9 -<br/>
 
 # Steps to run
-### HW2 - Use the HW2 readme [link](https://github.com/adipai/ase24/tree/main/src/hw2#readme) for the steps of execution<br/>
-### HW3 - Use the HW3 readme [link](https://github.com/adipai/ase24/tree/main/src/hw3#readme) for the steps of execution<br/>
+* HW2 - Use the HW2 readme [link](https://github.com/adipai/ase24/tree/main/src/hw2#readme) for the steps of execution<br/>
+* HW3 - Use the HW3 readme [link](https://github.com/adipai/ase24/tree/main/src/hw3#readme) for the steps of execution<br/>
 
 
 # Team members
