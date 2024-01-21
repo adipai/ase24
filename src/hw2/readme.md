@@ -5,7 +5,7 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
 * HW2 - Create the NUM, SYM, DATA, ROW, COLS classes and print stats of Data/auto93.csv by converting the lua code to python. Also, add test cases for the functionalities!<br/>
 
 # Steps to run
-* Navigate to the repository src/hwX/ where $X \in \{2,3,4,5,6,7,8,9\}$ <br/>
+* Navigate to the repository src/hw2/ <br/>
 * For normal execution, run: <br/>
   `$ python3 main.py --file ../../Data/auto93.csv > ../../hw/w2/w2.out` OR `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w2/w2.out`
 * For normal execution and run all test cases : <br/>
