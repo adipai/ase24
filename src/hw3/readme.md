@@ -13,7 +13,7 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
   `$ python3 main.py --file ../../Data/<filename.csv> --run_tc all > ../../hw/w3/w3.out` OR `$ python3 main.py -f ../../Data/<filename.csv> -t all > ../../hw/w3/w3.out`
 * For normal execution and run a particular test case: <br/>
   `$ python3 main.py --file ../../Data/<filename.csv> --run_tc <test_name> > ../../hw/w3/w3.out` OR `$ python3 main.py -f ../../Data/<filename.csv> -t <test_name> > ../../hw/w3/w3.out`
-  For varying k and m magic constants: <br/>
+* For varying k and m magic constants: <br/>
     `$ python3 main.py --file ../../Data/<filename.csv> --k 1 --m 2 > ../../hw/w3/w3.out` OR `$ python3 main.py -f ../../Data/<filename.csv> -k 1 -m 2 > ../../hw/w3/w3.out`
 * For getting help: <br/>
   `$ python3 main.py --help > ../../hw/w3/w3.out` OR `$ python3 main.py -h > ../../hw/w3/w3.out`
