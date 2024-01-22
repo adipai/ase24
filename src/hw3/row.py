@@ -1,6 +1,5 @@
 import math
 from utils import coerce
-# from globals import the
 
 class ROW:
 

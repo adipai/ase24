@@ -32,5 +32,5 @@ egs = {
     "add_sym":test_suite.test_add_sym,
     "mid_sym":test_suite.test_mid_sym,
     "div_sym":test_suite.test_div_sym,
-    "small_sym":test_suite.test_small_sym
+    "small_sym":test_suite.test_small_sym,
     }

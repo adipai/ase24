@@ -1,5 +1,4 @@
 from data import DATA
-from globals import my
 
 def print_stats(file_name, the= {}):
     """
@@ -13,6 +12,7 @@ def print_stats(file_name, the= {}):
 def learn(data_new, the = {}):
     rows_obj = data_new.rows_obj
     rows_actual = data_new.rows_actual
+    my = {"n":0, "tries":0, "acc":0, "datas":{}}
     for i in range(len(rows_obj)):
         row_obj = rows_obj[i]
         row_actual = rows_actual[i]
@@ -30,7 +30,8 @@ def learn(data_new, the = {}):
         
         elif(i > 0 and kl in my['datas']):
             my['datas'][kl].add(row_actual)
+    return my
 
 def bayes(data_new, the={}):
-    learn(data_new, the)
+    my = learn(data_new, the)
     print("Accuracy for "+the['file'].split("/")[3] + ": ", (my['acc']/my['tries'])*100)
