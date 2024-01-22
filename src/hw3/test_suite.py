@@ -3,10 +3,8 @@ import io
 import math
 from num import NUM
 from sym import SYM
-from data import DATA
-from utils import coerce, settings, cells, csv, round, cli
-import os
-import platform
+from utils import coerce, settings, cells,  round
+from learner import *
 
 class TestSuite:
     # def __init__(self) -> None:
@@ -22,13 +20,10 @@ class TestSuite:
         assert coerce("  42  ") == 42
 
     def test_settings(self):
-        pass
+        input_str = "-c --cohen = 0.35\n -f --file = data.csv\n -h --help = False"
+        result, opt_dir = settings(input_str)
 
-        # test broken due to code change
-        # input_str = "-c --cohen = 0.35\n -f --file = data.csv\n -h --help = False"
-        # result, opt_dir = settings(input_str)
-
-        # assert result == {'cohen': 0.35, 'file': 'data.csv', 'help': False}
+        assert result == {'cohen': 0.35, 'file': 'data.csv', 'help': False}
 
     def test_cells(self):
         input_str = "1, 2, 3.14, true, false, nil, hello"
@@ -103,8 +98,6 @@ class TestSuite:
         sym_obj = SYM()
         assert sym_obj.small() == 0
 
-
-
     def _run_test(self, test_func, test_name):
         try:
             test_func()
@@ -125,12 +118,6 @@ class TestSuite:
         #     set_environment_variable('TEST_SUITE', ' '.join(self.f_tests.keys()))
         #     self.f_tests.clear()
 
-def set_environment_variable(variable_name, value):
-    system_platform = platform.system()
-    if system_platform == "Windows":
-        os.system(f'setx {variable_name} "{value}"')
-    else:
-        os.system(f'export {variable_name}="{value}"')
 
 if __name__ == '__main__':
     test_suite = TestSuite()
