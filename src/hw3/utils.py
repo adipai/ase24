@@ -76,7 +76,7 @@ def cli():
     options_dict = {}
     options = sys.argv[1:]
     if("--help" in options or "-h" in options):
-        the["help"]=True
+        the["help"] = 'True'
         return
 
     for i in range(0, len(options), 2):

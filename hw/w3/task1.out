@@ -1,0 +1,38 @@
+Dataset Name:  soybean.csv
+Number of classes:  19
+Number of rows:  683
++-----------------------------+------------+
+|          Class Name         | Percentage |
++-----------------------------+------------+
+|         2-4-d-injury        |    2.34    |
+|     alternarialeaf-spot     |   13.32    |
+|         anthracnose         |    6.44    |
+|       bacterial-blight      |    2.93    |
+|      bacterial-pustule      |    2.93    |
+|          brown-spot         |   13.47    |
+|        brown-stem-rot       |    6.44    |
+|         charcoal-rot        |    2.93    |
+|        cyst-nematode        |    2.05    |
+| diaporthe-pod-&-stem-blight |    2.2     |
+|    diaporthe-stem-canker    |    2.93    |
+|         downy-mildew        |    2.93    |
+|      frog-eye-leaf-spot     |   13.32    |
+|       herbicide-injury      |    1.17    |
+|    phyllosticta-leaf-spot   |    2.93    |
+|       phytophthora-rot      |   12.88    |
+|        powdery-mildew       |    2.93    |
+|      purple-seed-stain      |    2.93    |
+|     rhizoctonia-root-rot    |    2.93    |
++-----------------------------+------------+
+
+-------------------------------------------------------------------------------
+
+Dataset Name:  diabetes.csv
+Number of classes:  2
+Number of rows:  768
++------------+------------+
+| Class Name | Percentage |
++------------+------------+
+|  negative  |    65.1    |
+|  positive  |    34.9    |
++------------+------------+
