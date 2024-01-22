@@ -34,7 +34,6 @@ def coerce(s1):
         return fun(re.match(r'^\s*(.*\S)', s1).group(1))
 
 def settings(s):
-    opt_dir = {}
     options = re.findall(r'-(\w+)\s+--(\w+)\s+.*=\s*(\S+)', s)
     for option in options:
         short_form, full_form, default_value = option
