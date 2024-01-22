@@ -1,8 +1,7 @@
-from data import DATA
 from utils import settings, cli
 from config import help_str, egs
 from test_suite import TestSuite
-from globals import the
+# from globals import the, my
 from learner import print_stats, bayes
 
 """
@@ -26,11 +25,12 @@ m_value = args.m
 seed_value = args.seed
 run test-cases = args.run_tc
 """
+# global my
 
 
 if __name__ == '__main__':
-    settings(help_str)
-    cli()
+    the, opt_dir = settings(help_str)
+    the = cli(the, opt_dir)
 
     if(the['help'] == 'True'):
         print("You can use the following help: ")
@@ -52,5 +52,5 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
     
-    data_new = print_stats()
-    bayes(data_new)
+    data_new = print_stats(the['file'], the)
+    bayes(data_new, the)

@@ -1,11 +1,12 @@
 import math
 from utils import coerce
-from globals import the
+# from globals import the
 
 class ROW:
 
-    def __init__(self, t):
+    def __init__(self, t, the):
         self.cells = t
+        self.the = the
 
     def likes(self, datas):
         n, nHypotheses = 0,0
@@ -25,7 +26,7 @@ class ROW:
         return out, most
 
     def like(self, data, n, nHypotheses):
-        prior = (len(data.rows) + the['k']) / (n + the['k'] * nHypotheses)
+        prior = (len(data.rows) + self.the['k']) / (n + self.the['k'] * nHypotheses)
         # print("Prior prob: ", prior)
         out = math.log(prior)
         for _, col in data.cols.x.items(): #(pairs(data.cols.x))

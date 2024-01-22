@@ -1,13 +1,14 @@
 import math 
-from globals import the
+
 class SYM:
-    def __init__(self, s=None, n=None):
+    def __init__(self, s=None, n=None, the = {}):
         self.txt = s or " "
         self.at = n or 0
         self.n = 0
         self.has = {}
         self.mode = None
         self.most = 0
+        self.the = the
 
     def add(self, x):
         if not x == "?":
@@ -30,4 +31,4 @@ class SYM:
     
     def like(self, x, prior):
         # print("Likelihood stuff: ",(x, self.has.get(x,0),self.n))
-        return ((self.has.get(x, 0) or 0) + the['m'] * prior) / (self.n + the['m'])
+        return ((self.has.get(x, 0) or 0) + self.the['m'] * prior) / (self.n + self.the['m'])

@@ -5,11 +5,12 @@ from cols import COLS
 from utils import round
 
 class DATA:
-    def __init__(self):
+    def __init__(self, the={}):
         self.rows = []
         self.rows_obj = []
         self.cols = None
         self.rows_actual = []
+        self.the = the
 
     def full_data(self, src, fun=None):
         if isinstance(src, str):
@@ -23,22 +24,22 @@ class DATA:
                 self.add(row, fun)
 
     def add(self, t=None, fun=None):
-        row = ROW(t) if type(t)==list else t
+        row = ROW(t, self.the) if type(t)==list else t
         if self.cols:
             if fun:
                 fun(self, row)
             self.rows.append(self.cols.add(row))
         else:
-            self.cols = COLS(row)
+            self.cols = COLS(row, the=self.the)
         self.rows_obj.append(row)
 
     def mid(self, cols=None):
         u = [col.mid() for col in (cols or self.cols.all)]
-        return ROW(u)
+        return ROW(u, self.the)
 
     def div(self, cols=None):
         u = [col.div() for col in (cols or self.cols.all)]
-        return ROW(u)
+        return ROW(u, self.the)
     
     def stats(self, fun=None, ndivs=None):
         u = {".N": len(self.rows)}

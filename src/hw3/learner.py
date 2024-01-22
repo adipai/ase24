@@ -1,17 +1,16 @@
-
 from data import DATA
-from globals import the, my
+from globals import my
 
-def print_stats():
+def print_stats(file_name, the= {}):
     """
     Function to print data stats
     """
-    data_new = DATA()
-    data_new.full_data(the['file'])
+    data_new = DATA(the=the)
+    data_new.full_data(file_name)
     # print(data_new.stats())
     return data_new
 
-def learn(data_new):
+def learn(data_new, the = {}):
     rows_obj = data_new.rows_obj
     rows_actual = data_new.rows_actual
     for i in range(len(rows_obj)):
@@ -25,13 +24,13 @@ def learn(data_new):
             if(predict_class == kl):
                 my['acc'] += 1  
         if(i > 0 and kl not in my['datas']):
-            my['datas'][kl] = DATA()
+            my['datas'][kl] = DATA(the=the)
             my['datas'][kl].add(rows_actual[0])
             my['datas'][kl].add(row_actual)
         
         elif(i > 0 and kl in my['datas']):
             my['datas'][kl].add(row_actual)
 
-def bayes(data_new):
-    learn(data_new)
+def bayes(data_new, the={}):
+    learn(data_new, the)
     print("Accuracy for "+the['file'].split("/")[3] + ": ", (my['acc']/my['tries'])*100)

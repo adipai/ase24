@@ -20,7 +20,6 @@ import math
 import re
 import sys
 
-from globals import opt_dir, the
 
 def coerce(s1):
     def fun(s2):
@@ -35,10 +34,13 @@ def coerce(s1):
 
 def settings(s):
     options = re.findall(r'-(\w+)\s+--(\w+)\s+.*=\s*(\S+)', s)
+    the = {}
+    opt_dir = {}
     for option in options:
         short_form, full_form, default_value = option
         the[full_form] = coerce(default_value)
         opt_dir[short_form] = full_form
+    return [the, opt_dir]
 
 def cells(s):
     return [coerce(s1) for s1 in re.findall("([^,]+)", s)]
@@ -72,7 +74,7 @@ def cells(s):
     return t
 
 
-def cli():
+def cli(the, opt_dir):
     options_dict = {}
     options = sys.argv[1:]
     if("--help" in options or "-h" in options):
@@ -87,4 +89,5 @@ def cli():
             the[opt[2:]] = coerce(val)
         elif opt.startswith('-'):
             the[opt_dir[opt[1:]]] = coerce(val)
-        
+    return the
+
