@@ -7,6 +7,7 @@ from data import DATA
 from utils import coerce, settings, cells, csv, round, cli
 import os
 import platform
+
 class TestSuite:
     # def __init__(self) -> None:
     #     self.f_tests = {}
