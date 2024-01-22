@@ -5,6 +5,7 @@ k_values = [0, 1, 2, 3]
 m_values = [0, 1, 2, 3]
 
 # Print table header
+print("Results for soybean.csv dataset")
 print("|   k   |   m   |   Accuracy   |")
 
 # Iterate over all combinations of k and m
