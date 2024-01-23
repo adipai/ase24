@@ -34,4 +34,4 @@ def learn(data_new, the = {}):
 
 def bayes(data_new, the={}):
     my = learn(data_new, the)
-    print("Accuracy for "+the['file'].split("/")[3] + ": ", (my['acc']/my['tries'])*100)
+    return round((my['acc']/my['tries'])*100, 2)

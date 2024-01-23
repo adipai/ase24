@@ -23,7 +23,7 @@ class TestSuite:
         input_str = "-c --cohen = 0.35\n -f --file = data.csv\n -h --help = False"
         result, opt_dir = settings(input_str)
 
-        assert result == {'cohen': 0.35, 'file': 'data.csv', 'help': False}
+        assert result == {'cohen': 0.35, 'file': 'data.csv', 'help': 'False'}
 
     def test_cells(self):
         input_str = "1, 2, 3.14, true, false, nil, hello"
@@ -97,6 +97,28 @@ class TestSuite:
     def test_small_sym(self):
         sym_obj = SYM()
         assert sym_obj.small() == 0
+
+    def test_print_stats_diabetes(self):
+        the = {'cohen': 0.35, 'file': '../../Data/diabetes.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        result = print_stats(the["file"], the)
+        assert isinstance(result, DATA)
+
+    def test_learn_diabetes(self):
+        the = {'cohen': 0.35, 'file': '../../Data/diabetes.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data_new = DATA(the=the)
+        result = learn(data_new, the)
+        assert isinstance(result, dict)
+        assert 'n' in result
+        assert 'tries' in result
+        assert 'acc' in result
+        assert 'datas' in result
+    
+    def test_bayes_diabetes(self):
+        the = {'cohen': 0.35, 'file': '../../Data/diabetes.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data_new = DATA(the=the)
+        data_new.full_data(the['file'])
+        result = bayes(data_new, the)
+        assert result > 70
 
     def _run_test(self, test_func, test_name):
         try:

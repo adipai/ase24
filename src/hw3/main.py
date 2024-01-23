@@ -53,4 +53,5 @@ if __name__ == '__main__':
             print(f"Test {the['run_tc']} failed: {e}")
     
     data_new = print_stats(the['file'], the)
-    bayes(data_new, the)
+    acc = bayes(data_new, the)
+    print(f"Accuracy for {the['file'].split('/')[3]}: {acc}"),
