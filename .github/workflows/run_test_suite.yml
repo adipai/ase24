@@ -35,7 +35,6 @@ jobs:
         coverage report
     - name: Run test suite for hw3
       run: |
-        cd ..
-        cd hw3/
+        cd src/hw3/
         coverage run test_suite.py
         coverage report
