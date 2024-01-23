@@ -120,6 +120,28 @@ class TestSuite:
         result = bayes(data_new, the)
         assert result > 70
 
+    def test_print_stats_soybean(self):
+        the = {'cohen': 0.35, 'file': '../../Data/soybean.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        result = print_stats(the["file"], the)
+        assert isinstance(result, DATA)
+
+    def test_learn_soybean(self):
+        the = {'cohen': 0.35, 'file': '../../Data/soybean.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data_new = DATA(the=the) 
+        result = learn(data_new, the)
+        assert isinstance(result, dict)
+        assert 'n' in result
+        assert 'tries' in result
+        assert 'acc' in result
+        assert 'datas' in result
+    
+    def test_bayes_soybean(self):
+        the = {'cohen': 0.35, 'file': '../../Data/soybean.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data_new = DATA(the=the)
+        data_new.full_data(the['file'])
+        result = bayes(data_new, the)
+        assert result > 80
+        
     def _run_test(self, test_func, test_name):
         try:
             test_func()
