@@ -42,4 +42,13 @@ class ROW:
 
         return math.exp(1)**out
     
+    """Addition for HW4"""
     
+    def d2h(self, data, d, n):
+        d, n = 0, 0
+
+        for col in data.cols.y:
+            n += 1
+            d += abs(col.heaven - col.norm(self.cells[col.at])) ** 2
+
+        return (d ** 0.5) / (n ** 0.5)

@@ -91,3 +91,35 @@ def cli(the, opt_dir):
             the[opt_dir[opt[1:]]] = coerce(val)
     return the
 
+"""Addition for HW4"""
+
+def keys(t):
+    u = [k for k in t]
+    u.sort()
+    return u
+
+def copy(t):
+    if type(t) != dict and type(t) != list:
+        return t
+
+    u = {}
+    for k, v in t.items() if isinstance(t, dict) else enumerate(t):
+        u[copy(k)] = copy(v)
+
+    return u
+
+def shuffle(t):
+    u = t.copy()
+    for i in range(len(u) - 1, 0, -1):
+        j = random.randint(0, i)
+        u[i], u[j] = u[j], u[i]
+    return u
+
+def slice(t, go=None, stop=None, inc=None):
+    if go and go < 0:
+        go = len(t) + go
+    if stop and stop < 0:
+        stop = len(t) + stop
+
+    u = [t[j] for j in range((go or 0)//1, (stop or len(t))//1, (inc or 1)//1)]
+    return u
