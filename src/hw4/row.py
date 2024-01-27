@@ -25,6 +25,7 @@ class ROW:
         return out, most
 
     def like(self, data, n, nHypotheses):
+        # print(self.the)
         prior = (len(data.rows) + self.the['k']) / (n + self.the['k'] * nHypotheses)
         # print("Prior prob: ", prior)
         out = math.log(prior)

@@ -52,6 +52,6 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
     
-    data_new = print_stats(the['file'], the)
-    acc = bayes(data_new, the)
+    # data_new = print_stats(the)
+    acc = bayes(the)
     print(f"Accuracy for {the['file'].split('/')[3]}: {acc}"),
