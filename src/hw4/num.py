@@ -20,6 +20,7 @@ class NUM:
             d = x - self.mu
             self.mu += d / self.n
             self.m2 += d * (x - self.mu)
+            # print(d,self.mu, self.m2, x)
             # if (self.m2 == 0):
             #     print("---dx----->", d, x, self.mu)
             self.lo = min(x, self.lo)

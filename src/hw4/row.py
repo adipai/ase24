@@ -27,18 +27,22 @@ class ROW:
     def like(self, data, n, nHypotheses):
         # print(self.the)
         prior = (len(data.rows) + self.the['k']) / (n + self.the['k'] * nHypotheses)
+        # print(data.cols.x.items())
         # print("Prior prob: ", prior)
         out = math.log(prior)
         for _, col in data.cols.x.items(): #(pairs(data.cols.x))
+            # print(self.cells)
+            # print("HOLA")
             # print(col.at)
             v = self.cells[col.at-1]
-            # print(v)
+            # print(v, col.mid(), col.div())
             v = coerce(v)
             # print(v)
             if v != "?":
                 # v = coerce(v)
                 inc = col.like(v, prior)
-
+                if(inc==0):
+                    continue
                 out += math.log2(inc) 
 
         return math.exp(1)**out
@@ -47,6 +51,7 @@ class ROW:
     
     def d2h(self, data):
         d, n = 0, 0
+        # print(data.cols.y.values())
         for col in data.cols.y.values():
             n += 1
             # print((self.cells[col.at]))

@@ -17,7 +17,8 @@ class COLS:
                 (self.y if txt[-1] in "!+-" else self.x)[at] = col
 
     def add(self, row):
-
+        # print(row.cells)
+        # print(self.x, self.y)
         for cols in [self.x, self.y]:
             for col in list(cols.values()):
                 col.add(row.cells[col.at-1])

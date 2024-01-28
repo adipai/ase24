@@ -2,8 +2,9 @@ from utils import settings, cli
 from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
-from learner import print_stats, bayes
+from learner import print_stats,bayes
 from data import DATA
+import random
 
 """
 # Parse command-line arguments
@@ -28,6 +29,13 @@ run test-cases = args.run_tc
 """
 # global my
 
+def gate20(the):
+
+    random_seeds = random.sample(range(100),20)
+    for random_seed in random_seeds:
+
+        data_new = DATA(src = the['file'], the=the)
+        data_new.gate(random_seed)
 
 if __name__ == '__main__':
     the, opt_dir = settings(help_str)
@@ -53,9 +61,7 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
     
-    data_new = DATA(src=the['file'], the=the)
-    print(data_new.stats())
-    data_new.gate()
+    gate20(the)
 
     # data_new = print_stats(the)
     # acc = bayes(the)

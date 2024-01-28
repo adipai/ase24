@@ -51,16 +51,16 @@ class DATA:
     
     """ HW 4 addition starts here, needs refining"""
     
-    def gate(self, budget0=4, budget=10, some=0.5):
-        random.seed(self.the['seed'])
+    def gate(self, random_seed, budget0=4, budget=10, some=0.5):
+        random.seed(random_seed)
         rows = random.sample(self.rows, len(self.rows))
 
-        print("1. top6: ", [r.cells[-1] for r in rows[:6]])
-        print("2. top50: ", [[r.cells[-1] for r in rows[:50]]])
+        print("1. top6: ", [r.cells[len(r.cells)-3:] for r in rows[:6]])
+        print("2. top50: ", [[r.cells[len(r.cells)-3:] for r in rows[:50]]])
 
         # sort rows based on d2h
         rows.sort(key=lambda row: row.d2h(self))
-        print("3. most: ", rows[0].cells[-1])
+        print("3. most: ", rows[0].cells[len(rows[0].cells)-3:])
 
         # shuffle again
         rows = random.sample(self.rows, len(self.rows))
@@ -68,42 +68,51 @@ class DATA:
         # divide into train and test
         lite = rows[:budget0] #train-data
         dark = rows[budget0:] #test-data
+        # print(len(dark))
 
         stats, bests = [], []
 
         for i in range(budget):
             best, rest = self.best_rest(lite, len(lite) ** some)
-            todo, selected = self.split(best, rest, lite, dark)
+            # print(best.stats(), rest.stats())
+            todo, selected, max_value = self.split(best, rest, lite, dark)
+            # print("HIIIIIII: ", todo, max_value, len(dark))
             print("4: ")
             print("5: ")
             print("6: ")
             stats.append(selected.mid())
             bests.append(best.rows[0])
             lite.append(dark.pop(todo))
-
+            # print(len(lite))
+        
+        print(bests[-1].cells)
         return stats, bests
 
     def split(self, best, rest, lite, dark):
         selected = DATA([self.cols.names], the=self.the)
-        max_value = 1E30
-        out = 1
-
+        max_value = -1E30
+        out = 0
+        # print(dark)
         for i, row in enumerate(dark):
+            # print("DARK row: ",row.cells)
             b = row.like(best, len(lite), 2)
+            # print("HI")
             r = row.like(rest, len(lite), 2)
-
+            # print(b,r)
             if b > r:
                 selected.add(row)
 
             tmp = abs(b + r) / abs(b - r + 1E-300)
-
+            # print("TEMP: ", tmp)
             if tmp > max_value:
                 out, max_value = i, tmp
 
-        return out, selected
+        return out, selected, max_value
 
     def best_rest(self, rows, want):
+        # print("Starting sorting in best-rest")
         rows.sort(key=lambda row: row.d2h(self))
+        # print("In best-rest: ",rows)
         best, rest = [self.cols.names], [self.cols.names]
         # best_data, rest_data = DATA(best), DATA(rest)
         for i, row in enumerate(rows):
@@ -111,6 +120,6 @@ class DATA:
                 best.append(row)
             else:
                 rest.append(row)
-        print("best", best)
-        print("rest ",rest)
+        # print("best", best)
+        # print("rest ",rest)
         return DATA(best, the=self.the), DATA(rest, the=self.the)
