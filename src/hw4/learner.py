@@ -16,7 +16,7 @@ def learn(data, row, my, the):
         my['acc'] += 1 if kl == row.likes(my['datas'])[0] else 0
     
     if kl not in my['datas']:
-        my['datas'][kl] =  DATA(src = data.cols.names, the = the)
+        my['datas'][kl] =  DATA(src = [data.cols.names], the = the)
     my['datas'][kl].add(row)
 def bayes(the={}):
     my = {'acc': 0, 'datas': {}, 'tries': 0, 'n': 0}

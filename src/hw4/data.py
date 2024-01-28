@@ -17,7 +17,8 @@ class DATA:
                 for row in reader:
                     self.add(row, fun)
         else:
-            self.add(src, fun)
+            for row in src:
+                self.add(row, fun)
 
 
     def add(self, t=None, fun=None):
@@ -83,7 +84,7 @@ class DATA:
         return stats, bests
 
     def split(self, best, rest, lite, dark):
-        selected = DATA(self.cols.names)
+        selected = DATA([self.cols.names], the=self.the)
         max_value = 1E30
         out = 1
 
@@ -104,11 +105,12 @@ class DATA:
     def best_rest(self, rows, want):
         rows.sort(key=lambda row: row.d2h(self))
         best, rest = [self.cols.names], [self.cols.names]
-        best_data, rest_data = DATA(best), DATA(rest)
+        # best_data, rest_data = DATA(best), DATA(rest)
         for i, row in enumerate(rows):
             if i < want:
-                best_data.add(row)
+                best.append(row)
             else:
-                rest_data.add(row)
-        
-        return best_data, rest_data
+                rest.append(row)
+        print("best", best)
+        print("rest ",rest)
+        return DATA(best, the=self.the), DATA(rest, the=self.the)
