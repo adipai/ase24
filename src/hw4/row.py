@@ -45,7 +45,7 @@ class ROW:
     
     """Addition for HW4"""
     
-    def d2h(self, data, d, n):
+    def d2h(self, data):
         d, n = 0, 0
 
         for col in data.cols.y:

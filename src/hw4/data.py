@@ -5,6 +5,7 @@ from cols import COLS
 from utils import round
 import random
 
+
 class DATA:
     def __init__(self, src = [], the={}, fun=None):
         self.the = the
@@ -24,7 +25,9 @@ class DATA:
         if self.cols:
             if fun:
                 fun(self, row)
-            self.rows.append(self.cols.add(row))
+            
+            self.cols.add(row)
+            self.rows.append(row)
         else:
             self.cols = COLS(row, the=self.the)
 
@@ -47,53 +50,65 @@ class DATA:
     
     """ HW 4 addition starts here, needs refining"""
     
-    # def gate(self, budget0, budget, some):
-    #     random.seed(self.the['seed'])
-    #     rows = random.sample(self.rows, len(self.rows))
-    #     lite = rows[:budget0] #train-data
-    #     dark = rows[budget0:] #test-data
+    def gate(self, budget0=4, budget=10, some=0.5):
+        random.seed(self.the['seed'])
+        rows = random.sample(self.rows, len(self.rows))
 
-    #     stats, bests = [], []
+        print("1. top6: ", [r.cells[-1] for r in rows[:6]])
+        print("2. top50: ", [[r.cells[-1] for r in rows[:50]]])
 
-    #     for i in range(budget):
-    #         best, rest = self.best_rest(lite, len(lite) ** some)
-    #         todo, selected = self.split(best, rest, lite, dark)
-    #         stats.append(selected.mid())
-    #         bests.append(best.rows[0])
-    #         lite.append(dark.pop(todo))
+        # sort rows based on d2h
+        rows.sort(key=lambda row: row.d2h(self))
+        print("3. most: ", rows[0].cells[-1])
 
-    #     return stats, bests
+        # shuffle again
+        rows = random.sample(self.rows, len(self.rows))
 
-    # def split(self, best, rest, lite, dark):
-    #     selected = DATA(self.cols.names)
-    #     max_value = 1E30
-    #     out = 1
+        # divide into train and test
+        lite = rows[:budget0] #train-data
+        dark = rows[budget0:] #test-data
 
-    #     for i, row in enumerate(dark):
-    #         b = row.like(best, len(lite), 2)
-    #         r = row.like(rest, len(lite), 2)
+        stats, bests = [], []
 
-    #         if b > r:
-    #             selected.add(row)
+        for i in range(budget):
+            best, rest = self.best_rest(lite, len(lite) ** some)
+            todo, selected = self.split(best, rest, lite, dark)
+            print("4: ")
+            print("5: ")
+            print("6: ")
+            stats.append(selected.mid())
+            bests.append(best.rows[0])
+            lite.append(dark.pop(todo))
 
-    #         tmp = abs(b + r) / abs(b - r + 1E-300)
+        return stats, bests
 
-    #         if tmp > max_value:
-    #             out, max_value = i, tmp
+    def split(self, best, rest, lite, dark):
+        selected = DATA(self.cols.names)
+        max_value = 1E30
+        out = 1
 
-    #     return out, selected
+        for i, row in enumerate(dark):
+            b = row.like(best, len(lite), 2)
+            r = row.like(rest, len(lite), 2)
 
-    # def best_rest(self, rows, want):
-    #     rows.sort(key=lambda row: row.d2h(self))
-    #     best, rest = [self.cols.names], [self.cols.names]
+            if b > r:
+                selected.add(row)
 
-    #     for i, row in enumerate(rows):
-    #         if i < want:
-    #             best.append(row)
-    #         else:
-    #             rest.append(row)
+            tmp = abs(b + r) / abs(b - r + 1E-300)
+
+            if tmp > max_value:
+                out, max_value = i, tmp
+
+        return out, selected
+
+    def best_rest(self, rows, want):
+        rows.sort(key=lambda row: row.d2h(self))
+        best, rest = [self.cols.names], [self.cols.names]
+        best_data, rest_data = DATA(best), DATA(rest)
+        for i, row in enumerate(rows):
+            if i < want:
+                best_data.add(row)
+            else:
+                rest_data.add(row)
         
-    #     # call full-data here to adapt to hw3 code
-    #     best_data = DATA()
-    #     rest_data = DATA()
-    #     return DATA(best), DATA(rest)
+        return best_data, rest_data

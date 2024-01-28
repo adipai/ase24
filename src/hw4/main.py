@@ -3,6 +3,7 @@ from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
 from learner import print_stats, bayes
+from data import DATA
 
 """
 # Parse command-line arguments
@@ -52,6 +53,10 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
     
+    data_new = DATA(src=the['file'], the=the)
+    print(data_new.stats())
+    data_new.gate()
+
     # data_new = print_stats(the)
-    acc = bayes(the)
-    print(f"Accuracy for {the['file'].split('/')[3]}: {acc}"),
+    # acc = bayes(the)
+    # print(f"Accuracy for {the['file'].split('/')[3]}: {acc}")
