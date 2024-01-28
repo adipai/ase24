@@ -41,9 +41,10 @@ class ROW:
             if v != "?":
                 # v = coerce(v)
                 inc = col.like(v, prior)
-                if(inc==0):
-                    continue
-                out += math.log2(inc) 
+                if(inc>0):
+                    out += math.log2(inc) 
+                else:
+                    return 0
 
         return math.exp(1)**out
     
@@ -57,5 +58,6 @@ class ROW:
             # print((self.cells[col.at]))
             x = col.norm(coerce(self.cells[col.at - 1]))
             d += abs(col.heaven - x) ** 2
-
+        
+        # print((d ** 0.5) / (n ** 0.5))
         return (d ** 0.5) / (n ** 0.5)

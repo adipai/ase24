@@ -78,19 +78,19 @@ class DATA:
             todo, selected, max_value = self.split(best, rest, lite, dark)
             # print("HIIIIIII: ", todo, max_value, len(dark))
             print("4: ")
-            print("5: ")
-            print("6: ")
+            print("5: mid: ", selected.mid().cells[len(selected.mid().cells)-3:])
+            print("6: top: ", best.rows[0].cells[len(best.rows[0].cells)-3:])
             stats.append(selected.mid())
             bests.append(best.rows[0])
             lite.append(dark.pop(todo))
             # print(len(lite))
         
-        print(bests[-1].cells)
+        # print(bests[-1].cells)
         return stats, bests
 
     def split(self, best, rest, lite, dark):
         selected = DATA([self.cols.names], the=self.the)
-        max_value = -1E30
+        max_value = 1E30
         out = 0
         # print(dark)
         for i, row in enumerate(dark):
@@ -114,7 +114,6 @@ class DATA:
         rows.sort(key=lambda row: row.d2h(self))
         # print("In best-rest: ",rows)
         best, rest = [self.cols.names], [self.cols.names]
-        # best_data, rest_data = DATA(best), DATA(rest)
         for i, row in enumerate(rows):
             if i < want:
                 best.append(row)
