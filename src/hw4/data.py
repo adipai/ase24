@@ -90,7 +90,7 @@ class DATA:
 
     def split(self, best, rest, lite, dark):
         selected = DATA([self.cols.names], the=self.the)
-        max_value = 1E30
+        max_value = -1E30
         out = 0
         # print(dark)
         for i, row in enumerate(dark):

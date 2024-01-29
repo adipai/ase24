@@ -44,7 +44,7 @@ class ROW:
                 if(inc>0):
                     out += math.log2(inc) 
                 else:
-                    return 0
+                    out += float('-inf')
 
         return math.exp(1)**out
     
