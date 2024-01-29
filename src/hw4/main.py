@@ -33,9 +33,11 @@ def gate20(the):
 
     random_seeds = random.sample(range(100),20)
     for random_seed in random_seeds:
-
+        print("========================================================================================================================")
+        print("Current random seed: ", random_seed)
         data_new = DATA(src = the['file'], the=the)
         data_new.gate(random_seed)
+        print("========================================================================================================================")
 
 if __name__ == '__main__':
     the, opt_dir = settings(help_str)

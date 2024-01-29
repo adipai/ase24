@@ -4,6 +4,7 @@ from row import ROW
 from cols import COLS
 from utils import round, coerce
 import random
+import numpy as np
 
 
 class DATA:
@@ -86,7 +87,13 @@ class DATA:
             #print("4: rand:", sum(list(map(coerce, random.sample(dark, budget0+i)[0].cells[-3:])))/3)
             #print("5: mid: ", selected.mid().cells[len(selected.mid().cells)-3:])
             #print("6: top: ", best.rows[0].cells[len(best.rows[0].cells)-3:])
-            list_4.append(f"4: rand:{sum(list(map(coerce, random.sample(dark, budget0+i)[0].cells[-3:])))/3}")
+            selected_rows_rand = random.sample(dark, budget0+i)
+            y_values_rand = []
+            for row in selected_rows_rand:
+                y_val = list(map(coerce, row.cells[-3:]))
+                y_values_rand.append(y_val)
+            # y_values = np.array(row[-3:])
+            list_4.append(f"4: rand:{np.mean(np.array(y_values_rand), axis=0)}")
             list_5.append(f"5: mid: {selected.mid().cells[len(selected.mid().cells)-3:]}")
             list_6.append(f"6: top: {best.rows[0].cells[len(best.rows[0].cells)-3:]}")
             stats.append(selected.mid())
@@ -94,12 +101,12 @@ class DATA:
             lite.append(dark.pop(todo))
             # print(len(lite))
         
-            print('\n'.join(map(str, list_1)))
-            print('\n'.join(map(str, list_2)))
-            print('\n'.join(map(str, list_3)))
-            print('\n'.join(map(str, list_4)))
-            print('\n'.join(map(str, list_5)))
-            print('\n'.join(map(str, list_6)))
+        print('\n'.join(map(str, list_1)))
+        print('\n'.join(map(str, list_2)))
+        print('\n'.join(map(str, list_3)))
+        print('\n'.join(map(str, list_4)))
+        print('\n'.join(map(str, list_5)))
+        print('\n'.join(map(str, list_6)))
         # print(bests[-1].cells)
         return stats, bests
 
