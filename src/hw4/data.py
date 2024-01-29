@@ -2,7 +2,7 @@ import csv
 from sym import SYM
 from row import ROW
 from cols import COLS
-from utils import round
+from utils import round, coerce
 import random
 
 
@@ -77,7 +77,7 @@ class DATA:
             # print(best.stats(), rest.stats())
             todo, selected, max_value = self.split(best, rest, lite, dark)
             # print("HIIIIIII: ", todo, max_value, len(dark))
-            print("4: ")
+            print("4: rand:", sum(list(map(coerce, random.sample(dark, budget0+i)[0].cells[-3:])))/3)
             print("5: mid: ", selected.mid().cells[len(selected.mid().cells)-3:])
             print("6: top: ", best.rows[0].cells[len(best.rows[0].cells)-3:])
             stats.append(selected.mid())
