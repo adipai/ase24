@@ -9,9 +9,9 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
 # About
 The code for homeworks can be found in src/hwX/ and respective output at hw/wX where $X \in \{2,3,4,5,6,7,8,9\}$ <br/>
 
-* HW2 - Create the NUM, SYM, DATA, ROW, COLS classes and print stats of Data/auto93.csv by converting the lua code to python. Also, add test cases for the functionalities!<br/>
-* HW3 - Create the like(), likes() functions for ROW, SYM, NUM classes. Complete Task1 for calculating class %ages of soybean and diabetes. Implemented learn() and bayes() functions for Task2 - compute accuracies for both datasets. As part of Task 3 varied k amd m to find optimal combination for soybean. Lastly, added new test cases for DATA class, like(), likes(), learn() and bayes().<br/>
-* HW4 - Create GATE function, run it 20 times, sort that output so all the "1" rows are together, all the "2" rows are together, etc.<br/>
+* HW2 - Created the NUM, SYM, DATA, ROW, COLS classes and printed stats of Data/auto93.csv by converting the lua code to python. Also, added test cases for the functionalities!<br/>
+* HW3 - Created the like(), likes() functions for ROW, SYM, NUM classes. Completed Task1 for calculating class %ages of soybean and diabetes. Implemented learn() and bayes() functions for Task2 - compute accuracies for both datasets. As part of Task 3 varied k amd m to find optimal combination for soybean. Lastly, added new test cases for DATA class, like(), likes(), learn() and bayes().<br/>
+* HW4 - Created gate(), split(), best_rest() functions in data.py. Ran the gate() function 20 times by varying the random seed and sorted that output so all the "1" rows are together, all the "2" rows are together, etc. Also, answered the 3 questions asked in hw04.md based on the output in w4.out file. <br/>
 * HW5 -<br/>
 * HW6 -<br/> 
 * HW7 -<br/> 
