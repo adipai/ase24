@@ -11,7 +11,7 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 
 * HW2 - Create the NUM, SYM, DATA, ROW, COLS classes and print stats of Data/auto93.csv by converting the lua code to python. Also, add test cases for the functionalities!<br/>
 * HW3 - Create the like(), likes() functions for ROW, SYM, NUM classes. Complete Task1 for calculating class %ages of soybean and diabetes. Implemented learn() and bayes() functions for Task2 - compute accuracies for both datasets. As part of Task 3 varied k amd m to find optimal combination for soybean. Lastly, added new test cases for DATA class, like(), likes(), learn() and bayes().<br/>
-* HW4 -<br/>
+* HW4 - Create GATE function, run it 20 times, sort that output so all the "1" rows are together, all the "2" rows are together, etc.<br/>
 * HW5 -<br/>
 * HW6 -<br/> 
 * HW7 -<br/> 
@@ -21,7 +21,7 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 # Steps to run
 * HW2 - Use the HW2 readme [link](https://github.com/adipai/ase24/tree/main/src/hw2#readme) for the steps of execution<br/>
 * HW3 - Use the HW3 readme [link](https://github.com/adipai/ase24/tree/main/src/hw3#readme) for the steps of execution<br/>
-
+* HW4 - Use the HW3 readme [link](https://github.com/adipai/ase24/tree/main/src/hw4#readme) for the steps of execution<br/>
 
 # Team members
 [Rishi Singhal](https://www.linkedin.com/in/rishi-singhal1101/)<br/>
