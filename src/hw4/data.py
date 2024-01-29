@@ -52,15 +52,20 @@ class DATA:
     """ HW 4 addition starts here, needs refining"""
     
     def gate(self, random_seed, budget0=4, budget=10, some=0.5):
+
         random.seed(random_seed)
+        list_1,list_2,list_3, list_4, list_5, list_6 =[],[],[],[],[],[]
         rows = random.sample(self.rows, len(self.rows))
 
-        print("1. top6: ", [r.cells[len(r.cells)-3:] for r in rows[:6]])
-        print("2. top50: ", [[r.cells[len(r.cells)-3:] for r in rows[:50]]])
+        #print("1. top6: ", [r.cells[len(r.cells)-3:] for r in rows[:6]])
+        #print("2. top50: ", [[r.cells[len(r.cells)-3:] for r in rows[:50]]])
+        list_1.append(f"1. top6: {[r.cells[len(r.cells)-3:] for r in rows[:6]]}")
+        list_2.append(f"2. top50:{[[r.cells[len(r.cells)-3:] for r in rows[:50]]]}")
 
         # sort rows based on d2h
         rows.sort(key=lambda row: row.d2h(self))
-        print("3. most: ", rows[0].cells[len(rows[0].cells)-3:])
+        #print("3. most: ", rows[0].cells[len(rows[0].cells)-3:])
+        list_3.append(f"3. most: {rows[0].cells[len(rows[0].cells)-3:]}")
 
         # shuffle again
         rows = random.sample(self.rows, len(self.rows))
@@ -77,14 +82,24 @@ class DATA:
             # print(best.stats(), rest.stats())
             todo, selected, max_value = self.split(best, rest, lite, dark)
             # print("HIIIIIII: ", todo, max_value, len(dark))
-            print("4: rand:", sum(list(map(coerce, random.sample(dark, budget0+i)[0].cells[-3:])))/3)
-            print("5: mid: ", selected.mid().cells[len(selected.mid().cells)-3:])
-            print("6: top: ", best.rows[0].cells[len(best.rows[0].cells)-3:])
+
+            #print("4: rand:", sum(list(map(coerce, random.sample(dark, budget0+i)[0].cells[-3:])))/3)
+            #print("5: mid: ", selected.mid().cells[len(selected.mid().cells)-3:])
+            #print("6: top: ", best.rows[0].cells[len(best.rows[0].cells)-3:])
+            list_4.append(f"4: rand:{sum(list(map(coerce, random.sample(dark, budget0+i)[0].cells[-3:])))/3}")
+            list_5.append(f"5: mid: {selected.mid().cells[len(selected.mid().cells)-3:]}")
+            list_6.append(f"6: top: {best.rows[0].cells[len(best.rows[0].cells)-3:]}")
             stats.append(selected.mid())
             bests.append(best.rows[0])
             lite.append(dark.pop(todo))
             # print(len(lite))
         
+            print('\n'.join(map(str, list_1)))
+            print('\n'.join(map(str, list_2)))
+            print('\n'.join(map(str, list_3)))
+            print('\n'.join(map(str, list_4)))
+            print('\n'.join(map(str, list_5)))
+            print('\n'.join(map(str, list_6)))
         # print(bests[-1].cells)
         return stats, bests
 
