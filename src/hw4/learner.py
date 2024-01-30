@@ -18,6 +18,7 @@ def learn(data, row, my, the):
     if kl not in my['datas']:
         my['datas'][kl] =  DATA(src = [data.cols.names], the = the)
     my['datas'][kl].add(row)
+    
 def bayes(the={}):
     my = {'acc': 0, 'datas': {}, 'tries': 0, 'n': 0}
     DATA(src = the['file'], fun=lambda data, t: learn(data, t, my, the), the=the)
