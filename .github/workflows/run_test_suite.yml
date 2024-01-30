@@ -38,3 +38,8 @@ jobs:
         cd src/hw3/
         coverage run test_suite.py
         coverage report
+    - name: Run test suite for hw4
+      run: |
+        cd src/hw4/
+        coverage run test_suite.py
+        coverage report
