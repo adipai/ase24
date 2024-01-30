@@ -150,6 +150,10 @@ class TestSuite:
         d1, d2 = data_new.best_rest(data_new.rows, 2)
         assert len(d1.rows) <= len(d2.rows)
 
+    def test_num_heaven_pos(self):
+        n = NUM("COL+",1)
+        assert n.heaven == 1
+
     def _run_test(self, test_func, test_name):
         try:
             test_func()
