@@ -153,6 +153,10 @@ class TestSuite:
     def test_num_heaven_pos(self):
         n = NUM("COL+",1)
         assert n.heaven == 1
+    
+    def test_num_heaven_neg(self):
+        n = NUM("COL-",1)
+        assert n.heaven == 0
 
     def _run_test(self, test_func, test_name):
         try:
