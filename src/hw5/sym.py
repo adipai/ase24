@@ -40,7 +40,10 @@ class SYM:
         return x
 
     def dist(self, x, y):
-        return 1 if (x == "?" and y == "?") or (x == y) else 0
+        if(x==y):
+            return 0
+    
+        return 1
 
     def bin(self, x):
         return x

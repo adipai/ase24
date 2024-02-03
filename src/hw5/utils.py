@@ -135,5 +135,21 @@ def entropy(t):
 def keysort(t, fun):
     u = [{"x": x, "y": fun(x)} for x in t]  # decorate
     u.sort(key=lambda a: a["y"])  # sort
-    v = [xy["x"] for xy in u]  # undecorate
+    # print(u[0]['x'].cells)
+    v = [[xy["x"], xy["y"]] for xy in u]  # undecorate
     return v
+
+# def keep_last_unique_rows(sorted_rows):
+
+#     result_dict = {}
+
+#     for row, distance in sorted_rows:
+#         # print(row.cells, distance)
+#         if(distance  not in result_dict):
+#             result_dict[distance] = [row.cells]
+#         else:
+#             result_dict[distance].append(row.cells)
+
+#     sorted_dict = dict(sorted(result_dict.items()))
+#     print(list(sorted_dict.keys()))
+#     return list(sorted_dict.keys()), list(sorted_dict.values())

@@ -65,22 +65,25 @@ class ROW:
     
     def d2h(self, data):
         d, n, p = 0, 0, 2
-        for col in data.cols['y']:
-            x = self.cells[col.at]
+        for col in data.cols.y.values():
+            x = coerce(self.cells[col.at-1])
             if x is None:
                 print("?", end="", file=sys.stderr)
             else:
                 n += 1
-                d += abs(col.heaven - col.norm(self.cells[col.at])) ** p
+                d += abs(col.heaven - col.norm(self.cells[col.at-1])) ** p
         return (d / n) ** (1 / p)
 
     def dist(self, other, data):
-        d, n, p = 0, 0, self.the.p
-        for col in data.cols['x']:
+        d, n, p = 0, 0, 2
+        for col in data.cols.x.values():
             n += 1
-            d += col.dist(self.cells[col.at], other.cells[col.at]) ** p
+            d += col.dist(coerce(self.cells[col.at-1]), coerce(other.cells[col.at-1])) ** p
+            # print(d)
+        
+        # print((d / n) ** (1 / p), self.cells, other.cells)
         return (d / n) ** (1 / p)
 
     def neighbors(self, data, rows=None):
         return keysort(rows or data.rows,
-                          key=lambda row: self.dist(row, data))
+                          fun=lambda row: self.dist(row, data))

@@ -1,10 +1,11 @@
-from utils import settings, cli
+from utils import settings, cli, round
 from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
 from learner import print_stats,bayes
 from data import DATA
 import random
+from row import ROW
 
 """
 # Parse command-line arguments
@@ -63,8 +64,20 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
     
-    gate20(the)
+    # gate20(the)
+    data_new = DATA(the['file'], the=the)
+    row_first = ['8','304','193','70','1','4732','18.5','10']
+    row_obj = ROW(row_first, the=the)
+    sorted_rows = row_obj.neighbors(data=data_new)
+    # print(sorted_rows)
+    # final_rows, final_dist = keep_last_unique_rows(sorted_rows)
 
+    index = 1
+    for row, distance in sorted_rows:
+        if(index % 30 == 1):
+            print(row.cells, round(distance))
+        
+        index += 1
     # data_new = print_stats(the)
     # acc = bayes(the)
     # print(f"Accuracy for {the['file'].split('/')[3]}: {acc}")
