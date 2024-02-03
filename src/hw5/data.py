@@ -50,8 +50,6 @@ class DATA:
                 u[col.txt] = round(col.mid())
         return u
     
-    """ HW 4 addition starts here, needs refining"""
-    
     def gate(self, random_seed, budget0=4, budget=10, some=0.5):
 
         random.seed(random_seed)
@@ -144,3 +142,11 @@ class DATA:
         # print("best", best)
         # print("rest ",rest)
         return DATA(best, the=self.the), DATA(rest, the=self.the)
+    
+    """HW5 addition"""
+
+    def clone(self, rows=None):
+        new = DATA()
+        for row in rows or []:
+            new.add(row)
+        return new

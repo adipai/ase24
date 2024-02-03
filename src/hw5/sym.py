@@ -1,4 +1,4 @@
-import math 
+from utils import entropy
 
 class SYM:
     def __init__(self, s=None, n=None, the = {}):
@@ -21,10 +21,13 @@ class SYM:
         return self.mode
 
     def div(self):
-        e = 0
-        for v in self.has.values():
-            e -= (v / self.n) * math.log(v / self.n, 2)
-        return e
+        """
+            e = 0
+            for v in self.has.values():
+                e -= (v / self.n) * math.log(v / self.n, 2)
+            return e
+        """
+        return entropy(self.has)
 
     def small(self):
         return 0
@@ -32,3 +35,12 @@ class SYM:
     def like(self, x, prior):
         # print("Likelihood stuff: ",(x, self.has.get(x,0),self.n))
         return ((self.has.get(x, 0) or 0) + self.the['m'] * prior) / (self.n + self.the['m'])
+    
+    def norm(self, x):
+        return x
+
+    def dist(self, x, y):
+        return 1 if (x == "?" and y == "?") or (x == y) else 0
+
+    def bin(self, x):
+        return x

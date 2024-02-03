@@ -1,5 +1,6 @@
+import sys
 import math
-from utils import coerce
+from utils import coerce, keysort
 
 class ROW:
 
@@ -48,8 +49,7 @@ class ROW:
 
         return math.exp(1)**out
     
-    """Addition for HW4"""
-    
+    """
     def d2h(self, data):
         d, n = 0, 0
         # print(data.cols.y.values())
@@ -61,3 +61,26 @@ class ROW:
         
         # print((d ** 0.5) / (n ** 0.5))
         return (d ** 0.5) / (n ** 0.5)
+    """
+    
+    def d2h(self, data):
+        d, n, p = 0, 0, 2
+        for col in data.cols['y']:
+            x = self.cells[col.at]
+            if x is None:
+                print("?", end="", file=sys.stderr)
+            else:
+                n += 1
+                d += abs(col.heaven - col.norm(self.cells[col.at])) ** p
+        return (d / n) ** (1 / p)
+
+    def dist(self, other, data):
+        d, n, p = 0, 0, self.the.p
+        for col in data.cols['x']:
+            n += 1
+            d += col.dist(self.cells[col.at], other.cells[col.at]) ** p
+        return (d / n) ** (1 / p)
+
+    def neighbors(self, data, rows=None):
+        return keysort(rows or data.rows,
+                          key=lambda row: self.dist(row, data))

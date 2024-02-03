@@ -91,8 +91,6 @@ def cli(the, opt_dir):
             the[opt_dir[opt[1:]]] = coerce(val)
     return the
 
-"""Addition for HW4"""
-
 def keys(t):
     u = [k for k in t]
     u.sort()
@@ -123,3 +121,19 @@ def slice(t, go=None, stop=None, inc=None):
 
     u = [t[j] for j in range((go or 0)//1, (stop or len(t))//1, (inc or 1)//1)]
     return u
+
+""" HW5 addition """
+
+def entropy(t):
+    n = sum(t.values())
+    e = 0
+    for v in t.values():
+        e -= (v / n) * math.log2(v / n)
+    
+    return e, n
+
+def keysort(t, fun):
+    u = [{"x": x, "y": fun(x)} for x in t]  # decorate
+    u.sort(key=lambda a: a["y"])  # sort
+    v = [xy["x"] for xy in u]  # undecorate
+    return v
