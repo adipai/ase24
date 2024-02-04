@@ -2,7 +2,7 @@ import csv
 from sym import SYM
 from row import ROW
 from cols import COLS
-from utils import round, coerce
+from utils import round, coerce, any_item, keysort, many
 import random
 import numpy as np
 
@@ -150,3 +150,35 @@ class DATA:
         for row in rows or []:
             new.add(row)
         return new
+    
+    def farapart(self, rows, sortp, a=None):
+        far = int(len(rows) * self.the.Far)
+        evals = 1 if a else 2
+        a = a or any_item(rows).neighbors(self, rows)[far]
+        b = a.neighbors(self, rows)[far]
+
+        if sortp and b.d2h(self) < a.d2h(self):
+            a, b = b, a
+
+        return a, b, a.dist(b, self), evals
+    
+    def half(self, rows, sortp, before=None):
+        some = many(rows, min(self.the.Half, len(rows)))
+        a, b, C, evals = self.farapart(some, sortp, before)
+
+        def d(row1, row2):
+            return row1.dist(row2, self)
+
+        def project(r):
+            return (d(r, a) ** 2 + C ** 2 - d(r, b) ** 2) / (2 * C)
+
+        as_, bs = [], []
+        sorted_rows = keysort(rows, project)
+
+        for n, row in enumerate(sorted_rows, start=1):
+            if n <= len(rows) // 2:
+                as_.append(row)
+            else:
+                bs.append(row)
+
+        return as_, bs, a, b, C, d(a, bs[0]), evals

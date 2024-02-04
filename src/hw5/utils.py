@@ -19,7 +19,7 @@ OPTIONS:
 import math
 import re
 import sys
-
+import random
 
 def coerce(s1):
     def fun(s2):
@@ -138,6 +138,14 @@ def keysort(t, fun):
     # print(u[0]['x'].cells)
     v = [[xy["x"], xy["y"]] for xy in u]  # undecorate
     return v
+
+def any_item(t):
+    return random.choice(t)
+
+def many(t, n=None):
+    n = n or len(t)
+    u = [random.choice(t) for _ in range(n)]
+    return u
 
 # def keep_last_unique_rows(sorted_rows):
 
