@@ -167,7 +167,7 @@ class TestSuite:
     def test_keysort(self):
         t_keysort = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
         result_keysort = keysort(t_keysort, lambda x: x % 3)
-        assert result_keysort == [[3, 0], [9, 0], [6, 0], [3, 0], [1, 1], [4, 1], [1, 1], [5, 2], [2, 2], [5, 2], [5, 2]]
+        assert result_keysort == [3, 9, 6, 3, 1, 4, 1, 5, 2, 5, 5]
 
     def test_any_item(self):
         t_any_item = [10, 20, 30, 40, 50]
@@ -185,7 +185,12 @@ class TestSuite:
         data_new = DATA('../../Data/auto93.csv', the={})
         _, attempts = far({}, data_new)
         assert attempts == 100
-
+    
+    def test_faraway(self):
+        data_new = DATA('../../Data/auto93.csv', the={})
+        a,b,C,_ = data_new.farapart(data_new.rows[:21])
+        assert a.cells[0] == b.cells[0]
+        assert C<0.24
 
     def _run_test(self, test_func, test_name):
         try:
