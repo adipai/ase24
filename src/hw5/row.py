@@ -87,3 +87,6 @@ class ROW:
     def neighbors(self, data, rows=None):
         return keysort(rows or data.rows,
                           fun=lambda row: self.dist(row, data))
+
+    def __str__(self) -> str:
+        return str(self.cells)
