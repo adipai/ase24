@@ -136,7 +136,7 @@ def keysort(t, fun):
     u = [{"x": x, "y": fun(x)} for x in t]  # decorate
     u.sort(key=lambda a: a["y"])  # sort
     # print(u[0]['x'].cells)
-    v = [[xy["x"], xy["y"]] for xy in u]  # undecorate
+    v = [xy["x"] for xy in u]  # undecorate
     return v
 
 def any_item(t):

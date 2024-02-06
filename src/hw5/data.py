@@ -151,18 +151,22 @@ class DATA:
             new.add(row)
         return new
     
-    def farapart(self, rows, sortp, a=None):
-        far = int(len(rows) * self.the.Far)
+    def farapart(self, rows, sortp=True, a=None, b=None):
+        far = int(len(rows) * 0.95)+1
+        # print(far)
         evals = 1 if a else 2
+        x = any_item(rows).neighbors(self, rows)
+        # print(x[far].cells)
         a = a or any_item(rows).neighbors(self, rows)[far]
         b = a.neighbors(self, rows)[far]
+        # print(b.cells)
 
         if sortp and b.d2h(self) < a.d2h(self):
             a, b = b, a
 
-        return a, b, a.dist(b, self), evals
+        return a, b, a.dist(b,self), evals
     
-    def half(self, rows, sortp, before=None):
+    def half(self, rows, sortp=None, before=None):
         some = many(rows, min(self.the.Half, len(rows)))
         a, b, C, evals = self.farapart(some, sortp, before)
 

@@ -71,7 +71,7 @@ class ROW:
                 print("?", end="", file=sys.stderr)
             else:
                 n += 1
-                d += abs(col.heaven - col.norm(self.cells[col.at-1])) ** p
+                d += abs(col.heaven - col.norm(coerce(self.cells[col.at-1]))) ** p
         return (d / n) ** (1 / p)
 
     def dist(self, other, data):

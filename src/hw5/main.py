@@ -6,6 +6,7 @@ from learner import print_stats,bayes
 from data import DATA
 import random
 from row import ROW
+import csv
 
 """
 # Parse command-line arguments
@@ -40,6 +41,43 @@ def gate20(the):
         data_new.gate(random_seed)
         print("========================================================================================================================")
 
+def distance(the, data_new):
+    row_first = ['8','304','193','70','1','4732','18.5','10']
+    row_obj = ROW(row_first, the=the)
+    sorted_rows = row_obj.neighbors(data=data_new)
+
+    print("Task 1: Get Distance Working:")
+    print()
+    index = 1
+    for row in sorted_rows:
+        if(index % 30 == 1):
+            print(index, row.cells, round(row.dist(row_obj,data_new)))
+        
+        index += 1
+
+    print()
+    print()
+
+def far(the, data_new):
+    print("Task 2: Get Far Working: ")
+    print()
+
+    target_distance = 0.95
+    current_distance = 0
+    attempts = 0
+    max_attempts = 100 # Prevent infinite loops
+    a,b,C,_= data_new.farapart(data_new.rows)
+    while current_distance < target_distance and attempts < max_attempts:
+        a, b, C, _ = data_new.farapart(data_new.rows)
+        current_distance = C
+        attempts += 1
+    
+    print("far1: ", a.cells)
+    print("far2: ", b.cells)
+    print("distance: ", current_distance)
+    print("Attempts: ", attempts)
+    
+
 if __name__ == '__main__':
     the, opt_dir = settings(help_str)
     the = cli(the, opt_dir)
@@ -63,21 +101,8 @@ if __name__ == '__main__':
             print(f"Test {the['run_tc']} passed.")
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
-    
-    # gate20(the)
-    data_new = DATA(the['file'], the=the)
-    row_first = ['8','304','193','70','1','4732','18.5','10']
-    row_obj = ROW(row_first, the=the)
-    sorted_rows = row_obj.neighbors(data=data_new)
-    # print(sorted_rows)
-    # final_rows, final_dist = keep_last_unique_rows(sorted_rows)
 
-    index = 1
-    for row, distance in sorted_rows:
-        if(index % 30 == 1):
-            print(row.cells, round(distance))
-        
-        index += 1
-    # data_new = print_stats(the)
-    # acc = bayes(the)
-    # print(f"Accuracy for {the['file'].split('/')[3]}: {acc}")
+    data_new = DATA(the['file'], the=the)
+    distance(the, data_new)
+    far(the, data_new)
+    
