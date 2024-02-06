@@ -2,26 +2,53 @@
 Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1.
 
 # About
-HW4 - Sequential model optimization
+### Get Distance Working
 
-from https://github.com/timm/lo/blob/6jan24/src/gate.lua#L194-L233
+We load `auto93.csv`, use the first row of `rows`, sort
+the other rows by their distance to that first row, then print:
 
-20 times, run gate() and catch the ouputs from `print("1...` to` `print("5...)`.
-- note that each run needs to fully reset the DATA (so nothing carries over from one row to the next)
-- ensure your random number seeds are different for each run
+- every 30th row
+- the distance from that 30th row back to that first row.
 
-Sort that output so all the "1" rows are together, all the "2" rows are together, etc.
+We obtain the following output:
 
-Answer this question, with justifications from this output:
+``` 
+Task 1: Get Distance Working:
 
-**- Q1) Does SMO do better than the random baselines  (see prints 1,2,4)?** <br/> - Ans): Yes, SMO performs better than random baselines in most of the cases of 20 random seeds. For instance for random seed of 85, print 1 gave ['3520', '16.4', '20'], print 2 gave ['3520', '16.4', '20'] as the best output and print 4 gave [2929. , 15.48461538 , 25.38461538] which are far away from the SMO output of ['2130', '24.6', '40'] in the optimum case. This kind of behavior was observed for various random seeds as seen in the w4.out file. <br/>
-**- Q2) How many y row evaluations are required for print 3?** <br/> - Ans): A total of 398 rows evaluations is needed for print 3 as we are sorting the whole 398 rows dataset to find the absolute best y-value with least d2h. <br/>
+1 ['8', '304', '193', '70', '1', '4732', '18.5', '10'] 0.0
+31 ['8', '318', '150', '73', '1', '3777', '12.5', '20'] 0.13
+61 ['8', '429', '198', '73', '1', '4952', '11.5', '10'] 0.2
+91 ['6', '232', '100', '73', '1', '2789', '15', '20'] 0.25
+121 ['6', '225', '95', '75', '1', '3264', '16', '20'] 0.31
+151 ['8', '351', '138', '79', '1', '3955', '13.2', '20'] 0.38
+181 ['4', '91', '70', '71', '1', '1955', '20.5', '30'] 0.49
+211 ['4', '151', '90', '79', '1', '2556', '13.2', '30'] 0.58
+241 ['4', '151', '90', '82', '1', '2950', '17.3', '30'] 0.67
+271 ['4', '121', '110', '73', '2', '2660', '14', '20'] 0.69
+301 ['4', '115', '95', '75', '2', '2694', '15', '20'] 0.72
+331 ['4', '97', '67', '77', '3', '1985', '16.4', '30'] 0.75
+361 ['4', '98', '76', '80', '2', '2144', '14.7', '40'] 0.81
+391 ['4', '105', '74', '82', '2', '1980', '15.3', '40'] 0.85
 
-**- Q3) How does SMO do compared to absolute best (print 3)** <br/> - Ans): SMO's optimal(print 6) case performs fairly closeby to the absolute best(print 3). However, more realistically, the average case(print 5) ain't as good as the optimum case(print 6) but not bad after 14 evaluations. For instance, in the case of random seed of random seed as 82, print 3, i.e., absolute best was ['2130', '24.6', '40'], while print 5(avg best) and print 6(optimal best) came out to be [2339.387931034483, 16.528448275862075, 31.896551724137932] and ['2155', '16.5', '30'] respectively. Here print 6 is fairly close to print 3 and print 6 even though ain't as good but not bad after 14 evaluations! This pattern was seen for many random seed evaluations too. <br/>
+```
+
+### Get "Far" working
+
+Using the fastmap heuristic, we find two points that are .95 far each other. We obtained the following Y evaluations:
+
+
+```
+Task 2: Get Far Working: 
+
+far1:  ['3', '80', '110', '77', '3', '2720', '13.5', '20']
+far2:  ['8', '400', '170', '71', '1', '4746', '12', '10']
+distance:  0.8564052187549309
+Attempts:  100
+```
 
 # Steps to run
 * Navigate to the repository src/hw4/ and run the below command <br/>
-  `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w4/w4.out`
+  `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w5/w5.out`
   
 * For running test suite, run:<br/>
   `$ python3 -m coverage run test_suite.py`
