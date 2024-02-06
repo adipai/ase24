@@ -6,6 +6,7 @@ from sym import SYM
 from data import DATA
 from utils import coerce, settings, cells, round, entropy, keysort, any_item, many
 from learner import *
+from task import far
 
 class TestSuite:
     # def __init__(self) -> None:
@@ -179,6 +180,11 @@ class TestSuite:
         result_many_custom = many(t_many, n=3)
         assert len(result_many_default) == len(t_many)
         assert len(result_many_custom) == 3
+
+    def test_far(self):
+        data_new = DATA('../../Data/auto93.csv', the={})
+        _, attempts = far({}, data_new)
+        assert attempts == 100
 
 
     def _run_test(self, test_func, test_name):
