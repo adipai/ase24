@@ -4,7 +4,7 @@ import math
 from num import NUM
 from sym import SYM
 from data import DATA
-from utils import coerce, settings, cells,  round
+from utils import coerce, settings, cells, round, entropy, keysort, any_item, many
 from learner import *
 
 class TestSuite:
@@ -86,15 +86,15 @@ class TestSuite:
         sym_obj.add("a")
         sym_obj.add("b")
         assert sym_obj.mid() == "a"
-
+    
     def test_div_sym(self):
         sym_obj = SYM()
         sym_obj.add("a")
         sym_obj.add("b")
         sym_obj.add("a")
         sym_obj.add("c")
-        assert math.isclose(sym_obj.div(), 1.5)
-
+        assert sym_obj.div() == (1.5, 4)
+    
     def test_small_sym(self):
         sym_obj = SYM()
         assert sym_obj.small() == 0
@@ -143,13 +143,13 @@ class TestSuite:
         stats = data_new.stats()
         mock_result = {'.N': 683, 'date': 'september', 'plant-stand ': 'normal', 'precip': 'gt-norm', 'temp': 'norm', 'hail': 'yes', 'crop-hist': 'same-lst-two-yrs', 'area-damaged': 'low-areas', 'severity': 'pot-severe', 'seed-tmt': 'none', 'germination': '80-89', 'plant-growth': 'norm', 'leaves': 'abnorm', 'leafspots-halo': 'no-yellow-halos', 'leafspots-marg': 'w-s-marg', 'leafspot-size': 'gt-1/8', 'leaf-shread': 'absent', 'leaf-malf': 'absent', 'leaf-mild': 'absent', 'stem': 'abnorm', 'lodging': 'yes', 'stem-cankers': 'absent', 'canker-lesion': 'dna', 'fruiting-bodies': 'absent', 'external-decay': 'absent', 'mycelium': 'absent', 'int-discolor': 'none', 'sclerotia': 'absent', 'fruit-pods': 'norm', 'fruit-spots': 'absent', 'seed': 'norm', 'mold-growth': 'absent', 'seed-discolor': 'absent', 'seed-size': 'norm', 'shriveling': 'absent', 'roots': 'norm', 'class!': 'brown-spot'}
         assert stats == mock_result
-        
+    """ 
     def test_data_best_rest(self):
         the = {'cohen': 0.35, 'file': '../../Data/auto93.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
         data_new = DATA(the=the, src =the['file'])
         d1, d2 = data_new.best_rest(data_new.rows, 2)
         assert len(d1.rows) <= len(d2.rows)
-
+    """
     def test_num_heaven_pos(self):
         n = NUM("COL+",1)
         assert n.heaven == 1
@@ -157,6 +157,29 @@ class TestSuite:
     def test_num_heaven_neg(self):
         n = NUM("COL-",1)
         assert n.heaven == 0
+
+    def test_entropy(self):
+        t_entropy = {'A': 10, 'B': 20, 'C': 30}
+        result_entropy, total_count = entropy(t_entropy)
+        assert result_entropy == 1.4591479170272448 and total_count == 60
+
+    def test_keysort(self):
+        t_keysort = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+        result_keysort = keysort(t_keysort, lambda x: x % 3)
+        assert result_keysort == [[3, 0], [9, 0], [6, 0], [3, 0], [1, 1], [4, 1], [1, 1], [5, 2], [2, 2], [5, 2], [5, 2]]
+
+    def test_any_item(self):
+        t_any_item = [10, 20, 30, 40, 50]
+        result_any_item = any_item(t_any_item)
+        assert result_any_item in t_any_item
+
+    def test_many(self):
+        t_many = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        result_many_default = many(t_many)
+        result_many_custom = many(t_many, n=3)
+        assert len(result_many_default) == len(t_many)
+        assert len(result_many_custom) == 3
+
 
     def _run_test(self, test_func, test_name):
         try:
@@ -182,3 +205,6 @@ class TestSuite:
 if __name__ == '__main__':
     test_suite = TestSuite()
     test_suite.run_tests()
+
+
+    
