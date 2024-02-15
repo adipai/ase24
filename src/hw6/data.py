@@ -151,7 +151,9 @@ class DATA:
         return new
     
     def farapart(self, rows, sortp=True, a=None, b=None):
-        far = int(len(rows) * 0.95)+1
+        # print(len(rows))
+        far = int(len(rows) * 0.95)
+        # print(far)
         # print(far)
         evals = 1 if a else 2
         x = any_item(rows).neighbors(self, rows)

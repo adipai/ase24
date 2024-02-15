@@ -70,8 +70,9 @@ def eg_doubletap(the={}):
     d = DATA(the['file'], the=the)
     best1, rest, evals1 = d.branch(32)
     best2, _, evals2 = best1.branch(4)
+    print("median and best found in that four: ")
     print(o(best2.mid().cells), o(rest.mid().cells))
-    print(evals1 + evals2)
+    print("evals: ",evals1 + evals2)
 
 def eg_tree(the={}):
     data_instance = DATA(the['file'], the=the)
@@ -111,7 +112,9 @@ if __name__ == '__main__':
             
     #eg_tree(the=the)
 
-    eg_branch(the=the)
+    # eg_branch(the=the)
+    
+    eg_doubletap(the=the)
 
 
     
