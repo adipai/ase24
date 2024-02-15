@@ -143,8 +143,6 @@ class DATA:
         # print("best", best)
         # print("rest ",rest)
         return DATA(best, the=self.the), DATA(rest, the=self.the)
-    
-    """HW5 addition"""
 
     def clone(self, rows=None):
         new = DATA()
@@ -166,7 +164,9 @@ class DATA:
             a, b = b, a
 
         return a, b, a.dist(b,self), evals
-    
+
+    """ hw 6"""
+
     def half(self, rows, sortp=None, before=None):
         some = many(rows, min(self.the.Half, len(rows)))
         a, b, C, evals = self.farapart(some, sortp, before)
@@ -213,7 +213,7 @@ class DATA:
             nonlocal evals, rest
 
             if len(data.rows) > stop:
-                lefts, rights, left,   = self.half(data.rows, True, above)
+                lefts, rights, left, _, _, _, _  = self.half(data.rows, True, above)
                 evals += 1
                 for row1 in rights:
                     rest.append(row1)

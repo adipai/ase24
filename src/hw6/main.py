@@ -62,8 +62,9 @@ def distance(the, data_new):
 def eg_branch(the={}):
     d = DATA(the['file'], the=the)
     best, rest, evals = d.branch()
+    print("centroid of output cluster: ")
     print(o(best.mid().cells), o(rest.mid().cells))
-    print(evals)
+    print("evals: ", evals)
 
 def eg_doubletap(the={}):
     d = DATA(the['file'], the=the)
@@ -108,7 +109,9 @@ if __name__ == '__main__':
     # distance(the, data_new)
     # far(the, data_new)
             
-    eg_tree(the=the)
+    #eg_tree(the=the)
+
+    eg_branch(the=the)
 
 
     
