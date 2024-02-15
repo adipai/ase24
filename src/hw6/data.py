@@ -5,6 +5,7 @@ from cols import COLS
 from utils import round, coerce, any_item, keysort, many
 import random
 import numpy as np
+from node import NODE
 
 
 class DATA:
@@ -186,3 +187,68 @@ class DATA:
                 bs.append(row)
 
         return as_, bs, a, b, C, d(a, bs[0]), evals
+
+    def tree(self, sortp):
+        evals = [0]
+
+        def _tree(data, above = None):
+            nonlocal evals
+            node = NODE(data)
+
+            if len(data.rows) > 2 * (len(self.rows) ** 0.5):
+                lefts, rights, node.left, node.right, node.C, node.cut, evals1 = self.half(data.rows, sortp, above)
+                evals[0] += evals1
+                node.lefts = _tree(self.clone(lefts), node.left)
+                node.rights = _tree(self.clone(rights), node.right)
+
+            return node
+
+        return _tree(self), evals[0]
+
+    def branch(self, stop=None, rest=None, _branch=None, evals=None):
+        evals, rest = 1, []
+        stop = stop or (2 * (len(self.rows) ** 0.5))
+
+        def _branch(data, above=None, left=None, lefts=None, rights=None):
+            nonlocal evals, rest
+
+            if len(data.rows) > stop:
+                lefts, rights, left,   = self.half(data.rows, True, above)
+                evals += 1
+                for row1 in rights:
+                    rest.append(row1)
+
+                return _branch(self.clone(lefts), left)
+            else:
+                return self.clone(data.rows), self.clone(rest), evals
+
+        return _branch(self)
+    
+    def clone(self, rows=None, newData=None):
+        newData = DATA([self.cols.names])
+        for row in rows or []:
+            newData.add(row)
+        return newData
+    
+    def half(self, rows, sortp, before):
+        the_Half = len(rows) // 2
+        some = many(rows, min(the_Half, len(rows)))
+        a, b, C, evals = self.farapart(some, sortp, before)
+
+        def d(row1, row2):
+            return row1.dist(row2, self)
+
+        def project(r):
+            return (d(r, a) ** 2 + C ** 2 - d(r, b) ** 2) / (2 * C)
+
+        as_, bs = [], []
+
+        for n, row in enumerate(sorted(rows, key=project)):
+            if n <= (len(rows) // 2):
+                as_.append(row)
+            else:
+                bs.append(row)
+
+        return as_, bs, a, b, C, d(a, bs[0]), evals
+# half
+

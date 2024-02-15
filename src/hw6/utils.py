@@ -147,6 +147,24 @@ def many(t, n=None):
     u = [random.choice(t) for _ in range(n)]
     return u
 
+""" Week 6 """
+def o(t, n=None, u=None):
+    if isinstance(t, (int, float)):
+        return str(round(t, n))
+    if not isinstance(t, dict) and not isinstance(t, list):
+        return str(t)
+
+    u = []
+    for k, v in t.items() if isinstance(t, dict) else enumerate(t):
+        if str(k)[0] != "_":
+            if len(t) > 0:
+                u.append(o(v, n))
+            else:
+                u.append(f"${o(k, n)}: ${o(v, n)}")
+
+    return "{" + ", ".join(u) + "}"
+
+
 # def keep_last_unique_rows(sorted_rows):
 
 #     result_dict = {}

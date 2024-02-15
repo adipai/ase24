@@ -1,4 +1,4 @@
-from utils import settings, cli, round
+from utils import settings, cli, round, o
 from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
@@ -59,6 +59,24 @@ def distance(the, data_new):
     print()
     print()
 
+def eg_branch(the={}):
+    d = DATA(the['file'], the=the)
+    best, rest, evals = d.branch()
+    print(o(best.mid().cells), o(rest.mid().cells))
+    print(evals)
+
+def eg_doubletap(the={}):
+    d = DATA(the['file'], the=the)
+    best1, rest, evals1 = d.branch(32)
+    best2, _, evals2 = best1.branch(4)
+    print(o(best2.mid().cells), o(rest.mid().cells))
+    print(evals1 + evals2)
+
+def eg_tree(the={}):
+    data_instance = DATA(the['file'], the=the)
+    t, evals = data_instance.tree(True)
+    t.show()
+    print("evals: ", evals)
 
     
 
@@ -86,7 +104,11 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
 
-    data_new = DATA(the['file'], the=the)
-    distance(the, data_new)
-    far(the, data_new)
+    # data_new = DATA(the['file'], the=the)
+    # distance(the, data_new)
+    # far(the, data_new)
+            
+    eg_tree(the=the)
+
+
     
