@@ -122,8 +122,6 @@ def slice(t, go=None, stop=None, inc=None):
     u = [t[j] for j in range((go or 0)//1, (stop or len(t))//1, (inc or 1)//1)]
     return u
 
-""" HW5 addition """
-
 def entropy(t):
     n = sum(t.values())
     e = 0
@@ -147,7 +145,6 @@ def many(t, n=None):
     u = [random.choice(t) for _ in range(n)]
     return u
 
-""" Week 6 """
 def o(t, n=None, u=None):
     if isinstance(t, (int, float)):
         return str(round(t, n))

@@ -167,8 +167,6 @@ class DATA:
 
         return a, b, a.dist(b,self), evals
 
-    """ hw 6"""
-
     def half(self, rows, sortp=None, before=None):
         some = many(rows, min(self.the.Half, len(rows)))
         a, b, C, evals = self.farapart(some, sortp, before)
@@ -252,5 +250,4 @@ class DATA:
                 bs.append(row)
 
         return as_, bs, a, b, C, d(a, bs[0]), evals
-# half
 

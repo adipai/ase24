@@ -4,7 +4,8 @@ import math
 from num import NUM
 from sym import SYM
 from data import DATA
-from utils import coerce, settings, cells, round, entropy, keysort, any_item, many
+from node import NODE
+from utils import coerce, settings, cells, round, entropy, keysort, any_item, many, o
 from learner import *
 from task import far
 
@@ -144,13 +145,7 @@ class TestSuite:
         stats = data_new.stats()
         mock_result = {'.N': 683, 'date': 'september', 'plant-stand ': 'normal', 'precip': 'gt-norm', 'temp': 'norm', 'hail': 'yes', 'crop-hist': 'same-lst-two-yrs', 'area-damaged': 'low-areas', 'severity': 'pot-severe', 'seed-tmt': 'none', 'germination': '80-89', 'plant-growth': 'norm', 'leaves': 'abnorm', 'leafspots-halo': 'no-yellow-halos', 'leafspots-marg': 'w-s-marg', 'leafspot-size': 'gt-1/8', 'leaf-shread': 'absent', 'leaf-malf': 'absent', 'leaf-mild': 'absent', 'stem': 'abnorm', 'lodging': 'yes', 'stem-cankers': 'absent', 'canker-lesion': 'dna', 'fruiting-bodies': 'absent', 'external-decay': 'absent', 'mycelium': 'absent', 'int-discolor': 'none', 'sclerotia': 'absent', 'fruit-pods': 'norm', 'fruit-spots': 'absent', 'seed': 'norm', 'mold-growth': 'absent', 'seed-discolor': 'absent', 'seed-size': 'norm', 'shriveling': 'absent', 'roots': 'norm', 'class!': 'brown-spot'}
         assert stats == mock_result
-    """ 
-    def test_data_best_rest(self):
-        the = {'cohen': 0.35, 'file': '../../Data/auto93.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
-        data_new = DATA(the=the, src =the['file'])
-        d1, d2 = data_new.best_rest(data_new.rows, 2)
-        assert len(d1.rows) <= len(d2.rows)
-    """
+
     def test_num_heaven_pos(self):
         n = NUM("COL+",1)
         assert n.heaven == 1
@@ -192,6 +187,35 @@ class TestSuite:
         assert a.cells[0] == b.cells[0]
         assert C<0.24
 
+    def test_o(self):
+        
+        assert o(10) == "10"
+        assert o(3.14159, 2) == "3.14"
+        assert o("hello") == "hello"
+        assert o([1, 2, 3]) == "{1, 2, 3}"
+        assert o([[1, 2], [3, 4]]) == "{{1, 2}, {3, 4}}"
+    
+
+    def test_DATA_half(self):
+
+        # Test case 1: Testing the half method with sorting and before
+        the = {'cohen': 0.35, 'file': '../../Data/auto93.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data = DATA(the = the, src= the['file'])
+        as_, bs, a, b, C, d_ab, evals = data.half(data.rows, sortp=True, before=None)
+        assert len(as_) == 200
+        assert len(bs) == 198
+        assert C > 0
+        assert d_ab > 0
+        assert evals > 0
+        
+        # Test case 2: Testing the half method without sorting and before
+        as_, bs, a, b, C, d_ab, evals = data.half(data.rows, sortp=False, before=None)
+        assert len(as_) == 200
+        assert len(bs) == 198
+        assert C > 0
+        assert d_ab > 0
+        assert evals > 0
+        
     def _run_test(self, test_func, test_name):
         try:
             test_func()
@@ -217,5 +241,3 @@ if __name__ == '__main__':
     test_suite = TestSuite()
     test_suite.run_tests()
 
-
-    
