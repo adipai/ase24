@@ -215,6 +215,25 @@ class TestSuite:
         assert C > 0
         assert d_ab > 0
         assert evals > 0
+
+    def test_DATA_tree(self):
+            
+            the = {'cohen': 0.35, 'file': '../../Data/auto93.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+            data = DATA(the = the, src= the['file'])
+            tree, evals = data.tree(sortp=True)
+            assert isinstance(tree, NODE)
+            assert evals > 0
+    
+
+    def test_DATA_branch(self):
+        
+        the = {'cohen': 0.35, 'file': '../../Data/auto93.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data = DATA(the = the, src= the['file'])
+        left_branch, right_branch, evals = data.branch()
+        assert len(left_branch.rows) > 0
+        assert len(right_branch.rows) > 0
+        assert evals > 0
+
         
     def _run_test(self, test_func, test_name):
         try:

@@ -60,25 +60,31 @@ def distance(the, data_new):
     print()
 
 def eg_branch(the={}):
+    print("Task2 output: ")
     d = DATA(the['file'], the=the)
     best, rest, evals = d.branch()
     print("centroid of output cluster: ")
     print(o(best.mid().cells), o(rest.mid().cells))
     print("evals: ", evals)
+    print()
 
 def eg_doubletap(the={}):
+    print("Task3 output: ")
     d = DATA(the['file'], the=the)
     best1, rest, evals1 = d.branch(32)
     best2, _, evals2 = best1.branch(4)
     print("median and best found in that four: ")
     print(o(best2.mid().cells), o(rest.mid().cells))
     print("evals: ",evals1 + evals2)
+    print()
 
 def eg_tree(the={}):
+    print("Task1 output: ")
     data_instance = DATA(the['file'], the=the)
     t, evals = data_instance.tree(True)
     t.show()
     print("evals: ", evals)
+    print()
 
     
 
@@ -109,10 +115,9 @@ if __name__ == '__main__':
     # data_new = DATA(the['file'], the=the)
     # distance(the, data_new)
     # far(the, data_new)
-            
-    #eg_tree(the=the)
+    eg_tree(the=the)
 
-    # eg_branch(the=the)
+    eg_branch(the=the)
     
     eg_doubletap(the=the)
 
