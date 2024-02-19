@@ -13,7 +13,7 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 * HW3 - Created the like(), likes() functions for ROW, SYM, NUM classes. Completed Task1 for calculating class %ages of soybean and diabetes. Implemented learn() and bayes() functions for Task2 - compute accuracies for both datasets. As part of Task 3 varied k amd m to find optimal combination for soybean. Lastly, added new test cases for DATA class, like(), likes(), learn() and bayes().<br/>
 * HW4 - Created gate(), split(), best_rest() functions in data.py. Ran the gate() function 20 times by varying the random seed and sorted that output so all the "1" rows are together, all the "2" rows are together, etc. Also, answered the 3 questions asked in hw04.md based on the output in w4.out file. Lastly, added new test cases for the added functionalities in the code. <br/>
 * HW5 - Got distance and far working by converting mylo.lua to python <br/>
-* HW6 -<br/> 
+* HW6 - Got cluster output & optimization output(for single descent and doubletap)<br/> 
 * HW7 -<br/> 
 * HW8 -<br/>
 * HW9 -<br/>
@@ -23,7 +23,8 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 * HW3 - Use the HW3 readme [link](https://github.com/adipai/ase24/tree/main/src/hw3#readme) for the steps of execution<br/>
 * HW4 - Use the HW4 readme [link](https://github.com/adipai/ase24/tree/main/src/hw4#readme) for the steps of execution and answers to the 3 questions asked in hw4<br/>
 * HW5 - Use the HW5 readme [link](https://github.com/adipai/ase24/tree/main/src/hw5#readme) for the steps of execution<br/>
-  
+* HW6 - Use the HW6 readme [link](https://github.com/adipai/ase24/blob/main/src/hw6/readme.md) for the step of execution<br/>
+
 # Team members
 [Rishi Singhal](https://www.linkedin.com/in/rishi-singhal1101/)<br/>
 [Deepak Rajendran](https://www.linkedin.com/in/deepr41)<br/>
