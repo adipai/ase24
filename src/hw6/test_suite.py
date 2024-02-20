@@ -234,7 +234,18 @@ class TestSuite:
         assert len(right_branch.rows) > 0
         assert evals > 0
 
+    def test_NODE_walk(self):
         
+        def test_fun(node, depth, leaf):
+            assert isinstance(node, NODE)
+            assert depth == 0 
+            leaf == True
+
+        the = {'cohen': 0.35, 'file': '../../Data/auto93.csv', 'help': 'False', 'k': 1.0, 'm': 2.0, 'seed': 31210.0, 'run_tc': 'all'}
+        data = DATA(the = the, src= the['file'])
+        node = NODE(data)
+        node.walk(test_fun)
+
     def _run_test(self, test_func, test_name):
         try:
             test_func()
