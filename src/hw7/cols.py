@@ -10,10 +10,10 @@ class COLS:
         for at, txt in enumerate(row.cells, 1):
             col = NUM(txt, at) if txt[0].isupper() else SYM(txt, at, the=self.the)
             self.all.append(col)
-            if not txt.endswith("X"):
-                if txt.endswith("!"):
-                    self.klass = col
-                (self.y if txt[-1] in "!+-" else self.x)[at] = col
+            # if not txt.endswith("X"):
+            if txt.endswith("!"):
+                self.klass = col
+            (self.y if txt[-1] in "!+-" else self.x)[at] = col
 
     def add(self, row):
         # print(row.cells)

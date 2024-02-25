@@ -50,6 +50,16 @@ class DATA:
             else:
                 u[col.txt] = round(col.mid())
         return u
+
+    def stats_div(self, fun=None, ndivs=None):
+        u = {".N": len(self.rows)}
+        for col in self.cols.all:
+            if(isinstance(col, SYM)):
+                u[col.txt] = col.div()
+            else:
+                u[col.txt] = round(col.div())
+        return u
+
     
     def gate(self, random_seed, budget0=4, budget=10, some=0.5):
 
@@ -101,11 +111,31 @@ class DATA:
         # print('\n'.join(map(str, list_4)))
         # print('\n'.join(map(str, list_5)))
         # print('\n'.join(map(str, list_6)))
-        print(stats_data[-1].mid().cells)
-        wanted_data_d2h = [r.d2h(stats_data[-1]) for r in stats_data[-1].rows]
-        print(len(wanted_data_d2h), np.mean(wanted_data_d2h))
+        print(bests[-1].cells, round(bests[-1].d2h(self)))
+        # wanted_data_d2h = [r.d2h(stats_data[-1]) for r in stats_data[-1].rows]
+        # print(len(wanted_data_d2h), np.mean(wanted_data_d2h))
 
         return stats, bests
+
+    def any50(self, random_seed):
+        random.seed(random_seed)
+        rows = random.sample(self.rows, 50)
+        print(rows[0].cells, round(rows[0].d2h(self)))
+
+    def best_whole(self, random_seed):
+        random.seed(random_seed)
+        rows = random.sample(self.rows, len(self.rows))
+        rows.sort(key=lambda row: row.d2h(self))
+        print(rows[0].cells, round(rows[0].d2h(self)))
+    
+    def mid_div(self):
+        d2h_vals = [r.d2h(self) for r in self.rows]
+        print("mid stats: ")
+        print(self.stats(), round(np.mean(d2h_vals)))
+        print("div stats: ")
+        print(self.stats_div(), round(np.std(d2h_vals)))
+
+
 
     def split(self, best, rest, lite, dark):
         selected = DATA([self.cols.names], the=self.the)

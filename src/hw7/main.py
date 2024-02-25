@@ -32,15 +32,25 @@ run test-cases = args.run_tc
 """
 # global my
 
-def gate20(the):
-
+def hw7_part1(the):
+    d = DATA(src = the['file'], the=the)
+    d.mid_div()
     random_seeds = random.sample(range(100),20)
     for random_seed in random_seeds:
         print("========================================================================================================================")
         print("Current random seed: ", random_seed)
+        print("Smo9 results: ")
         data_new = DATA(src = the['file'], the=the)
-        data_new.gate(random_seed, budget=9)
+        data_new.gate(random_seed, budget=5)
+
+        # print()
+        print("any50 results: ")
+        data_new.any50(random_seed)
+        print()
         print("========================================================================================================================")
+
+        data_new.best_whole(random_seed)
+
 
 def distance(the, data_new):
     row_first = ['8','304','193','70','1','4732','18.5','10']
@@ -112,7 +122,7 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
         
-    gate20(the=the)
+    hw7_part1(the=the)
     # data_new = DATA(the['file'], the=the)
     # distance(the, data_new)
     # far(the, data_new)
