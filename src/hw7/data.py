@@ -90,7 +90,6 @@ class DATA:
         # divide into train and test
         lite = rows[:budget0] #train-data
         dark = rows[budget0:] #test-data
-        # print(len(dark))
 
         stats, bests, stats_data = [], [], []
 
@@ -110,7 +109,6 @@ class DATA:
             bests.append(best.rows[0])
             stats_data.append(selected)
             lite.append(dark.pop(todo))
-            # print(len(lite))
 
         return stats, best, [bests[-1].cells, round(bests[-1].d2h(self))]
 
@@ -134,35 +132,26 @@ class DATA:
         selected = DATA([self.cols.names], the=self.the)
         max_value = -1E30
         out = 0
-        # print(dark)
         for i, row in enumerate(dark):
-            # print("DARK row: ",row.cells)
             b = row.like(best, len(lite), 2)
-            # print("HI")
             r = row.like(rest, len(lite), 2)
-            # print(b,r)
             if b > r:
                 selected.add(row)
 
             tmp = abs(b + r) / abs(b - r + 1E-300)
-            # print("TEMP: ", tmp)
             if tmp > max_value:
                 out, max_value = i, tmp
 
         return out, selected, max_value
 
     def best_rest(self, rows, want):
-        # print("Starting sorting in best-rest")
         rows.sort(key=lambda row: row.d2h(self))
-        # print("In best-rest: ",rows)
         best, rest = [self.cols.names], [self.cols.names]
         for i, row in enumerate(rows):
             if i < want:
                 best.append(row)
             else:
                 rest.append(row)
-        # print("best", best)
-        # print("rest ",rest)
         return DATA(best, the=self.the), DATA(rest, the=self.the)
 
     def clone(self, rows=None):
@@ -172,16 +161,11 @@ class DATA:
         return new
     
     def farapart(self, rows, sortp=True, a=None, b=None):
-        # print(len(rows))
         far = int(len(rows) * 0.95)
-        # print(far)
-        # print(far)
         evals = 1 if a else 2
         x = any_item(rows).neighbors(self, rows)
-        # print(x[far].cells)
         a = a or any_item(rows).neighbors(self, rows)[far]
         b = a.neighbors(self, rows)[far]
-        # print(b.cells)
 
         if sortp and b.d2h(self) < a.d2h(self):
             a, b = b, a
