@@ -43,21 +43,28 @@ class DATA:
         return ROW(u, self.the)
     
     def stats(self, fun=None, ndivs=None):
-        u = {".N": len(self.rows)}
+        u = {}
         for col in self.cols.all:
             if(isinstance(col, SYM)):
-                u[col.txt] = col.mid()
+                if(col.txt == "origin"):
+                    u[col.txt] = int(col.mid())
+                else:
+                    u[col.txt] = col.mid()
             else:
                 u[col.txt] = round(col.mid())
         return u
 
     def stats_div(self, fun=None, ndivs=None):
-        u = {".N": len(self.rows)}
+        u = {}
         for col in self.cols.all:
             if(isinstance(col, SYM)):
-                u[col.txt] = col.div()
+                if(col.txt == "origin"):
+                    u[col.txt] = round(col.div()[0])
+                else:
+                    u[col.txt] = col.div()
             else:
                 u[col.txt] = round(col.div())
+                
         return u
 
     
@@ -104,38 +111,24 @@ class DATA:
             stats_data.append(selected)
             lite.append(dark.pop(todo))
             # print(len(lite))
-        
-        # print('\n'.join(map(str, list_1)))
-        # print('\n'.join(map(str, list_2)))
-        # print('\n'.join(map(str, list_3)))
-        # print('\n'.join(map(str, list_4)))
-        # print('\n'.join(map(str, list_5)))
-        # print('\n'.join(map(str, list_6)))
-        print(bests[-1].cells, round(bests[-1].d2h(self)))
-        # wanted_data_d2h = [r.d2h(stats_data[-1]) for r in stats_data[-1].rows]
-        # print(len(wanted_data_d2h), np.mean(wanted_data_d2h))
 
-        return stats, bests
+        return stats, best, [bests[-1].cells, round(bests[-1].d2h(self))]
 
     def any50(self, random_seed):
         random.seed(random_seed)
         rows = random.sample(self.rows, 50)
-        print(rows[0].cells, round(rows[0].d2h(self)))
+        return [rows[0].cells, round(rows[0].d2h(self))]
 
     def best_whole(self, random_seed):
         random.seed(random_seed)
         rows = random.sample(self.rows, len(self.rows))
         rows.sort(key=lambda row: row.d2h(self))
-        print(rows[0].cells, round(rows[0].d2h(self)))
+        return [rows[0].cells, round(rows[0].d2h(self))]
     
     def mid_div(self):
         d2h_vals = [r.d2h(self) for r in self.rows]
-        print("mid stats: ")
-        print(self.stats(), round(np.mean(d2h_vals)))
-        print("div stats: ")
-        print(self.stats_div(), round(np.std(d2h_vals)))
-
-
+        #mid stats and div stats
+        return[[self.stats(), round(np.mean(d2h_vals))],[self.stats_div(), round(np.std(d2h_vals))]]
 
     def split(self, best, rest, lite, dark):
         selected = DATA([self.cols.names], the=self.the)

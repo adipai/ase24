@@ -8,6 +8,7 @@ import random
 from row import ROW
 import csv
 from task import far
+from datetime import datetime
 
 """
 # Parse command-line arguments
@@ -34,22 +35,28 @@ run test-cases = args.run_tc
 
 def hw7_part1(the):
     d = DATA(src = the['file'], the=the)
-    d.mid_div()
+    mid_whole, div_whole = d.mid_div()
     random_seeds = random.sample(range(100),20)
+    smo_output = []
+    any50_output = []
     for random_seed in random_seeds:
-        print("========================================================================================================================")
-        print("Current random seed: ", random_seed)
-        print("Smo9 results: ")
+        
         data_new = DATA(src = the['file'], the=the)
-        data_new.gate(random_seed, budget=5)
-
-        # print()
-        print("any50 results: ")
-        data_new.any50(random_seed)
-        print()
-        print("========================================================================================================================")
-
-        data_new.best_whole(random_seed)
+        _,_, a = data_new.gate(random_seed, budget=5)
+        smo_output.append(a)
+        any50_output.append(data_new.any50(random_seed))
+        
+    best_whole = data_new.best_whole(random_seed)
+    print("date:{}\nfile:{}\nrepeat:{}\nseed:{}\nrows:{}\ncols:{}\nnames\t{}\t{}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"),the['file'],"20",the['seed'],len(data_new.rows), len(data_new.rows[0].cells), data_new.cols.names, "d2h-"))
+    print("Mid\t{}\t{}\nDiv\t{}\t{}\n#\n".format(list(mid_whole[0].values()),mid_whole[1],list(div_whole[0].values()),div_whole[1]))
+    smo_output = sorted(smo_output, key=lambda x: x[1])
+    smo_output = sorted(any50_output, key=lambda x: x[1])
+    for op in smo_output:
+        print("smo9\t{}\t{}\n".format(op[0],op[1]))
+    print("#\n")
+    for op in any50_output:
+        print("any50\t{}\t{}\n".format(op[0],op[1]))
+    print("#\n100%\t{}\t{}".format(best_whole[0],best_whole[1]))
 
 
 def distance(the, data_new):
