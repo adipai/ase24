@@ -49,13 +49,13 @@ def hw7_part1(the):
     best_whole = data_new.best_whole(random_seed)
     print("date:{}\nfile:{}\nrepeat:{}\nseed:{}\nrows:{}\ncols:{}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"),the['file'],"20",the['seed'],len(data_new.rows), len(data_new.rows[0].cells)))
     print(format_row("names", data_new.cols.names,        None))
-    print(format_row("Mid\t"  , list(mid_whole[0].values()),mid_whole[1]))
-    print(format_row("Div\t"  , list(div_whole[0].values()),div_whole[1]))
+    print(format_row("Mid"  , list(mid_whole[0].values()),mid_whole[1]))
+    print(format_row("Div"  , list(div_whole[0].values()),div_whole[1]))
     print("#")
     smo_output = sorted(smo_output, key=lambda x: x[1])
     smo_output = sorted(any50_output, key=lambda x: x[1])
     for op in smo_output:
-        print(format_row("smo\t",op[0],op[1]))
+        print(format_row("smo",op[0],op[1]))
     print("#")
     for op in any50_output:
         print(format_row("any50",op[0],op[1]))
