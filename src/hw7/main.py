@@ -47,16 +47,42 @@ def hw7_part1(the):
         any50_output.append(data_new.any50(random_seed))
         
     best_whole = data_new.best_whole(random_seed)
-    print("date:{}\nfile:{}\nrepeat:{}\nseed:{}\nrows:{}\ncols:{}\nnames\t{}\t{}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"),the['file'],"20",the['seed'],len(data_new.rows), len(data_new.rows[0].cells), data_new.cols.names, "d2h-"))
-    print("Mid\t{}\t{}\nDiv\t{}\t{}\n#\n".format(list(mid_whole[0].values()),mid_whole[1],list(div_whole[0].values()),div_whole[1]))
+    print("date:{}\nfile:{}\nrepeat:{}\nseed:{}\nrows:{}\ncols:{}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"),the['file'],"20",the['seed'],len(data_new.rows), len(data_new.rows[0].cells)))
+    print(format_row("names", data_new.cols.names,        None))
+    print(format_row("Mid\t"  , list(mid_whole[0].values()),mid_whole[1]))
+    print(format_row("Div\t"  , list(div_whole[0].values()),div_whole[1]))
+    print("#")
     smo_output = sorted(smo_output, key=lambda x: x[1])
     smo_output = sorted(any50_output, key=lambda x: x[1])
     for op in smo_output:
-        print("smo9\t{}\t{}\n".format(op[0],op[1]))
-    print("#\n")
+        print(format_row("smo\t",op[0],op[1]))
+    print("#")
     for op in any50_output:
-        print("any50\t{}\t{}\n".format(op[0],op[1]))
-    print("#\n100%\t{}\t{}".format(best_whole[0],best_whole[1]))
+        print(format_row("any50",op[0],op[1]))
+    print("#")
+    print(format_row("100%",best_whole[0],best_whole[1]))
+
+def format_row(name, row, d2h_val=None):
+    return_string = ""
+    len_space = [11,11,9,10,11,10,9,9]
+
+    def _format_item(item):
+        try:
+            float(item)
+            return item
+        except:
+            return f"'{item}'"
+
+    for i, item in enumerate(row):
+        start_string = ""
+        end_string=""
+        if i == 0:
+            start_string += "["
+        if i == 7:
+            end_string += "]"
+        item_str = start_string + _format_item(str(item)) + end_string
+        return_string +=  item_str + (" " * (len_space[i] - len(item_str)))
+    return f"{name}\t\t\t{return_string}\t{'d2h-' if d2h_val is None else str(d2h_val)}"
 
 
 def distance(the, data_new):
