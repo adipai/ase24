@@ -110,7 +110,7 @@ class DATA:
             stats_data.append(selected)
             lite.append(dark.pop(todo))
 
-        return stats, best, [bests[-1].cells, round(bests[-1].d2h(self))]
+        return stats, bests, [bests[-1].cells, round(bests[-1].d2h(self))]
 
     def any50(self, random_seed):
         random.seed(random_seed)
