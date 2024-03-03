@@ -69,6 +69,55 @@ any50			[8         400        175      71        1          4464      11.5     1
 #
 100%			[4         97         52       82        2          2130      24.6     40]      	0.17
 ```
+
+### Part Two (stats)
+Right a more succinct report that summarizes 20 runs on anything that uses
+stochastic choice.
+
+Here, we only report distance to ehaven (d2h).
+
+The following report can get slow for larger data sets so the line starting with **#base** prints each word as we loop
+through that part.
+
+In all the following, we make 4 initial guesses to initialize best:rest, then we run on for some BUDGET=4 repeats.
+- e.g. **bonr20** means 4 initial guesses then 16 subsequent ones.
+
+**bonr** means using the acquire function you've been using all along _((b+r)/(b-r))_
+
+**RandN** means, 20 ties, pull 90% of the data, sort by d2h, then report the top one.
+
+
+**base** shows the d2h distribution within the untreated data set.
+
+**best** reports the best d2h in the data (this is our ceiling)
+
+**tiny** shows .35*standard deviation. Any difference less than this is getting a little pedantic.
+
+```
+date:03/03/2024 17:41:28
+file:../../Data/auto93.csv
+repeat:20
+seed:31210.0
+rows:398
+cols:8
+best: 0.17
+tiny: 0.06
+#base #bonr9 #rand9 #bonr15 #rand15 #bonr20 #rand20 #rand358 
+#
+ 0,              rand358,  0.17,  0.00, *                   |                   ,  0.17,  0.93
+#
+ 1,               rand20,  0.27,  0.06,     -*-             |                   ,  0.17,  0.93
+#
+ 2,               rand15,  0.32,  0.13,     ----*--         |                   ,  0.17,  0.93
+ 2,                rand9,  0.34,  0.09,       ---*-         |                   ,  0.17,  0.93
+#
+ 3,                bonr9,  0.37,  0.00,           *         |                   ,  0.17,  0.93
+ 3,               bonr15,  0.37,  0.00,           *         |                   ,  0.17,  0.93
+ 3,               bonr20,  0.37,  0.00,           *         |                   ,  0.17,  0.93
+#
+ 4,                 base,  0.55,  0.20,              -------*---                ,  0.17,  0.93
+```
+
 # Steps to run
 * Navigate to the repository src/hw7/ and run the below command <br/>
   `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w8/w8.out`
