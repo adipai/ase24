@@ -2,72 +2,163 @@
 Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1.
 
 # About
-### Part 1 (no stats)
+## Finding interesting ranges
 
-Reproduce the following output.
+For auto93, our RRP finds 26 _best_ so I picked  3\*26=78 _rest_. 
 
-Before summarizing the results of many runs, first show details (very useful for debugging).
+Next, for all the numeric columns, divide them into bins of size _(hi - lo)/16_ and count how often
+attribute values fall into each of those bins.
 
-In the following we show baseline centroids (mid) and variability around that centroid (div). We then run SMO 20 times (smo9)with a budget of 9 (peek at 4 to find initial best and rest, then look at five more).
+Now sort the bins and look for adjacent bins that can be merged
 
-Then we compare to "just grab any 50 at random" (any50).
+## Merge Rules
 
-Finally, we abandoned all the principles of this subject and evaluated everything (100%).
+We got the following ranges:
 
 ```
-date:26/02/2024 10:15:30
-file:../../Data/auto93.csv
-repeat:20
-seed:31210.0
-rows:398
-cols:8
-names			['Clndrs'  'Volume'   'HpX'    'Model'   'origin'   'Lbs-'    'Acc+'   'Mpg+']  	d2h-
-Mid			[5.45      193.43     104.47   76.01     1          2970.42   15.57    23.84]   	0.56
-Div			[1.7       104.27     38.49    3.7       1.33       846.84    2.76     8.34]    	0.16
-#
-smo9			[4         97         52       82        2          2130      24.6     40]      	0.17
-smo9			[4         90         48       78        2          1985      21.5     40]      	0.19
-smo9			[4         72         69       71        3          1613      18       40]      	0.27
-smo9			[4         85         52       76        1          2035      22.2     30]      	0.31
-smo9			[4         98         70       82        1          2125      17.3     40]      	0.31
-smo9			[4         97         46       73        2          1950      21       30]      	0.32
-smo9			[4         91         70       71        1          1955      20.5     30]      	0.33
-smo9			[4         96         69       72        2          2189      18       30]      	0.38
-smo9			[4         112        88       82        1          2395      18       30]      	0.39
-smo9			[4         112        88       82        1          2395      18       30]      	0.39
-smo9			[4         120        88       82        3          2160      14.5     40]      	0.39
-smo9			[4         120        75       80        3          2542      17.5     30]      	0.41
-smo9			[4         79         67       74        2          2000      16       30]      	0.42
-smo9			[4         98         68       78        1          2155      16.5     30]      	0.42
-smo9			[4         79         67       74        2          1963      15.5     30]      	0.43
-smo9			[4         97         75       75        3          2171      16       30]      	0.43
-smo9			[4         100        '?'      81        2          2320      15.8     30]      	0.44
-smo9			[4         107        86       76        2          2464      15.5     30]      	0.45
-smo9			[4         135        84       81        1          2385      12.9     30]      	0.52
-smo9			[4         90         75       74        2          2108      15.5     20]      	0.54
-#
-any50			[4         79         67       74        3          1950      19       30]      	0.36
-any50			[4         91         69       79        2          2130      14.7     40]      	0.39
-any50			[4         120        74       81        3          2635      18.3     30]      	0.4
-any50			[4         85         70       76        3          1990      17       30]      	0.4
-any50			[4         104        95       70        2          2375      17.5     30]      	0.4
-any50			[4         79         67       74        2          1963      15.5     30]      	0.43
-any50			[4         122        96       77        1          2300      15.5     30]      	0.45
-any50			[4         98         60       76        1          2164      22.1     20]      	0.45
-any50			[4         97         78       74        2          2300      14.5     30]      	0.47
-any50			[6         225        105      73        1          3121      16.5     20]      	0.57
-any50			[4         119        97       78        3          2405      14.9     20]      	0.57
-any50			[6         231        105      77        1          3425      16.9     20]      	0.59
-any50			[4         121        98       75        2          2945      14.5     20]      	0.6
-any50			[4         121        98       75        2          2945      14.5     20]      	0.6
-any50			[6         258        120      78        1          3410      15.1     20]      	0.62
-any50			[6         231        165      78        1          3445      13.4     20]      	0.66
-any50			[8         304        150      70        1          3433      12       20]      	0.69
-any50			[8         360        150      79        1          3940      13       20]      	0.71
-any50			[8         302        137      73        1          4042      14.5     10]      	0.79
-any50			[8         400        175      71        1          4464      11.5     10]      	0.87
-#
-100%			[4         97         52       82        2          2130      24.6     40]      	0.17
+
+PART - 1
+
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '121', 'lo': -inf}, 'y': {'HATE': 13, 'LIKE': 2}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '400', 'lo': '121'}, 'y': {'HATE': 44}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '88', 'lo': '400'}, 'y': {'HATE': 7, 'LIKE': 6}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '96', 'lo': '88'}, 'y': {'HATE': 4, 'LIKE': 10}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '96'}, 'y': {'HATE': 10, 'LIKE': 8}}
+
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '97', 'lo': -inf}, 'y': {'HATE': 41}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '63', 'lo': '97'}, 'y': {'HATE': 4, 'LIKE': 9}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '63'}, 'y': {'HATE': 30, 'LIKE': 17}}
+
+{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 60, 'LIKE': 24}}
+{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': inf, 'lo': '79'}, 'y': {'HATE': 18, 'LIKE': 2}}
+
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '1', 'lo': -inf}, 'y': {'HATE': 51}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '2', 'lo': '1'}, 'y': {'HATE': 9, 'LIKE': 26}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': inf, 'lo': '2'}, 'y': {'HATE': 18}}
+
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1773', 'lo': '1773'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1825', 'lo': '1825'}, 'y': {'LIKE': 2}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1834', 'lo': '1834'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1835', 'lo': '1835'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1867', 'lo': '1867'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1925', 'lo': '1925'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1937', 'lo': '1937'}, 'y': {'LIKE': 2}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1940', 'lo': '1940'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1950', 'lo': '1950'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1955', 'lo': '1955'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1963', 'lo': '1963'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1965', 'lo': '1965'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1975', 'lo': '1975'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1985', 'lo': '1985'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1990', 'lo': '1990'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1995', 'lo': '1995'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2000', 'lo': '2000'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2003', 'lo': '2003'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2035', 'lo': '2035'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2045', 'lo': '2045'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2046', 'lo': '2046'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2051', 'lo': '2051'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2065', 'lo': '2065'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2074', 'lo': '2074'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2085', 'lo': '2085'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2100', 'lo': '2100'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2108', 'lo': '2108'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2120', 'lo': '2120'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2130', 'lo': '2130'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2144', 'lo': '2144'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2155', 'lo': '2155'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2158', 'lo': '2158'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2189', 'lo': '2189'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2190', 'lo': '2190'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2202', 'lo': '2202'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2223', 'lo': '2223'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2246', 'lo': '2246'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2254', 'lo': '2254'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2265', 'lo': '2265'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2278', 'lo': '2278'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2279', 'lo': '2279'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2290', 'lo': '2290'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2300', 'lo': '2300'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2330', 'lo': '2330'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2335', 'lo': '2335'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2370', 'lo': '2370'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2395', 'lo': '2395'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2401', 'lo': '2401'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2408', 'lo': '2408'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2500', 'lo': '2500'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2545', 'lo': '2545'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2639', 'lo': '2639'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2640', 'lo': '2640'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2660', 'lo': '2660'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2670', 'lo': '2670'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2720', 'lo': '2720'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2745', 'lo': '2745'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2807', 'lo': '2807'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2833', 'lo': '2833'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2868', 'lo': '2868'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2875', 'lo': '2875'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2900', 'lo': '2900'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2914', 'lo': '2914'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2930', 'lo': '2930'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2933', 'lo': '2933'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2945', 'lo': '2945'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2984', 'lo': '2984'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3021', 'lo': '3021'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3039', 'lo': '3039'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3085', 'lo': '3085'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3086', 'lo': '3086'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3155', 'lo': '3155'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3205', 'lo': '3205'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3221', 'lo': '3221'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3265', 'lo': '3265'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3288', 'lo': '3288'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3336', 'lo': '3336'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3353', 'lo': '3353'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3410', 'lo': '3410'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3420', 'lo': '3420'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3425', 'lo': '3425'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3436', 'lo': '3436'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3520', 'lo': '3520'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3613', 'lo': '3613'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3630', 'lo': '3630'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3735', 'lo': '3735'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3761', 'lo': '3761'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3820', 'lo': '3820'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3900', 'lo': '3900'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3962', 'lo': '3962'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4055', 'lo': '4055'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4154', 'lo': '4154'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4165', 'lo': '4165'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4209', 'lo': '4209'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4215', 'lo': '4215'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4654', 'lo': '4654'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4699', 'lo': '4699'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4746', 'lo': '4746'}, 'y': {'HATE': 1}}
+```
+
+That is, we have $5+3+2+3+98=111$ ranges, so we $2^{111}-1$ possible rules-- each of which
+we have to test on $26+78=104$ rows.  So lets reduce that search space.
+
+## Pruning Ranges
+
+Those ranges can score and sort and pruned as follows. If a range is found in LIKE of the _best_ rows
+and _HATE_ or the _rest_ rows, then score is _LIKE\*LIKE/(LIKE+HATE)_.
+
+Here are the ranges, sorted (ignoring anything with less than 10% of max score). 
+
+```
+PART - 2
+
+#scores:
+
+0.90 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '2', 'lo': '1'}, 'y': {'HATE': 9, 'LIKE': 26}}
+0.50 {'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 60, 'LIKE': 24}}
+0.41 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '63'}, 'y': {'HATE': 30, 'LIKE': 17}}
+0.34 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '96', 'lo': '88'}, 'y': {'HATE': 4, 'LIKE': 10}}
+0.30 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '63', 'lo': '97'}, 'y': {'HATE': 4, 'LIKE': 9}}
+0.22 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '96'}, 'y': {'HATE': 10, 'LIKE': 8}}
+0.17 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '88', 'lo': '400'}, 'y': {'HATE': 7, 'LIKE': 6}}
+{'HATE': 78, 'LIKE': 26}
 ```
 # Steps to run
 * Navigate to the repository src/hw7/ and run the below command <br/>
