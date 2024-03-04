@@ -251,6 +251,18 @@ class TestSuite:
         score = r.score("a", 1, 1, {"Support": 2})
         assert score == 0
 
+    def test_merged_with_entropy(self):
+        r = Range(0, "test", 2, 5)
+        r2 = Range(1, "test2", 5, 10)
+        merged = r.merge(r2)
+        assert merged.show() == '2 <= test < 10'
+
+    def test_entropy(self):
+        r_entropy = Range(0, "test_entropy", 1)
+        r_entropy.add(1, "a")
+        r_entropy.add(1, "b")
+        entropy_val, _ = Range.entropy(r_entropy.y)
+        assert entropy_val == 1.0
         
     def _run_test(self, test_func, test_name):
         try:
