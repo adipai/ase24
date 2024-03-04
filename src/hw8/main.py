@@ -12,7 +12,7 @@ from datetime import datetime
 import math
 from stats import SAMPLE, eg0
 import statistics
-from Range import Range
+from ranges import Range
 
 """
 # Parse command-line arguments

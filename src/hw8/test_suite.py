@@ -8,7 +8,7 @@ from node import NODE
 from utils import coerce, settings, cells, round, entropy, keysort, any_item, many, o
 from learner import *
 from task import far
-from Range import Range
+from ranges import Range
 
 class TestSuite:
     # def __init__(self) -> None:
