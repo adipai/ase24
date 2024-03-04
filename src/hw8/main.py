@@ -178,7 +178,6 @@ def eg_tree(the={}):
     print("evals: ", evals)
     print()
 
-"""HW7 addition"""
 def _ranges1(col, rowss, the):
     # print(col.at)
     out, nrows = {}, 0
@@ -225,7 +224,7 @@ def bins(the):
     def score(range_, the):
         return range_.score("LIKE", len(LIKE), len(HATE), the=the)
     print()
-    print()
+    print("PART - 1")
     t = []
     # print(d.cols.x.values())
     for col in list(d.cols.x.values()):
@@ -236,6 +235,7 @@ def bins(the):
             t.append(range_)
     t.sort(key=lambda a: score(a, the), reverse=True)
     max_score = score(t[0], the=the)
+    print("\n\nPART - 2")
     print("\n#scores:\n")
     # print(t, the['Beam'])
     for v in t[:int(the['Beam'])]:
