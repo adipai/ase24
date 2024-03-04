@@ -1,6 +1,5 @@
 import math
 import numpy as np
-from
 
 class Range:
     def __init__(self, at, txt, lo, hi=None):
@@ -43,7 +42,7 @@ class Range:
         e2, n2 = self.entropy(other.y)
         if n1 <= tooFew or n2 <= tooFew:
             return both
-        if self.entropy(both.y) <= (n1 * e1 + n2 * e2) / (n1 + n2):
+        if self.entropy(both.y)[0] <= (n1 * e1 + n2 * e2) / (n1 + n2):
             return both
         
     @staticmethod
@@ -55,6 +54,7 @@ class Range:
     
     @staticmethod
     def _score(t, goal, LIKE, HATE, the):
+        # print(t)
         like = sum([n for klass, n in t.items() if klass == goal])
         hate = sum([n for klass, n in t.items() if klass != goal])
         tiny = 1E-30

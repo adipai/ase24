@@ -55,6 +55,7 @@ class NUM:
             y = 1 if x < 0.5 else 0
         return abs(x - y)
 
-    def bin(self, x):
-        tmp = (self.hi - self.lo) / (the.bins - 1)
+    def bin(self, x, the):
+        tmp = (self.hi - self.lo) / (the['bins'] - 1)
+        x = coerce(x)
         return 1 if self.hi == self.lo else int(x / tmp + 0.5) * tmp

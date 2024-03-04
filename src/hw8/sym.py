@@ -45,5 +45,5 @@ class SYM:
     
         return 1
 
-    def bin(self, x):
+    def bin(self, x, the):
         return x

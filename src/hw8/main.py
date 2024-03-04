@@ -1,4 +1,4 @@
-from utils import settings, cli, round, o
+from utils import settings, cli, round, o, slice
 from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
@@ -10,6 +10,9 @@ import csv
 from task import far
 from datetime import datetime
 import math
+from stats import SAMPLE, eg0
+import statistics
+from Range import Range
 
 """
 # Parse command-line arguments
@@ -62,6 +65,51 @@ def hw7_part1(the):
         print(format_row("any50",op[0],op[1]))
     print("#")
     print(format_row("100%",best_whole[0],best_whole[1]))
+
+def hw7_part2(the):
+    print("\n")
+    print("TASK-2:")
+    d = DATA(src = the['file'], the=the)
+    print("date:{}\nfile:{}\nrepeat:{}\nseed:{}\nrows:{}\ncols:{}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"),the['file'],"20",the['seed'],len(d.rows), len(d.rows[0].cells)))
+    sortedRows =  sorted(d.rows, key=lambda x: x.d2h(d))
+    print(f"best: {o(sortedRows[0].d2h(d),n=2)}")
+    all = base(d)
+    print(f"tiny: {o(statistics.stdev(all)*0.35,n=2)}")
+    print("#base #bonr9 #rand9 #bonr15 #rand15 #bonr20 #rand20 #rand358 ")
+    eg0([
+        SAMPLE(randN(d,9, the=the), "rand9"),
+        SAMPLE(randN(d,15, the=the), "rand15"),
+        SAMPLE(randN(d,20, the=the), "rand20"), 
+        SAMPLE(randN(d,358, the=the), "rand358"), 
+        SAMPLE(bonrN(d,9, the=the), "bonr9"),
+        SAMPLE(bonrN(d,15,the=the), "bonr15"),
+        SAMPLE(bonrN(d,20, the=the), "bonr20"),
+        SAMPLE(base(d), "base")
+    ])
+
+def base(d):
+    baseline_output = [row.d2h(d) for row in d.rows]
+    return baseline_output
+
+def randN(d, n, the):
+    random.seed(the['seed'])
+    rand_arr = []
+    for _ in range(20):
+        rows = d.rows
+        random.shuffle(rows)
+        rowsN = random.sample(rows,n)
+        rowsN.sort(key=lambda row: row.d2h(d))
+        rand_arr.append(round(rowsN[0].d2h(d),2))
+
+    return rand_arr
+
+def bonrN(d, n, the):
+    bonr_arr = []
+    for _ in range(20):
+        _,_, best_stats = d.gate(the['seed'], 4, n-4, 0.5)
+        bonr_arr.append(best_stats[1])
+    
+    return bonr_arr
 
 def format_row(name, row, d2h_val=None):
     return_string = ""
@@ -131,28 +179,30 @@ def eg_tree(the={}):
     print()
 
 """HW7 addition"""
-def _ranges1(col, rowss):
+def _ranges1(col, rowss, the):
+    # print(col.at)
     out, nrows = {}, 0
     for y, rows in rowss.items():
         nrows += len(rows)
-        for row in rows:
+        for row in list(rows):
             x = row.cells[col.at]
             if x != "?":
-                bin_ = col.bin(x)
-                if bin_ not in out:
-                    out[bin_] = Range(col.at, col.txt, x)
-                out[bin_].add(x, y)
+                bin = col.bin(x, the=the)
+                if bin not in out:
+                    out[bin] = Range(col.at, col.txt, x)
+                out[bin].add(x, y)
     out = list(out.values())
+    # print(out)
     out.sort(key=lambda r: r.x['lo'])
-    return _mergeds(out, nrows // the.bins) if col.has else out
+    return out if hasattr(col, 'has') else _mergeds(out, nrows / the['bins'])
 
 def _mergeds(ranges, tooFew):
     t = []
-    i = 0
-    while i < len(ranges):
-        a = ranges[i]
-        if i < len(ranges) - 1:
-            both = a.merged(ranges[i + 1], tooFew)
+    i = 1
+    while i <= len(ranges):
+        a = ranges[i-1]
+        if i < len(ranges):
+            both = a.merged(ranges[i], tooFew)
             if both:
                 a = both
                 i += 1
@@ -166,22 +216,34 @@ def _mergeds(ranges, tooFew):
     t[-1].x['hi'] = math.inf
     return t
 
-def bins():
+def bins(the):
     d = DATA(the['file'], the=the)
     best, rest, _ = d.branch()
-    LIKE = list(best.rows.values())
-    # HATE = random.sample(rest.rows, min(3 * len(LIKE), len(rest.rows)))
-    HATE = random.sample(list(rest.rows.values()), min(3 * len(LIKE), len(rest.rows)))
+    LIKE = best.rows
+    HATE = slice(random.sample(rest.rows, min(3 * len(LIKE), len(rest.rows))))
 
-    def score(range_):
-        return range_.score("LIKE", len(LIKE), len(HATE))
-
+    def score(range_, the):
+        return range_.score("LIKE", len(LIKE), len(HATE), the=the)
+    print()
+    print()
     t = []
+    # print(d.cols.x.values())
     for col in list(d.cols.x.values()):
         print("")
-        for range_ in _ranges1(col, {"LIKE": LIKE, "HATE": HATE}):
-            print(range_)
+        for range_ in _ranges1(col, {"LIKE": LIKE, "HATE": HATE}, the=the):
+            d = {'at':range_.at, 'scored':range_.scored, 'txt':range_.txt, 'x':range_.x, 'y':range_.y}
+            print(d)
             t.append(range_)
+    t.sort(key=lambda a: score(a, the), reverse=True)
+    max_score = score(t[0], the=the)
+    print("\n#scores:\n")
+    # print(t, the['Beam'])
+    for v in t[:int(the['Beam'])]:
+        if score(v, the) > max_score * 0.1:
+            d_v = {'at':v.at, 'scored':v.scored, 'txt':v.txt, 'x':v.x, 'y':v.y}
+            print("{:.2f}".format(round(score(v,the), 2)), d_v)
+    print({"LIKE": len(LIKE), "HATE": len(HATE)})
+
    
 
 if __name__ == '__main__':
@@ -207,8 +269,11 @@ if __name__ == '__main__':
             print(f"Test {the['run_tc']} passed.")
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
-        
-    hw7_part1(the=the)
+    # print(the)
+    bins(the=the)
+    # hw7_part1(the=the)
+    # hw7_part2(the=the)
+
     # data_new = DATA(the['file'], the=the)
     # distance(the, data_new)
     # far(the, data_new)
