@@ -230,7 +230,13 @@ def bins(the):
     for col in list(d.cols.x.values()):
         print("")
         for range_ in _ranges1(col, {"LIKE": LIKE, "HATE": HATE}, the=the):
-            d = {'at':range_.at, 'scored':range_.scored, 'txt':range_.txt, 'x':range_.x, 'y':range_.y}
+            temp_x = {'hi':range_.x['hi'], 'lo':range_.x['lo']}
+            temp_y = {}
+            if 'HATE' in range_.y:
+                temp_y['HATE'] = range_.y['HATE']
+            if 'LIKE' in range_.y:
+                temp_y['LIKE'] = range_.y['LIKE']
+            d = {'at':range_.at, 'scored':range_.scored, 'txt':range_.txt, 'x':temp_x, 'y':temp_y}
             print(d)
             t.append(range_)
     t.sort(key=lambda a: score(a, the), reverse=True)
@@ -240,9 +246,15 @@ def bins(the):
     # print(t, the['Beam'])
     for v in t[:int(the['Beam'])]:
         if score(v, the) > max_score * 0.1:
-            d_v = {'at':v.at, 'scored':v.scored, 'txt':v.txt, 'x':v.x, 'y':v.y}
+            temp_x = {'hi':v.x['hi'], 'lo':v.x['lo']}
+            temp_y = {}
+            if 'HATE' in v.y:
+                temp_y['HATE'] = v.y['HATE']
+            if 'LIKE' in v.y:
+                temp_y['LIKE'] = v.y['LIKE']
+            d_v = {'at':v.at, 'scored':v.scored, 'txt':v.txt, 'x':temp_x, 'y':temp_y}
             print("{:.2f}".format(round(score(v,the), 2)), d_v)
-    print({"LIKE": len(LIKE), "HATE": len(HATE)})
+    print({"HATE": len(HATE),"LIKE": len(LIKE),})
 
    
 

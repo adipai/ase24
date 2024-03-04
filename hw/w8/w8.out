@@ -1,140 +1,132 @@
 
 PART - 1
 
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': -inf, 'hi': '116'}, 'y': {'LIKE': 6, 'HATE': 6}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '116', 'hi': '122'}, 'y': {'HATE': 8, 'LIKE': 2}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '122', 'hi': '156'}, 'y': {'LIKE': 4, 'HATE': 9}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '156', 'hi': '400'}, 'y': {'HATE': 40}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '400', 'hi': '85'}, 'y': {'HATE': 5, 'LIKE': 3}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '85', 'hi': '90'}, 'y': {'LIKE': 3, 'HATE': 4}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '90', 'hi': inf}, 'y': {'HATE': 6, 'LIKE': 8}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '121', 'lo': -inf}, 'y': {'HATE': 13, 'LIKE': 2}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '400', 'lo': '121'}, 'y': {'HATE': 44}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '88', 'lo': '400'}, 'y': {'HATE': 7, 'LIKE': 6}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '96', 'lo': '88'}, 'y': {'HATE': 4, 'LIKE': 10}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '96'}, 'y': {'HATE': 10, 'LIKE': 8}}
 
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'lo': -inf, 'hi': '96'}, 'y': {'LIKE': 4, 'HATE': 13}}
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'lo': '96', 'hi': '215'}, 'y': {'HATE': 26}}
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'lo': '215', 'hi': '63'}, 'y': {'HATE': 7, 'LIKE': 6}}
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'lo': '63', 'hi': inf}, 'y': {'LIKE': 16, 'HATE': 31}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '97', 'lo': -inf}, 'y': {'HATE': 41}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '63', 'lo': '97'}, 'y': {'HATE': 4, 'LIKE': 9}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '63'}, 'y': {'HATE': 30, 'LIKE': 17}}
 
-{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'lo': -inf, 'hi': '79'}, 'y': {'LIKE': 23, 'HATE': 63}}
-{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'lo': '79', 'hi': inf}, 'y': {'LIKE': 3, 'HATE': 15}}
+{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 60, 'LIKE': 24}}
+{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': inf, 'lo': '79'}, 'y': {'HATE': 18, 'LIKE': 2}}
 
-{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'lo': -inf, 'hi': '1'}, 'y': {'LIKE': 14, 'HATE': 56}}
-{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'lo': '1', 'hi': '2'}, 'y': {'LIKE': 9, 'HATE': 13}}
-{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'lo': '2', 'hi': inf}, 'y': {'LIKE': 3, 'HATE': 9}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '1', 'lo': -inf}, 'y': {'HATE': 51}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '2', 'lo': '1'}, 'y': {'HATE': 9, 'LIKE': 26}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': inf, 'lo': '2'}, 'y': {'HATE': 18}}
 
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1795', 'hi': '1795'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1800', 'hi': '1800'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1825', 'hi': '1825'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1834', 'hi': '1834'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1835', 'hi': '1835'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1845', 'hi': '1845'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1950', 'hi': '1950'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1963', 'hi': '1963'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1965', 'hi': '1965'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1968', 'hi': '1968'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1985', 'hi': '1985'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '1995', 'hi': '1995'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2019', 'hi': '2019'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2035', 'hi': '2035'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2050', 'hi': '2050'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2051', 'hi': '2051'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2065', 'hi': '2065'}, 'y': {'LIKE': 1, 'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2074', 'hi': '2074'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2075', 'hi': '2075'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2110', 'hi': '2110'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2123', 'hi': '2123'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2155', 'hi': '2155'}, 'y': {'LIKE': 2, 'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2158', 'hi': '2158'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2164', 'hi': '2164'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2200', 'hi': '2200'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2215', 'hi': '2215'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2220', 'hi': '2220'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2223', 'hi': '2223'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2230', 'hi': '2230'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2234', 'hi': '2234'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2255', 'hi': '2255'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2264', 'hi': '2264'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2265', 'hi': '2265'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2300', 'hi': '2300'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2335', 'hi': '2335'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2375', 'hi': '2375'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2395', 'hi': '2395'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2408', 'hi': '2408'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2430', 'hi': '2430'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2451', 'hi': '2451'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2472', 'hi': '2472'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2542', 'hi': '2542'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2582', 'hi': '2582'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2592', 'hi': '2592'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2635', 'hi': '2635'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2672', 'hi': '2672'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2678', 'hi': '2678'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2700', 'hi': '2700'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2720', 'hi': '2720'}, 'y': {'LIKE': 1, 'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2745', 'hi': '2745'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2755', 'hi': '2755'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2795', 'hi': '2795'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2855', 'hi': '2855'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2868', 'hi': '2868'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2870', 'hi': '2870'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2905', 'hi': '2905'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2914', 'hi': '2914'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2933', 'hi': '2933'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2945', 'hi': '2945'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2957', 'hi': '2957'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2965', 'hi': '2965'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2979', 'hi': '2979'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2990', 'hi': '2990'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3039', 'hi': '3039'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3070', 'hi': '3070'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3086', 'hi': '3086'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3245', 'hi': '3245'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3265', 'hi': '3265'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3282', 'hi': '3282'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3302', 'hi': '3302'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3399', 'hi': '3399'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3415', 'hi': '3415'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3420', 'hi': '3420'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3432', 'hi': '3432'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3664', 'hi': '3664'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3672', 'hi': '3672'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3725', 'hi': '3725'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3755', 'hi': '3755'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3777', 'hi': '3777'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3781', 'hi': '3781'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3821', 'hi': '3821'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3840', 'hi': '3840'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3870', 'hi': '3870'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3900', 'hi': '3900'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3955', 'hi': '3955'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '3962', 'hi': '3962'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4098', 'hi': '4098'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4100', 'hi': '4100'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4129', 'hi': '4129'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4209', 'hi': '4209'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4220', 'hi': '4220'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4237', 'hi': '4237'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4294', 'hi': '4294'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4363', 'hi': '4363'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4376', 'hi': '4376'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4456', 'hi': '4456'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4498', 'hi': '4498'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4654', 'hi': '4654'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4699', 'hi': '4699'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '4735', 'hi': '4735'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1773', 'lo': '1773'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1825', 'lo': '1825'}, 'y': {'LIKE': 2}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1834', 'lo': '1834'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1835', 'lo': '1835'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1867', 'lo': '1867'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1925', 'lo': '1925'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1937', 'lo': '1937'}, 'y': {'LIKE': 2}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1940', 'lo': '1940'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1950', 'lo': '1950'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1955', 'lo': '1955'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1963', 'lo': '1963'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1965', 'lo': '1965'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1975', 'lo': '1975'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1985', 'lo': '1985'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1990', 'lo': '1990'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1995', 'lo': '1995'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2000', 'lo': '2000'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2003', 'lo': '2003'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2035', 'lo': '2035'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2045', 'lo': '2045'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2046', 'lo': '2046'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2051', 'lo': '2051'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2065', 'lo': '2065'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2074', 'lo': '2074'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2085', 'lo': '2085'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2100', 'lo': '2100'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2108', 'lo': '2108'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2120', 'lo': '2120'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2130', 'lo': '2130'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2144', 'lo': '2144'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2155', 'lo': '2155'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2158', 'lo': '2158'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2189', 'lo': '2189'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2190', 'lo': '2190'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2202', 'lo': '2202'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2223', 'lo': '2223'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2246', 'lo': '2246'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2254', 'lo': '2254'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2265', 'lo': '2265'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2278', 'lo': '2278'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2279', 'lo': '2279'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2290', 'lo': '2290'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2300', 'lo': '2300'}, 'y': {'HATE': 1, 'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2330', 'lo': '2330'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2335', 'lo': '2335'}, 'y': {'LIKE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2370', 'lo': '2370'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2395', 'lo': '2395'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2401', 'lo': '2401'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2408', 'lo': '2408'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2500', 'lo': '2500'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2545', 'lo': '2545'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2639', 'lo': '2639'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2640', 'lo': '2640'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2660', 'lo': '2660'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2670', 'lo': '2670'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2720', 'lo': '2720'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2745', 'lo': '2745'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2807', 'lo': '2807'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2833', 'lo': '2833'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2868', 'lo': '2868'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2875', 'lo': '2875'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2900', 'lo': '2900'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2914', 'lo': '2914'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2930', 'lo': '2930'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2933', 'lo': '2933'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2945', 'lo': '2945'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2984', 'lo': '2984'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3021', 'lo': '3021'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3039', 'lo': '3039'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3085', 'lo': '3085'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3086', 'lo': '3086'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3155', 'lo': '3155'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3205', 'lo': '3205'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3221', 'lo': '3221'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3265', 'lo': '3265'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3288', 'lo': '3288'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3336', 'lo': '3336'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3353', 'lo': '3353'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3410', 'lo': '3410'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3420', 'lo': '3420'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3425', 'lo': '3425'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3436', 'lo': '3436'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3520', 'lo': '3520'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3613', 'lo': '3613'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3630', 'lo': '3630'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3735', 'lo': '3735'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3761', 'lo': '3761'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3820', 'lo': '3820'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3900', 'lo': '3900'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3962', 'lo': '3962'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4055', 'lo': '4055'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4154', 'lo': '4154'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4165', 'lo': '4165'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4209', 'lo': '4209'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4215', 'lo': '4215'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4654', 'lo': '4654'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4699', 'lo': '4699'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4746', 'lo': '4746'}, 'y': {'HATE': 1}}
 
 
 PART - 2
 
 #scores:
 
-0.46 {'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'lo': -inf, 'hi': '79'}, 'y': {'LIKE': 23, 'HATE': 63}}
-0.37 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'lo': '63', 'hi': inf}, 'y': {'LIKE': 16, 'HATE': 31}}
-0.25 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '90', 'hi': inf}, 'y': {'HATE': 6, 'LIKE': 8}}
-0.23 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'lo': '1', 'hi': '2'}, 'y': {'LIKE': 9, 'HATE': 13}}
-0.17 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': -inf, 'hi': '116'}, 'y': {'LIKE': 6, 'HATE': 6}}
-0.17 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'lo': '215', 'hi': '63'}, 'y': {'HATE': 7, 'LIKE': 6}}
-0.09 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '122', 'hi': '156'}, 'y': {'LIKE': 4, 'HATE': 9}}
-0.08 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '85', 'hi': '90'}, 'y': {'LIKE': 3, 'HATE': 4}}
-0.07 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'lo': '400', 'hi': '85'}, 'y': {'HATE': 5, 'LIKE': 3}}
-0.07 {'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'lo': '2155', 'hi': '2155'}, 'y': {'LIKE': 2, 'HATE': 1}}
-{'LIKE': 26, 'HATE': 78}
+0.90 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '2', 'lo': '1'}, 'y': {'HATE': 9, 'LIKE': 26}}
+0.50 {'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 60, 'LIKE': 24}}
+0.41 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '63'}, 'y': {'HATE': 30, 'LIKE': 17}}
+0.34 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '96', 'lo': '88'}, 'y': {'HATE': 4, 'LIKE': 10}}
+0.30 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '63', 'lo': '97'}, 'y': {'HATE': 4, 'LIKE': 9}}
+0.22 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '96'}, 'y': {'HATE': 10, 'LIKE': 8}}
+0.17 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '88', 'lo': '400'}, 'y': {'HATE': 7, 'LIKE': 6}}
+{'HATE': 78, 'LIKE': 26}
