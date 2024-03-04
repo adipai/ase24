@@ -8,6 +8,7 @@ from node import NODE
 from utils import coerce, settings, cells, round, entropy, keysort, any_item, many, o
 from learner import *
 from task import far
+from Range import Range
 
 class TestSuite:
     # def __init__(self) -> None:
@@ -233,6 +234,22 @@ class TestSuite:
         assert len(left_branch.rows) > 0
         assert len(right_branch.rows) > 0
         assert evals > 0
+
+    def test_initialization_and_show(self):
+        r = Range(0, "test", 1, 5)
+        assert r.show() == "1 <= test < 5", "Show method failed"
+
+    def test_add_and_update_range(self):
+        r = Range(0, "test", 1, 5)
+        r.add(0, "a")  
+        r.add(6, "b")
+        assert r.show() == '0 <= test < 6'
+
+    def test_score(self):
+        r = Range(0, "test", 0, 5)
+        r.y = {'HATE': 78, 'LIKE': 26}
+        score = r.score("a", 1, 1, {"Support": 2})
+        assert score == 0
 
         
     def _run_test(self, test_func, test_name):
