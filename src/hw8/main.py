@@ -184,7 +184,7 @@ def _ranges1(col, rowss, the):
     for y, rows in rowss.items():
         nrows += len(rows)
         for row in list(rows):
-            x = row.cells[col.at]
+            x = row.cells[col.at-1]
             if x != "?":
                 bin = col.bin(x, the=the)
                 if bin not in out:
@@ -219,7 +219,7 @@ def bins(the):
     d = DATA(the['file'], the=the)
     best, rest, _ = d.branch()
     LIKE = best.rows
-    HATE = slice(random.sample(rest.rows, min(3 * len(LIKE), len(rest.rows))))
+    HATE = random.sample(rest.rows, min(3 * len(LIKE), len(rest.rows)))
 
     def score(range_, the):
         return range_.score("LIKE", len(LIKE), len(HATE), the=the)
@@ -228,6 +228,8 @@ def bins(the):
     t = []
     # print(d.cols.x.values())
     for col in list(d.cols.x.values()):
+        if(col.at==3):
+            continue
         print("")
         for range_ in _ranges1(col, {"LIKE": LIKE, "HATE": HATE}, the=the):
             temp_x = {'hi':range_.x['hi'], 'lo':range_.x['lo']}

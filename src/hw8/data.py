@@ -161,36 +161,36 @@ class DATA:
         return new
     
     def farapart(self, rows, sortp=True, a=None, b=None):
-        far = int(len(rows) * 0.95)
-        evals = 1 if a else 2
-        x = any_item(rows).neighbors(self, rows)
-        a = a or any_item(rows).neighbors(self, rows)[far]
-        b = a.neighbors(self, rows)[far]
-
+        far = int(len(rows) * 0.95) + 1
+        evals = 1 if a is not None else 2
+        
+        a = a or rows[0]
+    
+        sorted_neighbors = a.neighbors(self, rows)
+        a = a or sorted_neighbors[0]
+        b = sorted_neighbors[min(far, len(sorted_neighbors) - 1)]
+        # print(a.d2h(self), a.cells)
+        # print(b.d2h(self), b.cells)
         if sortp and b.d2h(self) < a.d2h(self):
             a, b = b, a
-
-        return a, b, a.dist(b,self), evals
+        
+        return a, b, a.dist(b, self), evals
 
     def half(self, rows, sortp=None, before=None):
-        some = many(rows, min(self.the.Half, len(rows)))
+        # print("P")
+        the_half = min(len(rows) // 2, len(rows))
+        # print(the_half)
+        some = rows[:the_half]
         a, b, C, evals = self.farapart(some, sortp, before)
-
         def d(row1, row2):
             return row1.dist(row2, self)
-
+        
         def project(r):
-            return (d(r, a) ** 2 + C ** 2 - d(r, b) ** 2) / (2 * C)
-
-        as_, bs = [], []
-        sorted_rows = keysort(rows, project)
-
-        for n, row in enumerate(sorted_rows, start=1):
-            if n <= len(rows) // 2:
-                as_.append(row)
-            else:
-                bs.append(row)
-
+            return (d(r, a)**2 + C**2 - d(r, b)**2) / (2 * C)
+        rows_sorted = sorted(rows, key=project)
+        mid_point = len(rows) // 2
+        as_ = rows_sorted[:mid_point]
+        bs = rows_sorted[mid_point:]
         return as_, bs, a, b, C, d(a, bs[0]), evals
 
     def tree(self, sortp):
@@ -222,9 +222,12 @@ class DATA:
                 evals += 1
                 for row1 in rights:
                     rest.append(row1)
+                # print("Hi: ", len(rights), len(rest))
+                # exit()
 
                 return _branch(self.clone(lefts), left)
             else:
+                # print("Bye: ", len(data.rows), len(rest))
                 return self.clone(data.rows), self.clone(rest), evals
 
         return _branch(self)
@@ -235,24 +238,4 @@ class DATA:
             newData.add(row)
         return newData
     
-    def half(self, rows, sortp, before):
-        the_Half = len(rows) // 2
-        some = many(rows, min(the_Half, len(rows)))
-        a, b, C, evals = self.farapart(some, sortp, before)
-
-        def d(row1, row2):
-            return row1.dist(row2, self)
-
-        def project(r):
-            return (d(r, a) ** 2 + C ** 2 - d(r, b) ** 2) / (2 * C)
-
-        as_, bs = [], []
-
-        for n, row in enumerate(sorted(rows, key=project)):
-            if n <= (len(rows) // 2):
-                as_.append(row)
-            else:
-                bs.append(row)
-
-        return as_, bs, a, b, C, d(a, bs[0]), evals
 
