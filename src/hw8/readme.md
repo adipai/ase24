@@ -19,125 +19,26 @@ We got the following ranges:
 
 PART - 1
 
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '121', 'lo': -inf}, 'y': {'HATE': 13, 'LIKE': 2}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '400', 'lo': '121'}, 'y': {'HATE': 44}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '88', 'lo': '400'}, 'y': {'HATE': 7, 'LIKE': 6}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '96', 'lo': '88'}, 'y': {'HATE': 4, 'LIKE': 10}}
-{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '96'}, 'y': {'HATE': 10, 'LIKE': 8}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '4', 'lo': -inf}, 'y': {'HATE': 35, 'LIKE': 24}}
+{'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '4'}, 'y': {'HATE': 37}}
 
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '97', 'lo': -inf}, 'y': {'HATE': 41}}
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '63', 'lo': '97'}, 'y': {'HATE': 4, 'LIKE': 9}}
-{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '63'}, 'y': {'HATE': 30, 'LIKE': 17}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '98', 'lo': -inf}, 'y': {'HATE': 13, 'LIKE': 15}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '200', 'lo': '98'}, 'y': {'HATE': 21, 'LIKE': 1}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '360', 'lo': '200'}, 'y': {'HATE': 25}}
+{'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '360'}, 'y': {'HATE': 13, 'LIKE': 8}}
 
-{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 60, 'LIKE': 24}}
-{'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': inf, 'lo': '79'}, 'y': {'HATE': 18, 'LIKE': 2}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 56}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '80', 'lo': '79'}, 'y': {'HATE': 4, 'LIKE': 8}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '81', 'lo': '80'}, 'y': {'HATE': 4, 'LIKE': 9}}
+{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': inf, 'lo': '81'}, 'y': {'HATE': 8, 'LIKE': 7}}
 
-{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '1', 'lo': -inf}, 'y': {'HATE': 51}}
-{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '2', 'lo': '1'}, 'y': {'HATE': 9, 'LIKE': 26}}
-{'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': inf, 'lo': '2'}, 'y': {'HATE': 18}}
-
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1773', 'lo': '1773'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1825', 'lo': '1825'}, 'y': {'LIKE': 2}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1834', 'lo': '1834'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1835', 'lo': '1835'}, 'y': {'HATE': 1, 'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1867', 'lo': '1867'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1925', 'lo': '1925'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1937', 'lo': '1937'}, 'y': {'LIKE': 2}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1940', 'lo': '1940'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1950', 'lo': '1950'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1955', 'lo': '1955'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1963', 'lo': '1963'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1965', 'lo': '1965'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1975', 'lo': '1975'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1985', 'lo': '1985'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1990', 'lo': '1990'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1995', 'lo': '1995'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2000', 'lo': '2000'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2003', 'lo': '2003'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2035', 'lo': '2035'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2045', 'lo': '2045'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2046', 'lo': '2046'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2051', 'lo': '2051'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2065', 'lo': '2065'}, 'y': {'HATE': 1, 'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2074', 'lo': '2074'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2085', 'lo': '2085'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2100', 'lo': '2100'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2108', 'lo': '2108'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2120', 'lo': '2120'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2130', 'lo': '2130'}, 'y': {'HATE': 1, 'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2144', 'lo': '2144'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2155', 'lo': '2155'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2158', 'lo': '2158'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2189', 'lo': '2189'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2190', 'lo': '2190'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2202', 'lo': '2202'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2223', 'lo': '2223'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2246', 'lo': '2246'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2254', 'lo': '2254'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2265', 'lo': '2265'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2278', 'lo': '2278'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2279', 'lo': '2279'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2290', 'lo': '2290'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2300', 'lo': '2300'}, 'y': {'HATE': 1, 'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2330', 'lo': '2330'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2335', 'lo': '2335'}, 'y': {'LIKE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2370', 'lo': '2370'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2395', 'lo': '2395'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2401', 'lo': '2401'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2408', 'lo': '2408'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2500', 'lo': '2500'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2545', 'lo': '2545'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2639', 'lo': '2639'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2640', 'lo': '2640'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2660', 'lo': '2660'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2670', 'lo': '2670'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2720', 'lo': '2720'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2745', 'lo': '2745'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2807', 'lo': '2807'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2833', 'lo': '2833'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2868', 'lo': '2868'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2875', 'lo': '2875'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2900', 'lo': '2900'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2914', 'lo': '2914'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2930', 'lo': '2930'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2933', 'lo': '2933'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2945', 'lo': '2945'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2984', 'lo': '2984'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3021', 'lo': '3021'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3039', 'lo': '3039'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3085', 'lo': '3085'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3086', 'lo': '3086'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3155', 'lo': '3155'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3205', 'lo': '3205'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3221', 'lo': '3221'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3265', 'lo': '3265'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3288', 'lo': '3288'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3336', 'lo': '3336'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3353', 'lo': '3353'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3410', 'lo': '3410'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3420', 'lo': '3420'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3425', 'lo': '3425'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3436', 'lo': '3436'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3520', 'lo': '3520'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3613', 'lo': '3613'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3630', 'lo': '3630'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3735', 'lo': '3735'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3761', 'lo': '3761'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3820', 'lo': '3820'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3900', 'lo': '3900'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3962', 'lo': '3962'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4055', 'lo': '4055'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4154', 'lo': '4154'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4165', 'lo': '4165'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4209', 'lo': '4209'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4215', 'lo': '4215'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4654', 'lo': '4654'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4699', 'lo': '4699'}, 'y': {'HATE': 1}}
-{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '4746', 'lo': '4746'}, 'y': {'HATE': 1}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '1', 'lo': '1'}, 'y': {'HATE': 45}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '2', 'lo': '2'}, 'y': {'HATE': 15}}
+{'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3', 'lo': '3'}, 'y': {'HATE': 12, 'LIKE': 24}}
 ```
 
-That is, we have $5+3+2+3+98=111$ ranges, so we $2^{111}-1$ possible rules-- each of which
-we have to test on $26+78=104$ rows.  So lets reduce that search space.
+That is, we have $2+4+5+3=13$ ranges, so we $2^{13}-1=8191$ possible rules-- each of which
+we have to test on $24+72=96$ rows.  So lets reduce that search space.
 
 ## Pruning Ranges
 
@@ -151,14 +52,14 @@ PART - 2
 
 #scores:
 
-0.90 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '2', 'lo': '1'}, 'y': {'HATE': 9, 'LIKE': 26}}
-0.50 {'at': 3, 'scored': 0, 'txt': 'HpX', 'x': {'hi': '79', 'lo': -inf}, 'y': {'HATE': 60, 'LIKE': 24}}
-0.41 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '63'}, 'y': {'HATE': 30, 'LIKE': 17}}
-0.34 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '96', 'lo': '88'}, 'y': {'HATE': 4, 'LIKE': 10}}
-0.30 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '63', 'lo': '97'}, 'y': {'HATE': 4, 'LIKE': 9}}
-0.22 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': inf, 'lo': '96'}, 'y': {'HATE': 10, 'LIKE': 8}}
-0.17 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '88', 'lo': '400'}, 'y': {'HATE': 7, 'LIKE': 6}}
-{'HATE': 78, 'LIKE': 26}
+0.86 {'at': 5, 'scored': 0, 'txt': 'origin', 'x': {'hi': '3', 'lo': '3'}, 'y': {'HATE': 12, 'LIKE': 24}}
+0.67 {'at': 1, 'scored': 0, 'txt': 'Clndrs', 'x': {'hi': '4', 'lo': -inf}, 'y': {'HATE': 35, 'LIKE': 24}}
+0.48 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': '98', 'lo': -inf}, 'y': {'HATE': 13, 'LIKE': 15}}
+0.33 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '81', 'lo': '80'}, 'y': {'HATE': 4, 'LIKE': 9}}
+0.29 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': '80', 'lo': '79'}, 'y': {'HATE': 4, 'LIKE': 8}}
+0.22 {'at': 2, 'scored': 0, 'txt': 'Volume', 'x': {'hi': inf, 'lo': '360'}, 'y': {'HATE': 13, 'LIKE': 8}}
+0.21 {'at': 4, 'scored': 0, 'txt': 'Model', 'x': {'hi': inf, 'lo': '81'}, 'y': {'HATE': 8, 'LIKE': 7}}
+{'HATE': 72, 'LIKE': 24}
 ```
 # Steps to run
 * Navigate to the repository src/hw7/ and run the below command <br/>
