@@ -4,7 +4,7 @@ Codebase for CSC-591-(021) Automated Software Engineering course @ NCSU, group 1
 # About
 ## Finding interesting ranges
 
-For auto93, our RRP finds 26 _best_ so I picked  3\*26=78 _rest_. 
+For auto93, our RRP finds 24 _best_ so I picked  3\*24=72_rest_. 
 
 Next, for all the numeric columns, divide them into bins of size _(hi - lo)/16_ and count how often
 attribute values fall into each of those bins.
