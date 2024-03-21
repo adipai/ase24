@@ -1,4 +1,4 @@
-from utils import settings, cli, round, o, slice
+from utils import settings, cli, round, o, slice, shuffle
 from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
@@ -13,6 +13,7 @@ import math
 from stats import SAMPLE, eg0
 import statistics
 from ranges import Range
+from rules import RULES
 
 """
 # Parse command-line arguments
@@ -178,6 +179,13 @@ def eg_tree(the={}):
     print("evals: ", evals)
     print()
 
+def _ranges(cols, rowss, the):
+    t = []
+    for col in cols:
+        for range in _ranges1(col, rowss, the):
+            t.append(range)
+    return t
+
 def _ranges1(col, rowss, the):
     # print(col.at)
     out, nrows = {}, 0
@@ -268,40 +276,40 @@ def eg_rules(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _)
         best, _, evals2 = best0.branch(the.D)
         print(evals1 + evals2 + the.D - 1)
         LIKE = best.rows
-        HATE = l.slice(l.shuffle(rest.rows), 1, 3 * len(LIKE))
+        HATE = slice(shuffle(rest.rows), 1, 3 * len(LIKE))
         rowss = {'LIKE': LIKE, 'HATE': HATE}
-        for i, rule in enumerate(RULES.new(_ranges(d.cols.x, rowss), "LIKE", rowss).sorted):
+        for i, rule in enumerate(RULES.new(_ranges(d.cols.x, rowss, the), "LIKE", rowss).sorted):
             result = d.clone(rule.selects(rest.rows))
             if len(result.rows) > 0:
                 result.rows.sort(key=lambda row: row.d2h(d))
-                print(l.rnd(rule.scored), l.rnd(result.mid().d2h(d)), l.rnd(result.rows[0].d2h(d)),
-                      l.o(result.mid().cells), "\t", rule.show())
+                print(round(rule.scored), round(result.mid().d2h(d)), round(result.rows[0].d2h(d)),
+                      o(result.mid().cells), "\t", rule.show())
 
 def eg_rules2(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _, train, test, tmp, random):
     for xxx in range(1, 2):
         d = DATA.new(the.file)
-        tmp = l.shuffle(d.rows)
+        tmp = shuffle(d.rows)
         train = d.clone(tmp[:len(tmp) // 2])
         test = d.clone(tmp[len(tmp) // 2:])
         test.rows.sort(key=lambda row: row.d2h(d))
-        print("base", l.rnd(test.mid().d2h(d)), l.rnd(test.rows[0].d2h(d)), "\n")
-        test.rows = l.shuffle(test.rows)
+        print("base", round(test.mid().d2h(d)), l.rnd(test.rows[0].d2h(d)), "\n")
+        test.rows = shuffle(test.rows)
         best0, rest, evals1 = train.branch(the.d)
         best, _, evals2 = best0.branch(the.D)
         print(evals1 + evals2 + the.D - 1)
         LIKE = best.rows
-        HATE = l.slice(l.shuffle(rest.rows), 1, 3 * len(LIKE))
+        HATE = slice(l.shuffle(rest.rows), 1, 3 * len(LIKE))
         rowss = {'LIKE': LIKE, 'HATE': HATE}
-        test.rows = l.shuffle(test.rows)
-        random = test.clone(l.slice(test.rows, 1, evals1 + evals2 + the.D - 1))
+        test.rows = shuffle(test.rows)
+        random = test.clone(slice(test.rows, 1, evals1 + evals2 + the.D - 1))
         random.rows.sort(key=lambda row: row.d2h(d))
-        for i, rule in enumerate(RULES.new(_ranges(train.cols.x, rowss), "LIKE", rowss).sorted):
+        for i, rule in enumerate(RULES.new(_ranges(train.cols.x, rowss, the), "LIKE", rowss).sorted):
             result = train.clone(rule.selects(test.rows))
             if len(result.rows) > 0:
                 result.rows.sort(key=lambda row: row.d2h(d))
-                print(l.rnd(rule.scored), l.rnd(result.mid().d2h(d)), l.rnd(result.rows[0].d2h(d)),
-                      l.rnd(random.mid().d2h(d)), l.rnd(random.rows[0].d2h(d)),
-                      l.o(result.mid().cells), "\t", rule.show())
+                print(round(rule.scored), round(result.mid().d2h(d)), round(result.rows[0].d2h(d)),
+                      round(random.mid().d2h(d)), round(random.rows[0].d2h(d)),
+                      o(result.mid().cells), "\t", rule.show())
    
 
 if __name__ == '__main__':
