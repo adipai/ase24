@@ -258,6 +258,52 @@ def bins(the):
             print("{:.2f}".format(round(score(v,the), 2)), d_v)
     print({"HATE": len(HATE),"LIKE": len(LIKE),})
 
+"""
+The following 2 functions need to be made to work:
+"""
+def eg_rules(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _):
+    for xxx in range(1, 2):
+        d = DATA.new(the.file)
+        best0, rest, evals1 = d.branch(the.d)
+        best, _, evals2 = best0.branch(the.D)
+        print(evals1 + evals2 + the.D - 1)
+        LIKE = best.rows
+        HATE = l.slice(l.shuffle(rest.rows), 1, 3 * len(LIKE))
+        rowss = {'LIKE': LIKE, 'HATE': HATE}
+        for i, rule in enumerate(RULES.new(_ranges(d.cols.x, rowss), "LIKE", rowss).sorted):
+            result = d.clone(rule.selects(rest.rows))
+            if len(result.rows) > 0:
+                result.rows.sort(key=lambda row: row.d2h(d))
+                print(l.rnd(rule.scored), l.rnd(result.mid().d2h(d)), l.rnd(result.rows[0].d2h(d)),
+                      l.o(result.mid().cells), "\t", rule.show())
+
+def eg_rules2(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _, train, test, tmp, random):
+    for xxx in range(1, 2):
+        d = DATA.new(the.file)
+        tmp = l.shuffle(d.rows)
+        train = d.clone(tmp[:len(tmp) // 2])
+        test = d.clone(tmp[len(tmp) // 2:])
+        test.rows.sort(key=lambda row: row.d2h(d))
+        print("base", l.rnd(test.mid().d2h(d)), l.rnd(test.rows[0].d2h(d)), "\n")
+        test.rows = l.shuffle(test.rows)
+        best0, rest, evals1 = train.branch(the.d)
+        best, _, evals2 = best0.branch(the.D)
+        print(evals1 + evals2 + the.D - 1)
+        LIKE = best.rows
+        HATE = l.slice(l.shuffle(rest.rows), 1, 3 * len(LIKE))
+        rowss = {'LIKE': LIKE, 'HATE': HATE}
+        test.rows = l.shuffle(test.rows)
+        random = test.clone(l.slice(test.rows, 1, evals1 + evals2 + the.D - 1))
+        random.rows.sort(key=lambda row: row.d2h(d))
+        for i, rule in enumerate(RULES.new(_ranges(train.cols.x, rowss), "LIKE", rowss).sorted):
+            result = train.clone(rule.selects(test.rows))
+            if len(result.rows) > 0:
+                result.rows.sort(key=lambda row: row.d2h(d))
+                print(l.rnd(rule.scored), l.rnd(result.mid().d2h(d)), l.rnd(result.rows[0].d2h(d)),
+                      l.rnd(random.mid().d2h(d)), l.rnd(random.rows[0].d2h(d)),
+                      l.o(result.mid().cells), "\t", rule.show())
+   
+
 if __name__ == '__main__':
     the, opt_dir = settings(help_str)
     the = cli(the, opt_dir)
