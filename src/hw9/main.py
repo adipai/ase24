@@ -1,4 +1,4 @@
-from utils import settings, cli, round, o, slice, shuffle
+from utils import settings, cli, round, o, slice, shuffle, coerce
 from config import help_str, egs
 from test_suite import TestSuite
 # from globals import the, my
@@ -180,9 +180,12 @@ def eg_tree(the={}):
     print()
 
 def _ranges(cols, rowss, the):
+    # print(cols)
     t = []
     for col in cols:
-        for range in _ranges1(col, rowss, the):
+        if(col==3):
+            continue
+        for range in _ranges1(cols[col], rowss, the):
             t.append(range)
     return t
 
@@ -194,10 +197,10 @@ def _ranges1(col, rowss, the):
         for row in list(rows):
             x = row.cells[col.at-1]
             if x != "?":
-                bin = col.bin(x, the=the)
+                bin = col.bin(coerce(x), the=the)
                 if bin not in out:
-                    out[bin] = Range(col.at, col.txt, x)
-                out[bin].add(x, y)
+                    out[bin] = Range(col.at, col.txt, coerce(x))
+                out[bin].add(coerce(x), y)
     out = list(out.values())
     # print(out)
     out.sort(key=lambda r: r.x['lo'])
@@ -269,12 +272,12 @@ def bins(the):
 """
 The following 2 functions need to be made to work in some capacity
 """
-def eg_rules(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _, the):
+def eg_rules(the):
     for xxx in range(1, 2):
         d = DATA(the['file'], the=the)
         best0, rest, evals1 = d.branch(the['d'])
         best, _, evals2 = best0.branch(the['D'])
-        print(evals1 + evals2 + the.D - 1)
+        # print(evals1 + evals2 + the['D']- 1)
         LIKE = best.rows
         HATE = slice(shuffle(rest.rows), 1, 3 * len(LIKE))
         rowss = {'LIKE': LIKE, 'HATE': HATE}
@@ -282,34 +285,29 @@ def eg_rules(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _,
             result = d.clone(rule.selects(rest.rows))
             if len(result.rows) > 0:
                 result.rows.sort(key=lambda row: row.d2h(d))
-                print(round(rule.scored), round(result.mid().d2h(d)), round(result.rows[0].d2h(d)),
-                      o(result.mid().cells), "\t", rule.show())
+                print(round(rule.scored), o(result.mid().cells), "\t", rule.show())
 
-def eg_rules2(d, rowss, best, rest, LIKE, HATE, best0, result, evals1, evals2, _, train, test, tmp, random, the):
+def eg_rules2(the):
     for xxx in range(1, 2):
         d = DATA(the['file'], the=the)
         tmp = shuffle(d.rows)
         train = d.clone(tmp[:len(tmp) // 2])
         test = d.clone(tmp[len(tmp) // 2:])
         test.rows.sort(key=lambda row: row.d2h(d))
-        print("base", round(test.mid().d2h(d)), round(test.rows[0].d2h(d)), "\n")
         test.rows = shuffle(test.rows)
         best0, rest, evals1 = train.branch(the['d'])
         best, _, evals2 = best0.branch(the['D'])
-        print(evals1 + evals2 + the.D - 1)
         LIKE = best.rows
         HATE = slice(shuffle(rest.rows), 1, 3 * len(LIKE))
         rowss = {'LIKE': LIKE, 'HATE': HATE}
         test.rows = shuffle(test.rows)
-        random = test.clone(slice(test.rows, 1, evals1 + evals2 + the.D - 1))
+        random = test.clone(slice(test.rows, 1, int(evals1 + evals2 + the['D'] - 1)))
         random.rows.sort(key=lambda row: row.d2h(d))
         for i, rule in enumerate(RULES(_ranges(train.cols.x, rowss, the), "LIKE", rowss, the=the).sorted):
             result = train.clone(rule.selects(test.rows))
             if len(result.rows) > 0:
                 result.rows.sort(key=lambda row: row.d2h(d))
-                print(round(rule.scored), round(result.mid().d2h(d)), round(result.rows[0].d2h(d)),
-                      round(random.mid().d2h(d)), round(random.rows[0].d2h(d)),
-                      o(result.mid().cells), "\t", rule.show())
+                print(round(rule.scored), o(result.mid().cells), "\t", rule.show())
    
 
 if __name__ == '__main__':
@@ -336,7 +334,10 @@ if __name__ == '__main__':
         except AssertionError as e:
             print(f"Test {the['run_tc']} failed: {e}")
     # print(the)
-    bins(the=the)
+    # bins(the=the)
+    # eg_rules(the=the)
+    eg_rules2(the=the)
+
     # hw7_part1(the=the)
     # hw7_part2(the=the)
 

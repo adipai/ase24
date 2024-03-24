@@ -31,7 +31,13 @@ class RULES:
         for subset in powerset(ranges):
             if len(subset) > 0:
                 rule = RULE(subset)
-                rule.scored = self.score(rule.selectss(self.rowss))
+                # print(rule.items())
+                # print(rule.parts)
+                y_preds = rule.selectss(self.rowss)
+                if(y_preds["LIKE"]==0 and y_preds["HATE"]==0):
+                    rule.scored = 0
+                else:
+                    rule.scored = self.score(y_preds)
                 if rule.scored > 0.01:
                     u.append(rule)
         return u
@@ -40,6 +46,6 @@ class RULES:
         t.sort(key=lambda x: x.scored, reverse=True)
         u = []
         for x in t:
-            if x.scored >= t[0].scored * the.Cut:
+            if x.scored >= t[0].scored * the['Cut']:
                 u.append(x)
-        return u[:the.Beam]
+        return u[:int(the['Beam'])]

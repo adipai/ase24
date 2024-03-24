@@ -167,6 +167,7 @@ Addition for HW9
 
 def score(t, goal, LIKE, HATE, the):
     like, hate, tiny = 0, 0, 1E-30
+    # print(t.items())
     for klass, n in t.items():
         if klass == goal:
             like += n
@@ -177,11 +178,13 @@ def score(t, goal, LIKE, HATE, the):
     if hate > like:
         return 0
     else:
-        return (like ** the.Support) / (like + hate)
+        return (like ** the['Support']) / (like + hate)
     
 def powerset(s):
+    # print(s)
     t = [[]]
     for i in range(len(s)):
         for j in range(len(t)):
             t.append([s[i]] + t[j])
+    # print(t)
     return t

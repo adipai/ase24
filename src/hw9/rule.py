@@ -1,5 +1,5 @@
 
-
+from utils import coerce, copy
 class RULE:
     def __init__(self, ranges):
         self.parts = {}
@@ -10,11 +10,14 @@ class RULE:
             self.parts[range.txt].append(range)
 
     def _or(self, ranges, row):
-        x = row.cells[ranges[0].at]
+        # print(ranges[0].at)
+        x = row.cells[ranges[0].at-1]
         if x == "?":
             return True
         for range in ranges:
-            lo, hi = range.x.lo, range.x.hi
+            # print(range.x, range.txt, x)
+            lo, hi = range.x['lo'], range.x['hi']
+            x, lo, hi = coerce(x), coerce(lo), coerce(hi)
             if (lo == hi and lo == x) or (lo <= x < hi):
                 return True
         return False
@@ -29,6 +32,7 @@ class RULE:
         selected = []
         for r in rows:
             if self._and(r):
+                # print("Hi")
                 selected.append(r)
         return selected
 
@@ -40,12 +44,18 @@ class RULE:
 
     def show(self):
         ands = []
+        # print(self.parts)
+        # print(list(self.parts.values()))
         for ranges in self.parts.values():
+            # print(ranges)
             ors = _showLess(ranges)
             at = None
-            for range in ors:
+            # print("ors: ", ors)
+            for i, range in enumerate(ors):
+                # print(type(range))
                 at = range.at
-                ors.append(range.show())
+                ors[i] = range.show()
+                # print(ors)
             ands.append(" or ".join(ors))
         return " and ".join(ands)
       
@@ -55,15 +65,23 @@ Note : this function is not a part of the class, it is called in show()
 
 def _showLess(t, ready=False):
     if not ready:
-        t = sorted(t, key=lambda x: x.x.lo)
+        t = t[:]
+        # print(t)
+        t = sorted(t, key=lambda x: x.x['lo'])
     u = []
     i = 0
+    # print(len(t))
     while i < len(t):
         a = t[i]
         if i < len(t) - 1:
-            if a.x.hi == t[i + 1].x.lo:
+            if a.x['hi'] == t[i + 1].x['lo']:
                 a = a.merge(t[i + 1])
                 i += 1
         u.append(a)
         i += 1
-    return t if len(u) == len(t) else _showLess(u, ready=True)
+    
+    if(len(u)==len(t)):
+        # print("Showless:", t)
+        return t
+    else:
+        return _showLess(u, ready=True)
