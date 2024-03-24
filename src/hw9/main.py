@@ -273,7 +273,7 @@ def bins(the):
 The following 2 functions need to be made to work in some capacity
 """
 def eg_rules(the):
-    for xxx in range(1, 2):
+    for _ in range(1, 2):
         d = DATA(the['file'], the=the)
         best0, rest, evals1 = d.branch(the['d'])
         best, _, evals2 = best0.branch(the['D'])
@@ -288,7 +288,7 @@ def eg_rules(the):
                 print(round(rule.scored), o(result.mid().cells), "\t", rule.show())
 
 def eg_rules2(the):
-    for xxx in range(1, 2):
+    for _ in range(1, 2):
         d = DATA(the['file'], the=the)
         tmp = shuffle(d.rows)
         train = d.clone(tmp[:len(tmp) // 2])
