@@ -15,18 +15,16 @@ Using the code presented in class (ported to Python):
       - report the mid point of selected rows (see example below)
       - report rule score (see the function l.score in mylo.lua)
 
-output (for auto93):
+**Our Output (for auto93):**
 
 ```
 
 ```
 
-Paragraph describing the observed _explanation tax_? i.e. explanations often mean simplifying complex ideas and some explanations do not capture all the details
-of the data. Which means sometimes, the conclusions we make via explanations can be worse that if we reasoned from the instances.
+**Paragraph describing the observed _explanation tax_? i.e. explanations often mean simplifying complex ideas and some explanations do not capture all the details
+of the data. Which means sometimes, the conclusions we make via explanations can be worse that if we reasoned from the instances.**
 
-```
 Explanations often aim to simplify complex ideas, but sometimes, they may oversimplify or omit crucial details of the data. This can lead to conclusions that are not as accurate or insightful as those derived from directly reasoning from the instances. The process of simplifying complex concepts for explanation purposes, while valuable for comprehension, can sometimes result in a loss of nuance or depth in the analysis. Therefore, it's important to carefully consider the limitations of explanations and to supplement them with thorough analysis and reasoning based on the complete dataset.
-```
 
 # Steps to run
 * Navigate to the repository src/hw9/ and run the below command <br/>
