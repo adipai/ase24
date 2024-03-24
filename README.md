@@ -26,7 +26,7 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 * HW6 - Use the HW6 readme [link](https://github.com/adipai/ase24/blob/main/src/hw6/readme.md) for the step of execution<br/>
 * HW7 - Use the HW7 readme [link](https://github.com/adipai/ase24/blob/main/src/hw7/readme.md) for the step of execution<br/>
 * HW8 - Use the HW8 readme [link](https://github.com/adipai/ase24/blob/main/src/hw8/readme.md) for the step of execution<br/>
-* HW8 - Use the HW9 readme [link](https://github.com/adipai/ase24/blob/main/src/hw9/readme.md) for the step of execution<br/>
+* HW9 - Use the HW9 readme [link](https://github.com/adipai/ase24/blob/main/src/hw9/readme.md) for the step of execution<br/>
 
 # Team members
 [Rishi Singhal](https://www.linkedin.com/in/rishi-singhal1101/)<br/>
