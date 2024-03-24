@@ -25,7 +25,7 @@ Paragraph describing the observed _explanation tax_? i.e. explanations often mea
 of the data. Which means sometimes, the conclusions we make via explanations can be worse that if we reasoned from the instances.
 
 ```
-
+Explanations often aim to simplify complex ideas, but sometimes, they may oversimplify or omit crucial details of the data. This can lead to conclusions that are not as accurate or insightful as those derived from directly reasoning from the instances. The process of simplifying complex concepts for explanation purposes, while valuable for comprehension, can sometimes result in a loss of nuance or depth in the analysis. Therefore, it's important to carefully consider the limitations of explanations and to supplement them with thorough analysis and reasoning based on the complete dataset.
 ```
 
 # Steps to run
