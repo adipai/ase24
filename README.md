@@ -16,7 +16,7 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 * HW6 - Got cluster output & optimization output(for single descent and doubletap)<br/> 
 * HW7 - Got Part 1(no stats) and Part 2(stats) working <br/> 
 * HW8 - Got Finding Interested Ranges, Merge Rules, Pruning Ranges working<br/>
-* HW9 -<br/>
+* HW9 -Got Rules working and explanation tax paragraph<br/>
 
 # Steps to run
 * HW2 - Use the HW2 readme [link](https://github.com/adipai/ase24/tree/main/src/hw2#readme) for the steps of execution<br/>
@@ -26,6 +26,7 @@ The code for homeworks can be found in src/hwX/ and respective output at hw/wX w
 * HW6 - Use the HW6 readme [link](https://github.com/adipai/ase24/blob/main/src/hw6/readme.md) for the step of execution<br/>
 * HW7 - Use the HW7 readme [link](https://github.com/adipai/ase24/blob/main/src/hw7/readme.md) for the step of execution<br/>
 * HW8 - Use the HW8 readme [link](https://github.com/adipai/ase24/blob/main/src/hw8/readme.md) for the step of execution<br/>
+* HW8 - Use the HW9 readme [link](https://github.com/adipai/ase24/blob/main/src/hw9/readme.md) for the step of execution<br/>
 
 # Team members
 [Rishi Singhal](https://www.linkedin.com/in/rishi-singhal1101/)<br/>
