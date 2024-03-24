@@ -28,7 +28,7 @@ Explanations often aim to simplify complex ideas, but sometimes, they may oversi
 
 # Steps to run
 * Navigate to the repository src/hw9/ and run the below command <br/>
-  `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w8/w9.out`
+  `$ python3 main.py -f ../../Data/auto93.csv > ../../hw/w9/w9.out`
   
 * For running test suite, run:<br/>
   `$ python3 -m coverage run test_suite.py`
