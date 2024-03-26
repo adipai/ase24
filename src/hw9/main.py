@@ -288,6 +288,8 @@ def eg_rules(the):
                 print(round(rule.scored), o(result.mid().cells), "\t", rule.show())
 
 def eg_rules2(the):
+    output = []
+    output.append(["score", 'mid selected', 'rule'])
     for _ in range(1, 2):
         d = DATA(the['file'], the=the)
         tmp = shuffle(d.rows)
@@ -307,8 +309,21 @@ def eg_rules2(the):
             result = train.clone(rule.selects(test.rows))
             if len(result.rows) > 0:
                 result.rows.sort(key=lambda row: row.d2h(d))
-                print(round(rule.scored), o(result.mid().cells), "\t", rule.show())
-   
+                output.append([str(round(rule.scored)),o(result.mid().cells), rule.show()])
+
+    max_len = [0, 0, 0]
+    gap = [3, 4]
+    for i in range(len(output)):
+        max_len[0] = max(len(str(output[i][0])), max_len[0])
+        max_len[1] = max(len(str(output[i][1])), max_len[1])
+        max_len[2] = max(len(str(output[i][2])), max_len[2])
+    
+    output.insert(1, ['-' * max_len[0], '-'  * max_len[1], '-' * max_len[2]])
+    for i in range(0, len(output)):
+        output_str = output[i][0] + (" " * (max_len[0] - len(str(output[i][0])) + gap[0]))
+        output_str = output_str + output[i][1] + (" " * (max_len[1] + gap[1] - len(str(output[i][1]))))
+        output_str = output_str + output[i][2]
+        print(output_str)
 
 if __name__ == '__main__':
     the, opt_dir = settings(help_str)
