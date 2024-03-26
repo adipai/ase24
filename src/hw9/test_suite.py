@@ -9,6 +9,8 @@ from utils import coerce, settings, cells, round, entropy, keysort, any_item, ma
 from learner import *
 from task import far
 from ranges import Range
+from rules import RULES
+from merges import ranges
 
 class TestSuite:
     # def __init__(self) -> None:
@@ -264,6 +266,43 @@ class TestSuite:
         entropy_val, _ = Range.entropy(r_entropy.y)
         assert entropy_val == 1.0
         
+    def test_hate(self):
+        the = {'d': 32, 'D': 4}
+        data = DATA('../../Data/auto93.csv')
+        train = data.clone(data.rows[:len(data.rows) // 2])
+        best0, rest, _ = train.branch(the['d'])
+        best, _, _ = best0.branch(the['D'])
+        LIKE = best.rows
+        HATE = rest.rows[1:  3 * len(LIKE)]
+        assert len(HATE) == 8, "HATE should be 8"
+        
+    def test_like(self):
+        the = {'d': 32, 'D': 4}
+        data = DATA('../../Data/auto93.csv')
+        train = data.clone(data.rows[:len(data.rows) // 2])
+        best0, _, _ = train.branch(the['d'])
+        best, _, _ = best0.branch(the['D'])
+        LIKE = best.rows
+        assert len(LIKE) == 3, "LIKE should be 3"
+    
+    def test_rules(self):
+        the = {'d': 32, 'D': 4, 'bins': 16, 'Support': 2, 'Cut': .1, 'Beam': 10}
+        data = DATA('../../Data/auto93.csv')
+        train = data.clone(data.rows[:len(data.rows) // 2])
+        test = data.clone(data.rows[len(data.rows) // 2:])
+        best0, rest, _ = train.branch(the['d'])
+        best, _, _ = best0.branch(the['D'])
+        LIKE = best.rows
+        HATE = rest.rows[1:  3 * len(LIKE)]
+        rowss = {'LIKE': LIKE, 'HATE': HATE}
+        output = ['0.89', '{4.13, 112.57, 78.51, 77.61, 1, 2319.6, 16.48, 30.36}', 'Volume < 262.0']
+        for i, rule in enumerate(RULES(ranges(train.cols.x, rowss, the), "LIKE", rowss, the=the).sorted):
+            result = train.clone(rule.selects(test.rows))
+            if len(result.rows) > 0:
+                result.rows.sort(key=lambda row: row.d2h(data))
+                assert output == [str(round(rule.scored)),o(result.mid().cells), rule.show()]
+                break
+
     def _run_test(self, test_func, test_name):
         try:
             test_func()

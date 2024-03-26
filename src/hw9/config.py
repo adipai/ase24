@@ -11,7 +11,7 @@ OPTIONS:
   -B --Beam     max number of ranges            = 10
   -c --cohen    small effect size               = .35
   -C --Cut      ignore ranges less than C*max   = .1
-  -d --d        frist cut                       = 32
+  -d --d        first cut                       = 32
   -D --D        second cut                      = 4
   -f --file     csv data file name              = ../data/diabetes.csv
   -F --Far      how far to search for faraway?  = .95
